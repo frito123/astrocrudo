@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroCrudo • Astrología de la Sombra</title>
+    <meta name="description" content="Astrología profesional de la sombra. Trabajo psicológico profundo con Lilith, tránsitos críticos y aspectos prohibidos. Sin filtros.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85'>🜁</text></svg>">
+</head>
+<body class="bg-[#0a0808] text-[#e5e0d8] overflow-x-hidden">
+
+    <!-- MENÚ DE NAVEGACIÓN FIJO -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0808]/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+            
+            <!-- Logo / Nombre -->
+            <a href="#" class="font-serif text-2xl tracking-tight">AstroCrudo</a>
+
+            <!-- Menú de escritorio -->
+            <div class="hidden md:flex items-center gap-x-8 text-sm tracking-wider">
+                <a href="#horoscopos" class="hover:text-[#8B0000] transition-colors">Horóscopos</a>
+                <a href="#transitos" class="hover:text-[#8B0000] transition-colors">Aspectos del Día</a>
+                <a href="#espejo" class="hover:text-[#8B0000] transition-colors">Espejo de la Sombra</a>
+                <a href="#" onclick="exitSite(); return false;" 
+                   class="text-xs text-white/50 hover:text-[#8B0000] transition-colors border-l border-white/20 pl-4 ml-2">
+                    Salir del sitio
+                </a>
+            </div>
+
+            <!-- Botón menú móvil -->
+            <button id="mobile-menu-btn" 
+                    class="md:hidden text-2xl px-3 py-1 hover:text-[#8B0000]">
+                ☰
+            </button>
+        </div>
+
+        <!-- Menú móvil desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-[#0a0808]">
+            <div class="px-6 py-6 flex flex-col gap-y-4 text-base">
+                <a href="#horoscopos" class="mobile-link">Horóscopos</a>
+                <a href="#transitos" class="mobile-link">Aspectos del Día</a>
+                <a href="#espejo" class="mobile-link">Espejo de la Sombra</a>
+                <a href="#" onclick="exitSite(); return false;" class="mobile-link text-[#8B0000] pt-2 border-t border-white/10">Salir del sitio</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative min-h-[100dvh] flex items-center justify-center pt-20 border-b border-white/10">
+        <!-- Subtle background texture -->
+        <div class="absolute inset-0 bg-[radial-gradient(#1f1a1a_0.8px,transparent_1px)] bg-[length:4px_4px] opacity-60"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-block px-4 py-1 mb-6 border border-[#8B0000]/40 text-[#8B0000] text-xs tracking-[3px]">
+                ASTROLOGÍA DE LA SOMBRA
+            </div>
+
+            <h1 class="font-serif text-[68px] md:text-[82px] leading-[0.92] tracking-[-4.5px] text-white mb-6">
+                Astrología<br>de la Sombra
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-2xl md:text-3xl text-[#c5b8a0] tracking-[-0.8px] font-light">
+                Sin filtros.<br>Para quienes ya no se conforman con lo light.
+            </p>
+
+            <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#horoscopos" 
+                   class="inline-flex items-center justify-center px-9 h-14 border border-[#8B0000] hover:bg-[#8B0000] hover:text-white transition-colors text-sm tracking-[1.5px] rounded-full">
+                    VER HORÓSCOPOS DE HOY
+                </a>
+                <a href="#transitos" 
+                   class="inline-flex items-center justify-center px-9 h-14 border border-white/30 hover:border-white/60 transition-colors text-sm tracking-[1.5px] rounded-full">
+                    EXPLORAR TRÁNSITOS CRÍTICOS
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-[10px] tracking-[3px] text-white/40">
+            SCROLL PARA DESCENDER
+        </div>
+    </section>
+
+    <!-- HORÓSCOPOS PROFUNDOS -->
+    <section id="horoscopos" class="max-w-6xl mx-auto px-6 pt-20 pb-16">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">CADA DÍA • SIN ANESTESIA</div>
+                <h2 class="font-serif text-[52px] tracking-[-2px]">Horóscopos Profundos</h2>
+            </div>
+            <button onclick="randomizeHoroscopes()" 
+                    class="hidden md:block text-sm border border-white/20 hover:border-white/50 px-6 h-11 rounded-full transition-colors">
+                CAMBIAR SIGNOS
+            </button>
+        </div>
+
+        <div id="horoscope-grid" class="grid md:grid-cols-3 gap-6">
+            <!-- JS populated -->
+        </div>
+
+        <p class="text-center text-white/40 text-xs tracking-widest mt-12">
+            Los textos se actualizan diariamente. Los videos son piezas cinematográficas generadas con propósito arquetípico.
+        </p>
+    </section>
+
+    <!-- TRABAJO DE LA SOMBRA -->
+    <section id="sombra" class="bg-[#0f0c0c] border-y border-white/10 py-20">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="max-w-3xl">
+                <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-3">EL VERDADERO TRABAJO</div>
+                <h2 class="font-serif text-[52px] tracking-[-2px] leading-none">Trabajo con la Sombra</h2>
+                
+                <div class="mt-8 space-y-6 text-[15.5px] leading-relaxed text-[#c5b8a0]">
+                    <p>La astrología que se limita a describir cualidades positivas es una astrología incompleta. El verdadero trabajo comienza cuando nos atrevemos a mirar lo que preferimos no ver.</p>
+                    
+                    <p>Lilith no representa solo rebeldía. Representa todo lo que fuimos obligados a cortar de nuestra psique para ser aceptados. Plutón no es solo transformación: es la muerte del yo que ya no puede sostenerse.</p>
+                    
+                    <p>Este espacio no ofrece consuelo fácil. Ofrece espejo.</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mt-14">
+                <div class="border border-white/10 p-7 rounded-2xl">
+                    <div class="text-[#8B0000] text-sm mb-3">LILITH</div>
+                    <div class="font-serif text-2xl tracking-tight mb-4">La Exiliada</div>
+                    <p class="text-sm text-[#c5b8a0]">El arquetipo de lo femenino rechazado. Aquello que una cultura entera decidió que era inaceptable. Su regreso es inevitable.</p>
+                </div>
+                <div class="border border-white/10 p-7 rounded-2xl">
+                    <div class="text-[#8B0000] text-sm mb-3">PLUTÓN</div>
+                    <div class="font-serif text-2xl tracking-tight mb-4">El Desmantelamiento</div>
+                    <p class="text-sm text-[#c5b8a0]">No transforma. Destruye lo que ya estaba muerto. El dolor que sentimos es la resistencia del ego a soltar lo que ya no nos sostiene.</p>
+                </div>
+                <div class="border border-white/10 p-7 rounded-2xl">
+                    <div class="text-[#8B0000] text-sm mb-3">SATURNO</div>
+                    <div class="font-serif text-2xl tracking-tight mb-4">El Límite Necesario</div>
+                    <p class="text-sm text-[#c5b8a0]">No castiga. Enseña. Todo lo que posponemos por miedo se convierte, con el tiempo, en nuestra cárcel más sofisticada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRÁNSITOS CRÍTICOS Y ASPECTOS PROHIBIDOS -->
+    <section id="transitos" class="max-w-6xl mx-auto px-6 py-20">
+        <div class="mb-12">
+            <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">LO QUE NO SE PUEDE IGNORAR</div>
+            <h2 class="font-serif text-[52px] tracking-[-2px]">Tránsitos Críticos<br>y Aspectos Prohibidos</h2>
+            <p class="max-w-xl mt-4 text-[#c5b8a0]">Momentos en los que los planetas no piden permiso. Solo exigen que miremos.</p>
+        </div>
+
+        <!-- Featured: Venus Conjunción Lilith -->
+        <div class="bg-[#111] border border-white/10 rounded-3xl p-8 md:p-12">
+            <div class="grid md:grid-cols-5 gap-x-12 gap-y-8 items-center">
+                <div class="md:col-span-3">
+                    <div class="uppercase tracking-[2.5px] text-xs text-[#8B0000] mb-3">ASPECTO CLAVE DEL MOMENTO</div>
+                    <h3 class="font-serif text-5xl tracking-[-1.5px]">Venus en conjunción con Lilith</h3>
+                    
+                    <div class="mt-6 text-[15px] leading-relaxed text-[#c5b8a0]">
+                        <p>El deseo y la sombra se encuentran. Lo que hemos reprimido en nuestra sexualidad, en nuestra forma de amar y de exigir, emerge con fuerza.</p>
+                        <p class="mt-4">Este tránsito no es romántico. Es una invitación a dejar de pedir permiso para querer lo que queremos.</p>
+                    </div>
+
+                    <button onclick="playForbiddenAspect()"
+                            class="mt-8 group inline-flex items-center gap-x-3 px-8 h-14 border border-[#8B0000] hover:bg-[#8B0000] hover:text-white transition-all text-sm tracking-[1.5px] rounded-full">
+                        <span>VER LA PIEZA CINEMATOGRÁFICA</span>
+                    </button>
+                    <div class="text-[10px] tracking-widest text-white/40 mt-2">Duración aproximada • 4K • Sin censura</div>
+                </div>
+
+                <div class="md:col-span-2">
+                    <div onclick="playForbiddenAspect()" 
+                         class="group relative aspect-[16/9] bg-black rounded-2xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#8B0000]/60 transition-colors flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="mx-auto mb-4 w-16 h-16 rounded-full border-[5px] border-[#8B0000]/70 flex items-center justify-center group-hover:scale-105 transition-transform">
+                                <div class="w-0 h-0 border-l-[16px] border-l-white border-y-[10px] border-y-transparent ml-1"></div>
+                            </div>
+                            <div class="text-xs tracking-[2.5px] text-[#8B0000]">REPRODUCIR VISIÓN ARQUETÍPICA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other critical transits -->
+        <div class="grid md:grid-cols-2 gap-6 mt-6">
+            <div class="border border-white/10 p-8 rounded-2xl">
+                <div class="text-sm text-[#8B0000]">ACTUAL</div>
+                <div class="font-serif text-3xl mt-2 tracking-tight">Plutón en Acuario</div>
+                <p class="mt-4 text-sm leading-relaxed text-[#c5b8a0]">El poder colectivo se está redefiniendo. Lo que antes se consideraba "normal" en estructuras de poder está siendo desmantelado. Pregúntate: ¿dónde estás sosteniendo un sistema que ya no te sostiene a ti?</p>
+            </div>
+            <div class="border border-white/10 p-8 rounded-2xl">
+                <div class="text-sm text-[#8B0000]">ACTUAL</div>
+                <div class="font-serif text-3xl mt-2 tracking-tight">Saturno en Piscis</div>
+                <p class="mt-4 text-sm leading-relaxed text-[#c5b8a0]">Los límites espirituales y emocionales se están volviendo concretos. La disolución que tanto buscaste tiene ahora un costo. ¿Estás dispuesto a pagarlo?</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESPEJO DE LA SOMBRA (Roasts) -->
+    <section id="espejo" class="border-t border-white/10 py-20 bg-[#0f0c0c]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-2xl mb-12">
+                <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">SIN PIADOSA INDULGENCIA</div>
+                <h2 class="font-serif text-[52px] tracking-[-1.5px]">Espejo de la Sombra</h2>
+                <p class="text-[#c5b8a0] mt-3">Lo que el signo se niega a ver de sí mismo. No es burla. Es confrontación necesaria.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="shadow-mirror-grid">
+                <!-- JS populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="border-t border-white/10 py-20">
+        <div class="max-w-xl mx-auto px-6 text-center">
+            <div class="text-6xl mb-6 opacity-70">🜁</div>
+            <h3 class="font-serif text-4xl tracking-tight">La astrología que no confronta,<br>no transforma.</h3>
+            <p class="mt-6 text-[#c5b8a0]">Este espacio existe para quienes están dispuestos a mirar lo que duele mirar.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 py-9 text-center text-xs tracking-widest text-white/40">
+        <div>ASTROCRUDO — ASTROLOGÍA DE LA SOMBRA</div>
+        <div class="mt-1">Sin filtros. Sin promesas fáciles. Solo espejo.</div>
+        <div class="mt-4 text-[10px] tracking-[1.5px] text-white/30 flex items-center justify-center gap-x-1.5">
+            <span id="visit-count" class="font-mono tabular-nums text-white/40">—</span>
+            <span>visitas</span>
+        </div>
+    </footer>
+
+    <!-- VIDEO MODAL (Sistema Cinematográfico) -->
+    <div id="video-modal" onclick="if (event.target.id === 'video-modal') closeVideoModal()" 
+         class="hidden fixed inset-0 z-[110] bg-black/95 flex items-center justify-center p-4 md:p-8">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="w-full max-w-[1080px] bg-[#0a0808] border border-white/10 rounded-3xl overflow-hidden relative">
+            
+            <!-- Botón de cerrar mejorado -->
+            <button onclick="closeVideoModal()" 
+                    class="absolute top-4 right-4 text-white text-4xl leading-none hover:text-[#8B0000] z-50 transition-colors">
+                &times;
+            </button>
+
+            <div class="px-8 pt-6 pb-4 flex items-center justify-between border-b border-white/10 bg-black/40">
+                <div>
+                    <div id="video-modal-title" class="font-serif text-3xl tracking-tight text-white"></div>
+                    <div class="text-xs text-[#8B0000] tracking-[2px]">VISIÓN ARQUETÍPICA • SIN CENSURA</div>
+                </div>
+            </div>
+
+            <div id="video-player-area" class="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
+                <!-- Dynamic content via JS -->
+            </div>
+
+            <div class="p-8 bg-[#111]">
+                <div class="uppercase text-xs tracking-[3px] text-[#8B0000] mb-3">INTENCIÓN DE LA PIEZA</div>
+                <div id="video-prompt" class="font-mono text-xs leading-relaxed text-[#c5b8a0] bg-black/50 p-4 rounded-xl border border-white/10"></div>
+                
+                <div class="mt-6">
+                    <div class="uppercase text-xs tracking-[3px] text-white/40 mb-3">NARRACIÓN</div>
+                    <div id="video-narration" class="text-sm text-[#c5b8a0] leading-relaxed space-y-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón Volver Arriba -->
+    <button id="back-to-top"
+            class="hidden fixed bottom-6 right-6 w-12 h-12 bg-[#8B0000] hover:bg-[#5c1a1a] text-white rounded-full items-center justify-center shadow-lg z-40 transition-all text-xl">
+        ↑
+    </button>
+
+    <!-- Botón flotante Salir del sitio (disponible una vez dentro) -->
+    <a href="#" onclick="exitSite(); return false;"
+       class="fixed bottom-6 left-6 px-4 h-11 flex items-center justify-center bg-[#111] hover:bg-[#8B0000] border border-white/20 hover:border-[#8B0000] text-xs tracking-wider rounded-full z-40 transition-all">
+        Salir del sitio
+    </a>
+
+    <script src="assets/js/script.js"></script>
+
+    <!-- Contador de visitas -->
+    <script>
+        (function () {
+            const countEl = document.getElementById('visit-count');
+            if (!countEl) return;
+
+            const endpoint = 'https://api.counterapi.dev/v1/astrocrudo/visits/up';
+
+            fetch(endpoint, {
+                method: 'GET',
+                mode: 'cors',
+                cache: 'no-store'
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('API error');
+                return response.json();
+            })
+            .then(data => {
+                const value = (data && (data.count ?? data.value)) || 0;
+                countEl.textContent = value.toLocaleString('es-ES');
+            })
+            .catch(() => {
+                countEl.textContent = '—';
+            });
+        })();
+    </script>
+</body>
+</html>
