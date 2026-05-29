@@ -1,5 +1,5 @@
 // ============================================
-// ASTROCRUDO — Aspectos Clásicos
+// ASTROCRUDO — Naturaleza de los Signos
 // Script simplificado (una sola energía por signo)
 // ============================================
 
@@ -8,14 +8,14 @@
 
     function initClassicalSignPage() {
         if (typeof CURRENT_SIGN === 'undefined' || !CURRENT_SIGN) {
-            console.error('[Aspectos Clásicos] Error: Define CURRENT_SIGN en el HTML.');
+            console.error('[Naturaleza] Error: Define CURRENT_SIGN en el HTML.');
             return;
         }
 
         const data = window.ASPECTOS_DATA && window.ASPECTOS_DATA[CURRENT_SIGN];
         
         if (!data) {
-            console.error(`[Aspectos Clásicos] No hay datos para: ${CURRENT_SIGN}`);
+            console.error(`[Naturaleza] No hay datos para: ${CURRENT_SIGN}`);
             return;
         }
 

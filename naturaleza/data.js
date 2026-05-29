@@ -1,5 +1,5 @@
 // ============================================
-// ASTROCRUDO — Aspectos Clásicos
+// ASTROCRUDO — Naturaleza de los Signos
 // Una sola energía por signo (modelo tradicional)
 // ============================================
 
