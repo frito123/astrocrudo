@@ -60,7 +60,16 @@
         const placeholder = document.getElementById('video-placeholder');
         if (!placeholder) return;
 
-        const videoPath = data.video;
+        let videoPath = data && data.video;
+
+        // Fallback defensivo también aquí
+        if (!videoPath && typeof CURRENT_SIGN !== 'undefined') {
+            const slug = CURRENT_SIGN.toLowerCase()
+                .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                .replace(/ñ/g, 'n');
+            videoPath = `/assets/videos/clasica/${slug}.mp4`;
+        }
+
         const statusEl = document.getElementById('video-status');
 
         if (videoPath && videoPath.trim() !== '') {
@@ -71,6 +80,7 @@
                 statusEl.textContent = 'Video disponible • Haz clic para ver';
                 statusEl.style.color = '#8B0000';
             }
+            console.log('[Naturaleza] Video path configurado:', videoPath);
         } else {
             placeholder.classList.add('no-video-yet');
             if (statusEl) {
@@ -84,7 +94,7 @@
         const placeholder = document.getElementById('video-placeholder');
         if (!placeholder) return;
 
-        const videoPath = placeholder.getAttribute('data-video-path');
+        let videoPath = placeholder.getAttribute('data-video-path');
         const modal = document.getElementById('video-modal');
         const titleEl = document.getElementById('modal-title');
         const bodyEl = document.getElementById('modal-body');
@@ -93,6 +103,15 @@
 
         const signName = (typeof CURRENT_SIGN !== 'undefined') ? CURRENT_SIGN : 'Signo';
         titleEl.textContent = `${signName} — Naturaleza del Signo`;
+
+        // Fallback defensivo: si data.js no entregó la ruta, construirla automáticamente
+        if (!videoPath && typeof CURRENT_SIGN !== 'undefined') {
+            const slug = CURRENT_SIGN.toLowerCase()
+                .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                .replace(/ñ/g, 'n');
+            videoPath = `/assets/videos/clasica/${slug}.mp4`;
+            console.warn('[Naturaleza] videoPath faltante en data, usando fallback:', videoPath);
+        }
 
         if (videoPath) {
             bodyEl.innerHTML = `
@@ -110,7 +129,7 @@
                     <p style="margin-bottom:16px;">Este espacio está preparado para el video cinematográfico de la Naturaleza del Signo.</p>
                     <p style="font-size:13px; color:#888;">
                         Agrega el archivo en:<br>
-                        <code style="background:#111; padding:2px 6px; border-radius:4px;">../../assets/videos/clasica/${signName.toLowerCase()}.mp4</code>
+                        <code style="background:#111; padding:2px 6px; border-radius:4px;">/assets/videos/clasica/${signName.toLowerCase()}.mp4</code>
                     </p>
                 </div>
             `;
