@@ -1,195 +1,148 @@
 // ============================================
-// ASTROCRUDO — Aspectos de Luz y Sombra
-// Script compartido para páginas de signos
-// ============================================
-//
-// CÓMO USAR ESTE SCRIPT EN UNA NUEVA PÁGINA DE SIGNO:
-//
-// 1. Copia la plantilla (plantilla.html)
-// 2. En tu archivo HTML, define la variable:
-//    const CURRENT_SIGN = "Tauro";   // ← Cambia esto por el nombre del signo
-//
-// 3. Incluye este script después de data.js:
-//    <script src="../js/sign-page.js"></script>
-//
-// El script se encarga de:
-// - Cargar los textos desde data.js
-// - Rellenar los títulos y contenidos
-// - Manejar los placeholders de video
-// - Mostrar/ocultar secciones según los datos disponibles
-//
+// ASTROCRUDO — Aspectos Clásicos
+// Script simplificado (una sola energía por signo)
 // ============================================
 
 (function() {
     'use strict';
 
-    // Esperar a que el DOM esté listo
-    function initSignPage() {
-        // La variable CURRENT_SIGN debe estar definida en el HTML de cada signo
+    function initClassicalSignPage() {
         if (typeof CURRENT_SIGN === 'undefined' || !CURRENT_SIGN) {
-            console.error('[Aspectos] Error: Debes definir la variable CURRENT_SIGN en tu HTML. Ejemplo: const CURRENT_SIGN = "Aries";');
+            console.error('[Aspectos Clásicos] Error: Define CURRENT_SIGN en el HTML.');
             return;
         }
 
         const data = window.ASPECTOS_DATA && window.ASPECTOS_DATA[CURRENT_SIGN];
         
         if (!data) {
-            console.error(`[Aspectos] No se encontraron datos para el signo: ${CURRENT_SIGN}`);
+            console.error(`[Aspectos Clásicos] No hay datos para: ${CURRENT_SIGN}`);
             return;
         }
 
-        // Cargar contenido textual
-        loadSignContent(data);
+        // Inyectar textos clásicos
+        injectClassicalContent(data);
 
-        // Configurar placeholders de video
-        setupVideoPlaceholders(data);
+        // Configurar video
+        setupSingleVideo(data);
 
-        // Log útil
-        console.log(`%c[AstroCrudo] Página de Aspectos cargada: ${CURRENT_SIGN}`, 'color:#8B0000');
+        // Actualizar meta tags dinámicamente (título ya está en el HTML)
+        updateDynamicMeta(data);
+
+        console.log(`%c[AstroCrudo] Aspecto clásico cargado: ${CURRENT_SIGN}`, 'color:#8B0000');
     }
 
-    /**
-     * Carga los textos de luz y sombra desde los datos
-     */
-    function loadSignContent(data) {
-        // Helper para convertir texto plano con \n\n en párrafos HTML
-        function renderTextToElement(text, containerId) {
-            const container = document.getElementById(containerId);
-            if (!container || !text) return;
-
-            container.innerHTML = '';
-
-            const paragraphs = text.trim().split('\n\n');
-            paragraphs.forEach(paragraphText => {
-                const p = document.createElement('p');
-                p.textContent = paragraphText.trim();
-                container.appendChild(p);
-            });
+    function injectClassicalContent(data) {
+        // Texto clásico principal
+        const classicalEl = document.getElementById('classical-text');
+        if (classicalEl && data.classicalText) {
+            classicalEl.innerHTML = data.classicalText;
         }
 
-        // Hombre - Positivos
-        setTextContent('hombre-positivos-title', data.hombre?.positivos?.title);
-        renderTextToElement(data.hombre?.positivos?.text, 'hombre-positivos-text');
-
-        // Hombre - Negativos
-        setTextContent('hombre-negativos-title', data.hombre?.negativos?.title);
-        renderTextToElement(data.hombre?.negativos?.text, 'hombre-negativos-text');
-
-        // Mujer - Positivos
-        setTextContent('mujer-positivos-title', data.mujer?.positivos?.title);
-        renderTextToElement(data.mujer?.positivos?.text, 'mujer-positivos-text');
-
-        // Mujer - Negativos
-        setTextContent('mujer-negativos-title', data.mujer?.negativos?.title);
-        renderTextToElement(data.mujer?.negativos?.text, 'mujer-negativos-text');
-    }
-
-    function setTextContent(elementId, text) {
-        const el = document.getElementById(elementId);
-        if (el && text) {
-            el.textContent = text;
+        // Nota de sombra
+        const shadowEl = document.getElementById('shadow-note');
+        if (shadowEl && data.shadowNote) {
+            shadowEl.innerHTML = data.shadowNote;
         }
+
+        // Datos tradicionales en la cabecera (si existen los elementos)
+        setTextIfExists('ruler-value', data.ruler || '—');
+        setTextIfExists('exaltation-value', data.exaltation || '—');
+        setTextIfExists('body-value', data.body || '—');
+        setTextIfExists('quality-value', data.quality || '—');
     }
 
-    /**
-     * Configura los placeholders de video según los datos disponibles
-     */
-    function setupVideoPlaceholders(data) {
-        const videos = data.videos || {};
+    function setTextIfExists(id, text) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+    }
 
-        // Mapeo de IDs de placeholders a las claves en data.videos
-        const videoMap = {
-            'video-hombre-positivo': videos.hombrePositivo,
-            'video-hombre-negativo': videos.hombreNegativo,
-            'video-mujer-positivo': videos.mujerPositivo,
-            'video-mujer-negativo': videos.mujerNegativo
-        };
+    function setupSingleVideo(data) {
+        const placeholder = document.getElementById('video-placeholder');
+        if (!placeholder) return;
 
-        Object.keys(videoMap).forEach(placeholderId => {
-            const placeholder = document.getElementById(placeholderId);
-            if (!placeholder) return;
+        const videoPath = data.video;
+        const statusEl = document.getElementById('video-status');
 
-            const videoPath = videoMap[placeholderId];
-
-            if (videoPath && videoPath.trim() !== '') {
-                // Hay video definido → mejorar el placeholder visualmente
-                placeholder.classList.add('has-video');
-                placeholder.setAttribute('data-video-path', videoPath);
-
-                // Cambiar el texto para indicar que el video está listo
-                const note = placeholder.querySelector('.video-note');
-                if (note) {
-                    note.textContent = 'Video disponible • Haz clic para previsualizar';
-                    note.style.color = '#ff3366';
-                }
-            } else {
-                // No hay video aún
-                placeholder.classList.add('no-video');
+        if (videoPath && videoPath.trim() !== '') {
+            placeholder.setAttribute('data-video-path', videoPath);
+            placeholder.classList.add('has-video');
+            
+            if (statusEl) {
+                statusEl.textContent = 'Video disponible • Haz clic para ver';
+                statusEl.style.color = '#8B0000';
             }
-        });
+        } else {
+            placeholder.classList.add('no-video-yet');
+            if (statusEl) {
+                statusEl.textContent = 'Video cinematográfico • Próximamente';
+            }
+        }
     }
 
-    /**
-     * Función global para abrir el modal de video placeholder
-     * (puede ser mejorada más adelante para reproducir el video real)
-     */
-    window.showAspectVideo = function(placeholderElement) {
-        const videoPath = placeholderElement.getAttribute('data-video-path');
-        const title = placeholderElement.getAttribute('data-video-title') || 'Visión Cinematográfica';
+    // Función global para reproducir el video clásico
+    window.playClassicalVideo = function() {
+        const placeholder = document.getElementById('video-placeholder');
+        if (!placeholder) return;
 
+        const videoPath = placeholder.getAttribute('data-video-path');
         const modal = document.getElementById('video-modal');
         const titleEl = document.getElementById('modal-title');
         const bodyEl = document.getElementById('modal-body');
 
-        if (!modal || !titleEl) return;
+        if (!modal || !titleEl || !bodyEl) return;
 
-        titleEl.textContent = title;
+        const signName = (typeof CURRENT_SIGN !== 'undefined') ? CURRENT_SIGN : 'Signo';
+        titleEl.textContent = `${signName} — Energía Clásica`;
 
-        if (videoPath && bodyEl) {
-            // Si hay ruta de video, podemos mostrar un reproductor básico
+        if (videoPath) {
             bodyEl.innerHTML = `
-                <video controls style="width:100%; border-radius:12px; background:#000;">
+                <video controls autoplay style="width:100%; border-radius:12px; background:#000; max-height:70vh;">
                     <source src="${videoPath}" type="video/mp4">
                     Tu navegador no soporta la reproducción de video.
                 </video>
-                <p style="margin-top:16px; font-size:13px; color:#888;">
-                    Ruta: <span style="font-family:monospace; color:#666;">${videoPath}</span>
+                <p style="margin-top:16px; font-size:12px; color:#666; font-family:monospace;">
+                    ${videoPath}
                 </p>
             `;
         } else {
-            if (bodyEl) {
-                bodyEl.innerHTML = `
-                    <p style="color:#c5b8a0; line-height:1.6;">
-                        Este espacio está preparado para el video cinematográfico.<br><br>
-                        Cuando tengas el archivo MP4, agrégalo en <strong>data.js</strong> 
-                        dentro del objeto <code>videos</code> del signo correspondiente.
+            bodyEl.innerHTML = `
+                <div style="padding:40px 20px; text-align:center; color:#c5b8a0;">
+                    <p style="margin-bottom:16px;">Este espacio está preparado para el video cinematográfico del aspecto clásico.</p>
+                    <p style="font-size:13px; color:#888;">
+                        Agrega el archivo en:<br>
+                        <code style="background:#111; padding:2px 6px; border-radius:4px;">${signName.toLowerCase()}/aspecto-clasico.mp4</code>
                     </p>
-                `;
-            }
+                </div>
+            `;
         }
 
         modal.classList.remove('hidden');
         modal.classList.add('flex');
     };
 
-    // Cerrar modal
-    window.closeAspectModal = function() {
+    window.closeVideoModal = function() {
         const modal = document.getElementById('video-modal');
         if (!modal) return;
 
         modal.classList.remove('flex');
         modal.classList.add('hidden');
 
-        // Limpiar contenido del body para la próxima vez
         const bodyEl = document.getElementById('modal-body');
         if (bodyEl) bodyEl.innerHTML = '';
     };
 
-    // Inicializar cuando el DOM esté listo
+    function updateDynamicMeta(data) {
+        // Actualiza el título de la pestaña si es necesario
+        if (data.title) {
+            document.title = `${data.title} — Aspecto Clásico | AstroCrudo`;
+        }
+    }
+
+    // Inicializar
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initSignPage);
+        document.addEventListener('DOMContentLoaded', initClassicalSignPage);
     } else {
-        initSignPage();
+        initClassicalSignPage();
     }
 
 })();

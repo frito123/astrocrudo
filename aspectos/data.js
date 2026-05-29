@@ -1,31 +1,16 @@
 // ============================================
-// ASTROCRUDO — Aspectos de Luz y Sombra
-// Archivo central de datos (única fuente de verdad)
+// ASTROCRUDO — Aspectos Clásicos
+// Una sola energía por signo (modelo tradicional)
 // ============================================
 
 /**
- * ============================================
- * CÓMO AGREGAR UN NUEVO SIGNO (PASO A PASO)
- * ============================================
- * 
- * 1. Agrega los datos del signo en este archivo (abajo).
- *    Copia la estructura completa de "Aries" y reemplaza el contenido.
- * 
- * 2. Crea la carpeta del signo:
- *    aspectos/[nombre-en-minusculas]/
- * 
- * 3. Copia el archivo "plantilla.html" y renómbralo como index.html dentro de esa carpeta.
- * 
- * 4. En el nuevo index.html, cambia SOLO esta línea:
- *    const CURRENT_SIGN = "Tauro";   // ← Nombre exacto como está aquí
- * 
- * 5. (Opcional) Actualiza el hub (aspectos/index.html) para activar la tarjeta del signo.
- * 
- * Los textos deben mantener el tono del proyecto:
- * - Psicológico y profundo
- * - Directo pero elegante
- * - Sin condescendencia
- * - Buen equilibrio entre luz y sombra
+ * ESTRUCTURA NUEVA (Clásica + Nota de Sombra)
+ *
+ * Cada signo tiene:
+ * - Datos tradicionales (regente, exaltación, partes del cuerpo, cualidades)
+ * - classicalText: descripción en lenguaje astrológico tradicional (como el ejemplo de Aries)
+ * - shadowNote: breve interpretación psicológica en tono AstroCrudo
+ * - video: ruta al video cinematográfico único del signo
  */
 
 const ASPECTOS_DATA = {
@@ -35,83 +20,35 @@ const ASPECTOS_DATA = {
     symbol: "♈",
     element: "Fuego",
     mode: "Cardinal",
-    title: "Aries",
-    subtitle: "El que se atreve",
-    shortDescription: "Voluntad pura, coraje existencial y la fuerza de iniciar.",
+    ruler: "Marte",
+    exaltation: "Sol",
+    body: "Cabeza y rostro",
+    quality: "Caliente y seco, colérico, movible y equinoccial",
+    shortDescription: "El que inicia. Fuerza de voluntad pura y el coraje de dar el primer paso.",
 
-    hombre: {
-      positivos: {
-        title: "El Guerrero que Abre Camino",
-        text: "El Hombre Aries en su expresión luminosa es pura voluntad encarnada. No espera las condiciones perfectas: las crea. Su coraje no es solo físico; es la capacidad de dar el primer paso cuando todos los demás dudan, temen o necesitan más datos.\n\nEste hombre protege con instinto. Cuando ama, se lanza. Cuando cree en algo, lo defiende con una lealtad que puede parecer primitiva pero que es profundamente honesta. Su honestidad es su mayor regalo: no sabe fingir, no sabe manipular con palabras suaves. Lo que ve, lo dice. Lo que siente, lo muestra.\n\nEn su mejor versión, el Hombre Aries es el pionero que abre veredas para otros. Es el que se quema primero para que el camino quede iluminado. Su ego, cuando está integrado, no busca dominar: busca liderar desde el frente."
-      },
-      negativos: {
-        title: "El Niño que Nunca Aprendió a Perder",
-        text: "La sombra del Hombre Aries aparece cuando su voluntad choca contra la realidad: que no siempre puede ganar, que no siempre tiene la razón, que su velocidad puede destruir lo que más quiere proteger.\n\nEste hombre puede volverse peligrosamente infantil cuando se siente frustrado. La ira se convierte en su lenguaje principal. Golpea primero (física o verbalmente) para no tener que sentir la vulnerabilidad de haber sido herido. Su miedo más profundo —ser irrelevante, ser lento, ser débil— se disfraza de agresividad constante.\n\nEn su peor expresión, el Hombre Aries usa su coraje como excusa para no desarrollar inteligencia emocional. Herida a los que ama con su brutalidad \"honesta\". Abandona cuando las cosas se ponen difíciles porque \"el guerrero no se queda donde no hay batalla\". La batalla, muchas veces, está dentro de él."
-      }
-    },
+    classicalText: "Aries es el primer signo del zodíaco, de naturaleza fuego, caliente y seco, colérico, movible y equinoccial. Es la casa diurna de Marte y exaltación del Sol. Goberna la cabeza y el rostro del cuerpo humano. Su temperamento produce acción violenta, intemperante y bestial, iniciadora de movimiento pero no sostenedora de él. Estas cualidades operan igual en todo ser humano, varón o mujer, según la configuración de su figura natal.",
 
-    mujer: {
-      positivos: {
-        title: "La que no Pide Permiso para Ser",
-        text: "La Mujer Aries en su luz es una fuerza de la naturaleza que se niega a pedir disculpas por existir con intensidad. No espera que la inviten a la mesa: se sienta. No espera que le den espacio: lo toma. Su independencia no es pose; es supervivencia convertida en identidad.\n\nEsta mujer tiene una honestidad que desarma. Dice lo que piensa cuando nadie más se atreve. Defiende a los suyos con una ferocidad que puede asustar a quienes no entienden que su amor es acción, no palabras suaves. Es pionera en un mundo que todavía castiga a las mujeres por ser demasiado directas, demasiado ambiciosas, demasiado ruidosas.\n\nEn su mejor versión, la Mujer Aries abre camino para otras mujeres simplemente por negarse a encogerse. Su coraje es contagioso. Su deseo de vivir en grande es un acto político y espiritual al mismo tiempo."
-      },
-      negativos: {
-        title: "La que Ataca antes de Ser Herida",
-        text: "La sombra de la Mujer Aries suele nacer de haber tenido que ser fuerte demasiado temprano. Su agresividad defensiva se vuelve su forma de relacionarse: ataca primero para no ser atacada. Confunde vulnerabilidad con debilidad, y por eso la evita con una disciplina militar.\n\nEsta mujer puede volverse competitiva hasta con las personas que ama. Necesita ganar, necesita tener razón, necesita ser la más rápida, la más valiente, la más independiente. Su miedo a depender de alguien la lleva a sabotear relaciones antes de que puedan herirla. Su ira, cuando no está integrada, quema todo a su paso —incluido a ella misma.\n\nEn su peor expresión, la Mujer Aries usa su \"fuerza\" como armadura contra la ternura. Desprecia en los demás (especialmente en otras mujeres) la sensibilidad que ella misma no se permite sentir. Su coraje se convierte en rigidez. Su fuego, en destrucción."
-      }
-    },
+    shadowNote: "Esta energía no distingue género. La misma fuerza que abre caminos puede volverse destrucción cuando no aprende a sostener lo que inicia. El trabajo con la sombra de Aries es aprender que el coraje verdadero incluye la capacidad de esperar y de perder sin desaparecer.",
 
-    // Rutas de video (rellenar cuando tengas los archivos)
-    videos: {
-      hombrePositivo: "",   // ej: "../../../assets/videos/aries/hombre-positivo.mp4"
-      hombreNegativo: "",   // ej: "../../../assets/videos/aries/hombre-negativo.mp4"
-      mujerPositivo: "",    // ej: "../../../assets/videos/aries/mujer-positivo.mp4"
-      mujerNegativo: ""     // ej: "../../../assets/videos/aries/mujer-negativo.mp4"
-    }
+    video: "assets/videos/clasica/aries.mp4"
   },
-
-  // ============================================
-  // PLANTILLAS PARA NUEVOS SIGNOS (vacíos por ahora)
-  // ============================================
 
   "Tauro": {
     slug: "tauro",
     symbol: "♉",
     element: "Tierra",
     mode: "Fijo",
-    title: "Tauro",
-    subtitle: "El que sostiene",
-    shortDescription: "Estabilidad profunda, placer como ancla y la resistencia sagrada al cambio innecesario.",
+    ruler: "Venus",
+    exaltation: "Luna",
+    body: "Cuello, garganta y nuca",
+    quality: "Frío y seco, melancólico, fijo y nocturno",
+    shortDescription: "El que sostiene. Resistencia, placer encarnado y construcción que dura.",
 
-    hombre: {
-      positivos: {
-        title: "El que Construye lo que Permanece",
-        text: "El Hombre Tauro en su luz es una fuerza de enraizamiento. No se mueve por impulsos ni por modas. Sabe que las cosas valiosas requieren tiempo, constancia y contacto directo con la materia. Su poder no está en la velocidad, sino en la capacidad de sostener lo que otros abandonan cuando se pone difícil.\n\nEste hombre tiene una relación honesta con el cuerpo y con el mundo tangible. Valora lo que se puede tocar, cultivar y construir. Cuando ama, lo hace con una lealtad que no necesita declaraciones constantes. Su presencia es quieta pero densa. Ofrece seguridad real, no promesas.\n\nEn su mejor versión, el Hombre Tauro es el constructor de legados. Crea estructuras que sobreviven a las crisis porque no fueron hechas desde la urgencia, sino desde la paciencia y el respeto por lo que dura."
-      },
-      negativos: {
-        title: "El que Prefiere la Comodidad a la Vida",
-        text: "La sombra del Hombre Tauro aparece cuando confunde estabilidad con inmovilidad. Su apego a lo conocido se vuelve una forma sofisticada de miedo. Se queda en trabajos, relaciones o formas de vida que ya no lo nutren, solo porque representan lo que ya conoce y controla.\n\nEste hombre puede volverse posesivo. Lo que ama lo quiere tener, no acompañar. Su terquedad deja de ser fuerza y se convierte en arma contra cualquiera que intente moverlo, aunque sea hacia algo mejor. El placer, que en su luz es sagrado, en su sombra se vuelve anestesia: come, bebe, acumula o se encierra en rutinas para no tener que sentir lo que está evitando.\n\nEn su peor expresión, el Hombre Tauro sacrifica su propia evolución por mantener la ilusión de seguridad. Prefiere una muerte lenta y cómoda antes que el riesgo de renacer."
-      }
-    },
+    classicalText: "Tauro es el segundo signo del zodíaco, de naturaleza tierra, frío y seco, melancólico, fijo y nocturno. Es la casa nocturna de Venus y exaltación de la Luna. Goberna el cuello, la garganta y la nuca del cuerpo humano. Su temperamento produce estabilidad, lentitud y gran resistencia al cambio. Aprecia lo tangible, lo que puede tocarse, cultivarse y conservarse. Estas cualidades operan igual en todo ser humano, varón o mujer, según la configuración de su figura natal.",
 
-    mujer: {
-      positivos: {
-        title: "La que Sabe Habitar su Propio Cuerpo",
-        text: "La Mujer Tauro en su luz tiene una presencia encarnada que resulta rara en un mundo que empuja a las mujeres a desconectarse de su cuerpo. Ella sabe lo que necesita, lo que le gusta y lo que no. No pide permiso para tomar su tiempo, para disfrutar, para negarse cuando algo no la resuena.\n\nEsta mujer construye seguridad desde adentro. No necesita demostrar nada. Su sensualidad no es performance: es una forma de estar en el mundo. Tiene una capacidad extraordinaria de sostener procesos largos, de esperar sin desesperar, de crear belleza tangible en su entorno y en sus relaciones.\n\nEn su mejor versión, la Mujer Tauro es una fuerza de enraizamiento para los que la rodean. Ofrece un tipo de amor que no corre, que no presiona, que permite que las cosas maduren a su ritmo."
-      },
-      negativos: {
-        title: "La que se Queda porque Perder Asusta Más que Sufrir",
-        text: "La sombra de la Mujer Tauro suele manifestarse como una resistencia pasivo-agresiva al cambio. Se queda en relaciones que la apagan, en trabajos que no la representan, en dinámicas que ya no la honran, porque soltar representa una pérdida de control y comodidad que le resulta intolerable.\n\nEsta mujer puede usar su sensualidad y su capacidad de dar como formas sutiles de atar a los demás. Su terquedad se vuelve una muralla emocional: nadie entra, nadie la mueve, aunque por dentro esté muriendo de sed. El miedo a quedarse sin nada la lleva a conformarse con muy poco.\n\nEn su peor expresión, la Mujer Tauro confunde arraigo con estancamiento. Se vuelve experta en justificar lo que ya no la sostiene, mientras su cuerpo y su alma le piden movimiento desde hace años."
-      }
-    },
+    shadowNote: "La misma fuerza que construye legados puede volverse prisión cuando se confunde arraigo con inmovilidad. El trabajo con la sombra de Tauro consiste en distinguir entre lo que nutre y lo que solo adormece el miedo a perder.",
 
-    // Rutas de video (rellenar cuando tengas los archivos)
-    videos: {
-      hombrePositivo: "",   // ej: "../../../assets/videos/tauro/hombre-positivo.mp4"
-      hombreNegativo: "",   // ej: "../../../assets/videos/tauro/hombre-negativo.mp4"
-      mujerPositivo: "",    // ej: "../../../assets/videos/tauro/mujer-positivo.mp4"
-      mujerNegativo: ""     // ej: "../../../assets/videos/tauro/mujer-negativo.mp4"
-    }
+    video: "assets/videos/clasica/tauro.mp4"
   },
 
   "Géminis": {
@@ -119,12 +56,17 @@ const ASPECTOS_DATA = {
     symbol: "♊",
     element: "Aire",
     mode: "Mutable",
-    title: "Géminis",
-    subtitle: "El que pregunta",
-    shortDescription: "Dualidad, curiosidad y la inteligencia como defensa.",
-    hombre: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    mujer: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    videos: { hombrePositivo: "", hombreNegativo: "", mujerPositivo: "", mujerNegativo: "" }
+    ruler: "Mercurio",
+    exaltation: null,
+    body: "Brazos, hombros, manos y pulmones",
+    quality: "Caliente y húmedo, sanguíneo, mutable y diurno",
+    shortDescription: "El que pregunta. Inteligencia, dualidad y la necesidad de nombrar lo que existe.",
+
+    classicalText: "Géminis es el tercer signo del zodíaco, de naturaleza aire, caliente y húmedo, sanguíneo, mutable y diurno. Es la casa diurna de Mercurio. Goberna los brazos, los hombros, las manos y los pulmones del cuerpo humano. Su temperamento produce curiosidad, versatilidad y rapidez de pensamiento, pero también inconstancia y dificultad para comprometerse con una sola dirección. Estas cualidades operan igual en todo ser humano, varón o mujer, según la configuración de su figura natal.",
+
+    shadowNote: "La mente que todo lo toca puede volverse una forma elegante de no habitar nada. El trabajo con la sombra de Géminis es aprender a permanecer en una verdad aunque duela más que seguir saltando entre versiones.",
+
+    video: "assets/videos/clasica/geminis.mp4"
   },
 
   "Cáncer": {
@@ -132,12 +74,17 @@ const ASPECTOS_DATA = {
     symbol: "♋",
     element: "Agua",
     mode: "Cardinal",
-    title: "Cáncer",
-    subtitle: "El que protege",
-    shortDescription: "Memoria emocional, hogar y el miedo al abandono.",
-    hombre: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    mujer: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    videos: { hombrePositivo: "", hombreNegativo: "", mujerPositivo: "", mujerNegativo: "" }
+    ruler: "Luna",
+    exaltation: "Júpiter",
+    body: "Pecho, estómago y senos",
+    quality: "Frío y húmedo, flemático, cardinal y nocturno",
+    shortDescription: "El que protege. Memoria emocional, contención y el instinto de origen.",
+
+    classicalText: "Cáncer es el cuarto signo del zodíaco, de naturaleza agua, frío y húmedo, flemático, cardinal y nocturno. Es la casa de la Luna y exaltación de Júpiter. Goberna el pecho, el estómago y los senos del cuerpo humano. Su temperamento produce gran sensibilidad, memoria y capacidad de nutrir y proteger. Busca contención y seguridad, y reacciona con fuerza cuando percibe amenaza al hogar o a los suyos. Estas cualidades operan igual en todo ser humano, varón o mujer, según la configuración de su figura natal.",
+
+    shadowNote: "La misma fuerza que crea refugio puede volverse control cuando el miedo al abandono gobierna. El trabajo con la sombra de Cáncer es aprender a contener sin poseer y a soltar sin desaparecer.",
+
+    video: "assets/videos/clasica/cancer.mp4"
   },
 
   "Leo": {
@@ -145,12 +92,17 @@ const ASPECTOS_DATA = {
     symbol: "♌",
     element: "Fuego",
     mode: "Fijo",
-    title: "Leo",
-    subtitle: "El que brilla",
-    shortDescription: "Expresión, reconocimiento y el terror a ser invisible.",
-    hombre: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    mujer: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    videos: { hombrePositivo: "", hombreNegativo: "", mujerPositivo: "", mujerNegativo: "" }
+    ruler: "Sol",
+    exaltation: null,
+    body: "Corazón, espalda y columna",
+    quality: "Caliente y seco, colérico, fijo y diurno",
+    shortDescription: "El que brilla. Expresión vital, dignidad y la necesidad de ser visto en su esencia.",
+
+    classicalText: "Leo es el quinto signo del zodíaco, de naturaleza fuego, caliente y seco, colérico, fijo y diurno. Es la casa del Sol. Goberna el corazón, la espalda y la columna del cuerpo humano. Su temperamento produce generosidad, orgullo, nobleza y deseo de reconocimiento. Necesita expresar su naturaleza central y creativa, y sufre cuando se ve obligado a permanecer oculto o pequeño. Estas cualidades operan igual en todo ser humano, varón o mujer, según la configuración de su figura natal.",
+
+    shadowNote: "La misma luz que ilumina puede volverse ceguera cuando exige ser el centro a toda costa. El trabajo con la sombra de Leo es aprender que la dignidad verdadera no depende de ser aplaudido.",
+
+    video: "assets/videos/clasica/leo.mp4"
   },
 
   "Virgo": {
@@ -158,12 +110,17 @@ const ASPECTOS_DATA = {
     symbol: "♍",
     element: "Tierra",
     mode: "Mutable",
-    title: "Virgo",
-    subtitle: "El que perfecciona",
-    shortDescription: "Discernimiento, servicio y la trampa del perfeccionismo.",
-    hombre: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    mujer: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    videos: { hombrePositivo: "", hombreNegativo: "", mujerPositivo: "", mujerNegativo: "" }
+    ruler: "Mercurio",
+    exaltation: "Mercurio",
+    body: "Intestinos, sistema digestivo y manos",
+    quality: "Frío y seco, melancólico, mutable y nocturno",
+    shortDescription: "El que refina. Discernimiento, servicio y la búsqueda de la forma perfecta.",
+
+    classicalText: "Virgo es el sexto signo del zodíaco, de naturaleza tierra, frío y seco, melancólico, mutable y nocturno. Es la casa y exaltación de Mercurio. Goberna los intestinos, el sistema digestivo y las manos del cuerpo humano. Su temperamento produce aguda capacidad de análisis, atención al detalle y deseo de purificar y mejorar. Distingue lo útil de lo inútil, lo puro de lo impuro, y encuentra sentido en el orden y en el servicio. Estas cualidades operan igual en todo ser humano, varón o mujer, según la configuración de su figura natal.",
+
+    shadowNote: "La misma precisión que sana puede volverse tortura cuando nada es nunca suficiente. El trabajo con la sombra de Virgo es aprender a servir sin sacrificarse y a aceptar lo imperfecto como parte de lo real.",
+
+    video: "assets/videos/clasica/virgo.mp4"
   },
 
   "Libra": {
@@ -171,12 +128,17 @@ const ASPECTOS_DATA = {
     symbol: "♎",
     element: "Aire",
     mode: "Cardinal",
-    title: "Libra",
-    subtitle: "El que equilibra",
-    shortDescription: "Relaciones, belleza y el miedo al conflicto.",
-    hombre: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    mujer: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    videos: { hombrePositivo: "", hombreNegativo: "", mujerPositivo: "", mujerNegativo: "" }
+    ruler: "Venus",
+    exaltation: "Saturno",
+    body: "Riñones, vejiga y región lumbar",
+    quality: "Caliente y húmedo, sanguíneo, cardinal y diurno",
+    shortDescription: "El que equilibra. Relación, justicia y el arte de encontrar el punto medio.",
+
+    classicalText: "Libra es el séptimo signo del zodíaco, de naturaleza aire, caliente y húmedo, sanguíneo, cardinal y diurno. Es la casa de Venus y exaltación de Saturno. Goberna los riñones, la vejiga y la región lumbar del cuerpo humano. Su temperamento produce amor por la armonía, el equilibrio y las relaciones justas. Busca la belleza en la proporción y sufre cuando se ve forzado a tomar partido de forma desequilibrada. Estas cualidades operan igual en todo ser humano, varón o mujer, según la configuración de su figura natal.",
+
+    shadowNote: "La misma búsqueda de armonía puede volverse parálisis cuando el miedo al conflicto impide elegir. El trabajo con la sombra de Libra es aprender a sostener el peso de una decisión aunque incomode a otros.",
+
+    video: "assets/videos/clasica/libra.mp4"
   },
 
   "Escorpio": {
@@ -184,12 +146,17 @@ const ASPECTOS_DATA = {
     symbol: "♏",
     element: "Agua",
     mode: "Fijo",
-    title: "Escorpio",
-    subtitle: "El que transforma",
-    shortDescription: "Intensidad, poder y la muerte del ego.",
-    hombre: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    mujer: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    videos: { hombrePositivo: "", hombreNegativo: "", mujerPositivo: "", mujerNegativo: "" }
+    ruler: "Marte y Plutón (tradicionalmente Marte)",
+    exaltation: null,
+    body: "Órganos sexuales y sistema excretor",
+    quality: "Frío y húmedo, flemático, fijo y nocturno",
+    shortDescription: "El que transforma. Intensidad, poder y la capacidad de morir y renacer.",
+
+    classicalText: "Escorpio es el octavo signo del zodíaco, de naturaleza agua, frío y húmedo, flemático, fijo y nocturno. Es la casa nocturna de Marte. Goberna los órganos sexuales y el sistema excretor del cuerpo humano. Su temperamento produce profundidad, reserva, capacidad de investigación y poder de transformación. No teme lo oculto ni lo prohibido; al contrario, lo atrae como materia de conocimiento y poder. Estas cualidades operan igual en todo ser humano, varón o mujer, según la configuración de su figura natal.",
+
+    shadowNote: "La misma fuerza que penetra misterios puede volverse destrucción cuando se usa para controlar o vengarse. El trabajo con la sombra de Escorpio es aprender a morir sin matar lo que ama.",
+
+    video: "assets/videos/clasica/escorpio.mp4"
   },
 
   "Sagitario": {
@@ -197,12 +164,17 @@ const ASPECTOS_DATA = {
     symbol: "♐",
     element: "Fuego",
     mode: "Mutable",
-    title: "Sagitario",
-    subtitle: "El que busca",
-    shortDescription: "Libertad, verdad y la huida del compromiso.",
-    hombre: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    mujer: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    videos: { hombrePositivo: "", hombreNegativo: "", mujerPositivo: "", mujerNegativo: "" }
+    ruler: "Júpiter",
+    exaltation: null,
+    body: "Caderas, muslos y sistema nervioso",
+    quality: "Caliente y seco, colérico, mutable y diurno",
+    shortDescription: "El que busca. Expansión, verdad y la necesidad de dar sentido a la existencia.",
+
+    classicalText: "Sagitario es el noveno signo del zodíaco, de naturaleza fuego, caliente y seco, colérico, mutable y diurno. Es la casa de Júpiter. Goberna las caderas, los muslos y el sistema nervioso del cuerpo humano. Su temperamento produce amor por la libertad, la aventura, la filosofía y la búsqueda de significado. Necesita horizontes amplios y sufre cuando se ve confinado a lo pequeño o a lo repetitivo. Estas cualidades operan igual en todo ser humano, varón o mujer, según la configuración de su figura natal.",
+
+    shadowNote: "La misma sed de verdad puede volverse huida cuando ninguna respuesta es suficiente. El trabajo con la sombra de Sagitario es aprender que el viaje más importante a veces es hacia adentro.",
+
+    video: "assets/videos/clasica/sagitario.mp4"
   },
 
   "Capricornio": {
@@ -210,12 +182,17 @@ const ASPECTOS_DATA = {
     symbol: "♑",
     element: "Tierra",
     mode: "Cardinal",
-    title: "Capricornio",
-    subtitle: "El que construye",
-    shortDescription: "Ambición, estructura y el precio de la disciplina.",
-    hombre: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    mujer: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    videos: { hombrePositivo: "", hombreNegativo: "", mujerPositivo: "", mujerNegativo: "" }
+    ruler: "Saturno",
+    exaltation: "Marte",
+    body: "Rodillas, huesos y piel",
+    quality: "Frío y seco, melancólico, cardinal y nocturno",
+    shortDescription: "El que construye. Disciplina, tiempo y la ambición de dejar algo que perdure.",
+
+    classicalText: "Capricornio es el décimo signo del zodíaco, de naturaleza tierra, frío y seco, melancólico, cardinal y nocturno. Es la casa de Saturno y exaltación de Marte. Goberna las rodillas, los huesos y la piel del cuerpo humano. Su temperamento produce seriedad, paciencia, ambición a largo plazo y respeto por las estructuras que el tiempo valida. Valora el esfuerzo sostenido y la autoridad ganada, no regalada. Estas cualidades operan igual en todo ser humano, varón o mujer, según la configuración de su figura natal.",
+
+    shadowNote: "La misma disciplina que edifica puede volverse cárcel cuando el miedo a ser irrelevante lo gobierna todo. El trabajo con la sombra de Capricornio es aprender que el tiempo también exige soltar.",
+
+    video: "assets/videos/clasica/capricornio.mp4"
   },
 
   "Acuario": {
@@ -223,12 +200,17 @@ const ASPECTOS_DATA = {
     symbol: "♒",
     element: "Aire",
     mode: "Fijo",
-    title: "Acuario",
-    subtitle: "El que innova",
-    shortDescription: "Visión, libertad y la distancia emocional.",
-    hombre: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    mujer: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    videos: { hombrePositivo: "", hombreNegativo: "", mujerPositivo: "", mujerNegativo: "" }
+    ruler: "Saturno y Urano (tradicionalmente Saturno)",
+    exaltation: null,
+    body: "Piernas, tobillos y sistema circulatorio",
+    quality: "Caliente y húmedo, sanguíneo, fijo y diurno",
+    shortDescription: "El que innova. Visión de futuro, libertad de pensamiento y servicio a lo colectivo.",
+
+    classicalText: "Acuario es el undécimo signo del zodíaco, de naturaleza aire, caliente y húmedo, sanguíneo, fijo y diurno. Es la casa de Saturno. Goberna las piernas, los tobillos y el sistema circulatorio del cuerpo humano. Su temperamento produce originalidad, desapego emocional aparente, amor por la libertad intelectual y preocupación por el bien común. Ve patrones donde otros ven solo casos aislados. Estas cualidades operan igual en todo ser humano, varón o mujer, según la configuración de su figura natal.",
+
+    shadowNote: "La misma distancia que permite ver el todo puede volverse frialdad cuando se usa para no sentir. El trabajo con la sombra de Acuario es aprender que la verdadera revolución también ocurre en la intimidad.",
+
+    video: "assets/videos/clasica/acuario.mp4"
   },
 
   "Piscis": {
@@ -236,22 +218,26 @@ const ASPECTOS_DATA = {
     symbol: "♓",
     element: "Agua",
     mode: "Mutable",
-    title: "Piscis",
-    subtitle: "El que disuelve",
-    shortDescription: "Compasión, límites y la tentación de desaparecer.",
-    hombre: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    mujer: { positivos: { title: "", text: "" }, negativos: { title: "", text: "" } },
-    videos: { hombrePositivo: "", hombreNegativo: "", mujerPositivo: "", mujerNegativo: "" }
+    ruler: "Júpiter y Neptuno (tradicionalmente Júpiter)",
+    exaltation: "Venus",
+    body: "Pies y sistema linfático",
+    quality: "Frío y húmedo, flemático, mutable y nocturno",
+    shortDescription: "El que disuelve. Compasión, imaginación y la capacidad de fundirse con el todo.",
+
+    classicalText: "Piscis es el duodécimo signo del zodíaco, de naturaleza agua, frío y húmedo, flemático, mutable y nocturno. Es la casa de Júpiter y exaltación de Venus. Goberna los pies y el sistema linfático del cuerpo humano. Su temperamento produce gran receptividad, compasión, imaginación y tendencia a disolverse en lo que lo rodea. Percibe lo invisible y lo emocional colectivo con facilidad, pero puede perder los contornos de su propia identidad. Estas cualidades operan igual en todo ser humano, varón o mujer, según la configuración de su figura natal.",
+
+    shadowNote: "La misma apertura que permite la gracia puede volverse desaparición cuando no hay límites. El trabajo con la sombra de Piscis es aprender a ser un vaso sin dejar de ser alguien que lo sostiene.",
+
+    video: "assets/videos/clasica/piscis.mp4"
   }
 
 };
 
-// Helper para obtener datos de un signo
+// Helper
 function getSignData(signName) {
   return ASPECTOS_DATA[signName] || null;
 }
 
-// Lista ordenada de signos (útil para el hub)
 const SIGN_ORDER = [
   "Aries", "Tauro", "Géminis", "Cáncer", "Leo", "Virgo",
   "Libra", "Escorpio", "Sagitario", "Capricornio", "Acuario", "Piscis"
