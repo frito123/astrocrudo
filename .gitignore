@@ -25,11 +25,17 @@ build/
 .env
 .env.local
 
-# Videos grandes (recomendado)
-# Los videos ya están versionados en el historial.
-# Para el futuro, considera subirlos a Cloudinary / Bunny.net / Git LFS
-# y descomentar la siguiente línea si quieres dejar de trackear MP4 nuevos:
-# assets/videos/**/*.mp4
+# Videos y archivos multimedia grandes
+# Nunca commitees videos pesados al repositorio.
+# Sube los videos a Cloudinary, Bunny.net, o usa Git LFS si es necesario.
+# Esta regla ignora todos los .mp4 nuevos (los antiguos que ya estaban trackeados se mantienen en el historial).
+assets/videos/**/*.mp4
+assets/videos/**/*.mov
+assets/videos/**/*.webm
+assets/videos/**/*.avi
+
+# Archivo de instrucciones local (no es necesario en el repo)
+assets/videos/clasica/LEEME_VIDEOS_PLANETAS.txt
 
 # Imágenes grandes (si las agregas)
 # assets/images/**/*.psd

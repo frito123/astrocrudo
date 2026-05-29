@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Planetas Clásicos | AstroCrudo</title>
+    <meta name="description" content="La naturaleza tradicional de cada planeta según la astrología antigua. Del Sol a Plutón. Una sola energía por planeta. Contenido permanente.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85'>🜁</text></svg>">
+    
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0a0808;
+            color: #e5e0d8;
+        }
+        
+        .font-serif {
+            font-family: Georgia, "Times New Roman", serif;
+            font-feature-settings: "kern" "tnum";
+        }
+        
+        .planet-card {
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .planet-card:hover {
+            border-color: #8B0000;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+        }
+        
+        .nav-link {
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover {
+            color: #c5b8a0;
+        }
+        
+        .section-intro {
+            font-size: 15.5px;
+            line-height: 1.78;
+            color: #c5b8a0;
+        }
+
+        .planet-symbol {
+            font-size: 2.75rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="bg-[#0a0808] text-[#e5e0d8]">
+    
+    <!-- NAVEGACIÓN -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0808]/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-x-8">
+                <a href="../" class="font-serif text-2xl tracking-tight hover:text-[#c5b8a0] transition-colors">
+                    AstroCrudo
+                </a>
+                <a href="../" class="text-sm text-[#c5b8a0] nav-link hidden md:block">
+                    ← Volver al sitio principal
+                </a>
+            </div>
+            <div class="text-xs tracking-[2.5px] text-white/40">PLANETAS • VERSIÓN CLÁSICA</div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="pt-20 pb-14 border-b border-white/10">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-block px-4 py-1 mb-4 border border-[#8B0000]/40 text-[#8B0000] text-xs tracking-[3.5px]">
+                TRADICIÓN • UNA SOLA NATURALEZA POR PLANETA
+            </div>
+            
+            <h1 class="font-serif text-6xl md:text-[68px] tracking-[-3.5px] leading-none mb-4">
+                Planetas<br>Clásicos
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-2xl text-[#c5b8a0] tracking-[-0.7px] font-light">
+                Del Sol a Plutón.<br>
+                Cada planeta tiene <span class="text-white">dos expresiones cinematográficas</span>: bien dignificado y mal dignificado.
+            </p>
+            
+            <div class="max-w-2xl mx-auto mt-8 section-intro">
+                <p>
+                    Antes de la psicología moderna y de las interpretaciones de la Nueva Era, 
+                    cada planeta tenía <strong>una sola naturaleza</strong> descrita por los antiguos.
+                    Aquí recuperamos ese lenguaje: domicilios, exaltaciones, partes del cuerpo y temperamento.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-14">
+        
+        <!-- EXPLICACIÓN -->
+        <div class="max-w-3xl mb-12">
+            <div class="text-[#8B0000] text-xs tracking-[3px] mb-3">CÓMO LEER ESTA SECCIÓN</div>
+            <div class="text-[15px] text-[#c5b8a0] leading-relaxed space-y-4">
+                <p>
+                    Cada descripción sigue el modelo de los tratados clásicos (Ptolomeo, Firmico Materno, Lilly y la tradición medieval).
+                    Incluimos las dos luminarias (Sol y Luna) y los planetas hasta Plutón, con sus dignidades tradicionales.
+                </p>
+                <p>
+                    Al final de cada página encontrarás una breve nota de <strong>Trabajo con la Sombra</strong> en tono AstroCrudo,
+                    que traduce esa energía antigua a los dilemas psicológicos contemporáneos.
+                </p>
+            </div>
+        </div>
+
+        <!-- GRID DE PLANETAS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            
+            <!-- Sol -->
+            <a href="sol/" class="planet-card group block rounded-3xl p-7">
+                <div class="flex items-start justify-between mb-5">
+                    <div>
+                        <span class="planet-symbol">☉</span>
+                        <div class="font-serif text-3xl tracking-tight mt-1">Sol</div>
+                        <div class="text-[11px] tracking-[1.5px] text-[#8B0000] mt-0.5">LUMINARIA • FUEGO</div>
+                    </div>
+                    <div class="px-3.5 py-1 text-[10px] tracking-[2px] bg-[#8B0000] text-white rounded-full self-start mt-1 font-medium">
+                        PERMANENTE
+                    </div>
+                </div>
+                
+                <div class="text-[14.5px] text-[#c5b8a0] leading-snug mb-8 pr-2">
+                    El centro. Fuerza vital, dignidad y la voluntad de ser que no se negocia.
+                </div>
+                
+                <div class="flex items-center justify-between text-xs tracking-[1.5px]">
+                    <div class="flex items-center gap-x-2 text-[#8B0000] group-hover:gap-x-3 transition-all">
+                        <span>VER NATURALEZA CLÁSICA</span>
+                        <span class="text-lg leading-none">→</span>
+                    </div>
+                    <div class="text-white/40">LEO • ARIES</div>
+                </div>
+            </a>
+
+            <!-- Luna -->
+            <a href="luna/" class="planet-card group block rounded-3xl p-7">
+                <div class="flex items-start justify-between mb-5">
+                    <div>
+                        <span class="planet-symbol">☽</span>
+                        <div class="font-serif text-3xl tracking-tight mt-1">Luna</div>
+                        <div class="text-[11px] tracking-[1.5px] text-[#8B0000] mt-0.5">LUMINARIA • AGUA</div>
+                    </div>
+                    <div class="px-3.5 py-1 text-[10px] tracking-[2px] bg-[#8B0000] text-white rounded-full self-start mt-1 font-medium">
+                        PERMANENTE
+                    </div>
+                </div>
+                
+                <div class="text-[14.5px] text-[#c5b8a0] leading-snug mb-8 pr-2">
+                    La memoria del cuerpo. Lo que nutre, contiene y recuerda sin palabras.
+                </div>
+                
+                <div class="flex items-center justify-between text-xs tracking-[1.5px]">
+                    <div class="flex items-center gap-x-2 text-[#8B0000] group-hover:gap-x-3 transition-all">
+                        <span>VER NATURALEZA CLÁSICA</span>
+                        <span class="text-lg leading-none">→</span>
+                    </div>
+                    <div class="text-white/40">CÁNCER • TAURO</div>
+                </div>
+            </a>
+
+            <!-- Mercurio -->
+            <a href="mercurio/" class="planet-card group block rounded-3xl p-7">
+                <div class="flex items-start justify-between mb-5">
+                    <div>
+                        <span class="planet-symbol">☿</span>
+                        <div class="font-serif text-3xl tracking-tight mt-1">Mercurio</div>
+                        <div class="text-[11px] tracking-[1.5px] text-[#8B0000] mt-0.5">PLANETA PERSONAL</div>
+                    </div>
+                    <div class="px-3.5 py-1 text-[10px] tracking-[2px] bg-[#8B0000] text-white rounded-full self-start mt-1 font-medium">
+                        PERMANENTE
+                    </div>
+                </div>
+                
+                <div class="text-[14.5px] text-[#c5b8a0] leading-snug mb-8 pr-2">
+                    El mensajero. La mente que nombra, conecta, distingue y viaja entre mundos.
+                </div>
+                
+                <div class="flex items-center justify-between text-xs tracking-[1.5px]">
+                    <div class="flex items-center gap-x-2 text-[#8B0000] group-hover:gap-x-3 transition-all">
+                        <span>VER NATURALEZA CLÁSICA</span>
+                        <span class="text-lg leading-none">→</span>
+                    </div>
+                    <div class="text-white/40">GÉMINIS • VIRGO</div>
+                </div>
+            </a>
+
+            <!-- Venus -->
+            <a href="venus/" class="planet-card group block rounded-3xl p-7">
+                <div class="flex items-start justify-between mb-5">
+                    <div>
+                        <span class="planet-symbol">♀</span>
+                        <div class="font-serif text-3xl tracking-tight mt-1">Venus</div>
+                        <div class="text-[11px] tracking-[1.5px] text-[#8B0000] mt-0.5">PLANETA PERSONAL</div>
+                    </div>
+                    <div class="px-3.5 py-1 text-[10px] tracking-[2px] bg-[#8B0000] text-white rounded-full self-start mt-1 font-medium">
+                        PERMANENTE
+                    </div>
+                </div>
+                
+                <div class="text-[14.5px] text-[#c5b8a0] leading-snug mb-8 pr-2">
+                    El deseo que une. El placer, la belleza y el valor que damos a las cosas.
+                </div>
+                
+                <div class="flex items-center justify-between text-xs tracking-[1.5px]">
+                    <div class="flex items-center gap-x-2 text-[#8B0000] group-hover:gap-x-3 transition-all">
+                        <span>VER NATURALEZA CLÁSICA</span>
+                        <span class="text-lg leading-none">→</span>
+                    </div>
+                    <div class="text-white/40">TAURO • LIBRA</div>
+                </div>
+            </a>
+
+            <!-- Marte -->
+            <a href="marte/" class="planet-card group block rounded-3xl p-7">
+                <div class="flex items-start justify-between mb-5">
+                    <div>
+                        <span class="planet-symbol">♂</span>
+                        <div class="font-serif text-3xl tracking-tight mt-1">Marte</div>
+                        <div class="text-[11px] tracking-[1.5px] text-[#8B0000] mt-0.5">PLANETA PERSONAL</div>
+                    </div>
+                    <div class="px-3.5 py-1 text-[10px] tracking-[2px] bg-[#8B0000] text-white rounded-full self-start mt-1 font-medium">
+                        PERMANENTE
+                    </div>
+                </div>
+                
+                <div class="text-[14.5px] text-[#c5b8a0] leading-snug mb-8 pr-2">
+                    La fuerza que corta y defiende. El impulso de existir separadamente.
+                </div>
+                
+                <div class="flex items-center justify-between text-xs tracking-[1.5px]">
+                    <div class="flex items-center gap-x-2 text-[#8B0000] group-hover:gap-x-3 transition-all">
+                        <span>VER NATURALEZA CLÁSICA</span>
+                        <span class="text-lg leading-none">→</span>
+                    </div>
+                    <div class="text-white/40">ARIES • ESCORPIO</div>
+                </div>
+            </a>
+
+            <!-- Júpiter -->
+            <a href="jupiter/" class="planet-card group block rounded-3xl p-7">
+                <div class="flex items-start justify-between mb-5">
+                    <div>
+                        <span class="planet-symbol">♃</span>
+                        <div class="font-serif text-3xl tracking-tight mt-1">Júpiter</div>
+                        <div class="text-[11px] tracking-[1.5px] text-[#8B0000] mt-0.5">PLANETA SOCIAL</div>
+                    </div>
+                    <div class="px-3.5 py-1 text-[10px] tracking-[2px] bg-[#8B0000] text-white rounded-full self-start mt-1 font-medium">
+                        PERMANENTE
+                    </div>
+                </div>
+                
+                <div class="text-[14.5px] text-[#c5b8a0] leading-snug mb-8 pr-2">
+                    La expansión del sentido. La fe que hace crecer todo lo que toca.
+                </div>
+                
+                <div class="flex items-center justify-between text-xs tracking-[1.5px]">
+                    <div class="flex items-center gap-x-2 text-[#8B0000] group-hover:gap-x-3 transition-all">
+                        <span>VER NATURALEZA CLÁSICA</span>
+                        <span class="text-lg leading-none">→</span>
+                    </div>
+                    <div class="text-white/40">SAGITARIO • PISCIS</div>
+                </div>
+            </a>
+
+            <!-- Saturno -->
+            <a href="saturno/" class="planet-card group block rounded-3xl p-7">
+                <div class="flex items-start justify-between mb-5">
+                    <div>
+                        <span class="planet-symbol">♄</span>
+                        <div class="font-serif text-3xl tracking-tight mt-1">Saturno</div>
+                        <div class="text-[11px] tracking-[1.5px] text-[#8B0000] mt-0.5">PLANETA SOCIAL</div>
+                    </div>
+                    <div class="px-3.5 py-1 text-[10px] tracking-[2px] bg-[#8B0000] text-white rounded-full self-start mt-1 font-medium">
+                        PERMANENTE
+                    </div>
+                </div>
+                
+                <div class="text-[14.5px] text-[#c5b8a0] leading-snug mb-8 pr-2">
+                    El límite necesario. El tiempo, la estructura y la madurez que duele.
+                </div>
+                
+                <div class="flex items-center justify-between text-xs tracking-[1.5px]">
+                    <div class="flex items-center gap-x-2 text-[#8B0000] group-hover:gap-x-3 transition-all">
+                        <span>VER NATURALEZA CLÁSICA</span>
+                        <span class="text-lg leading-none">→</span>
+                    </div>
+                    <div class="text-white/40">CAPRICORNIO • ACUARIO</div>
+                </div>
+            </a>
+
+            <!-- Urano -->
+            <a href="urano/" class="planet-card group block rounded-3xl p-7">
+                <div class="flex items-start justify-between mb-5">
+                    <div>
+                        <span class="planet-symbol">♅</span>
+                        <div class="font-serif text-3xl tracking-tight mt-1">Urano</div>
+                        <div class="text-[11px] tracking-[1.5px] text-[#8B0000] mt-0.5">PLANETA GENERACIONAL</div>
+                    </div>
+                    <div class="px-3.5 py-1 text-[10px] tracking-[2px] bg-[#8B0000] text-white rounded-full self-start mt-1 font-medium">
+                        PERMANENTE
+                    </div>
+                </div>
+                
+                <div class="text-[14.5px] text-[#c5b8a0] leading-snug mb-8 pr-2">
+                    El relámpago. La ruptura súbita que libera lo que ya estaba muerto.
+                </div>
+                
+                <div class="flex items-center justify-between text-xs tracking-[1.5px]">
+                    <div class="flex items-center gap-x-2 text-[#8B0000] group-hover:gap-x-3 transition-all">
+                        <span>VER NATURALEZA CLÁSICA</span>
+                        <span class="text-lg leading-none">→</span>
+                    </div>
+                    <div class="text-white/40">ACUARIO</div>
+                </div>
+            </a>
+
+            <!-- Neptuno -->
+            <a href="neptuno/" class="planet-card group block rounded-3xl p-7">
+                <div class="flex items-start justify-between mb-5">
+                    <div>
+                        <span class="planet-symbol">♆</span>
+                        <div class="font-serif text-3xl tracking-tight mt-1">Neptuno</div>
+                        <div class="text-[11px] tracking-[1.5px] text-[#8B0000] mt-0.5">PLANETA GENERACIONAL</div>
+                    </div>
+                    <div class="px-3.5 py-1 text-[10px] tracking-[2px] bg-[#8B0000] text-white rounded-full self-start mt-1 font-medium">
+                        PERMANENTE
+                    </div>
+                </div>
+                
+                <div class="text-[14.5px] text-[#c5b8a0] leading-snug mb-8 pr-2">
+                    El océano. La disolución del yo en algo más grande que sí mismo.
+                </div>
+                
+                <div class="flex items-center justify-between text-xs tracking-[1.5px]">
+                    <div class="flex items-center gap-x-2 text-[#8B0000] group-hover:gap-x-3 transition-all">
+                        <span>VER NATURALEZA CLÁSICA</span>
+                        <span class="text-lg leading-none">→</span>
+                    </div>
+                    <div class="text-white/40">PISCIS</div>
+                </div>
+            </a>
+
+            <!-- Plutón -->
+            <a href="pluton/" class="planet-card group block rounded-3xl p-7">
+                <div class="flex items-start justify-between mb-5">
+                    <div>
+                        <span class="planet-symbol">♇</span>
+                        <div class="font-serif text-3xl tracking-tight mt-1">Plutón</div>
+                        <div class="text-[11px] tracking-[1.5px] text-[#8B0000] mt-0.5">PLANETA GENERACIONAL</div>
+                    </div>
+                    <div class="px-3.5 py-1 text-[10px] tracking-[2px] bg-[#8B0000] text-white rounded-full self-start mt-1 font-medium">
+                        PERMANENTE
+                    </div>
+                </div>
+                
+                <div class="text-[14.5px] text-[#c5b8a0] leading-snug mb-8 pr-2">
+                    El que desmantela. La muerte de todo lo que ya no puede seguir vivo.
+                </div>
+                
+                <div class="flex items-center justify-between text-xs tracking-[1.5px]">
+                    <div class="flex items-center gap-x-2 text-[#8B0000] group-hover:gap-x-3 transition-all">
+                        <span>VER NATURALEZA CLÁSICA</span>
+                        <span class="text-lg leading-none">→</span>
+                    </div>
+                    <div class="text-white/40">ESCORPIO</div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Nota final -->
+        <div class="mt-16 max-w-2xl mx-auto text-center text-sm text-white/40 leading-relaxed">
+            Los planetas no son solo "influencias". Son principios arquetípicos que operan en todo ser humano.
+            Esta sección no rota. Es contenido permanente para quienes quieren entender las fuerzas que los mueven.
+        </div>
+
+    </main>
+
+    <footer class="border-t border-white/10 py-10">
+        <div class="max-w-4xl mx-auto px-6 text-center text-xs text-white/30 tracking-widest">
+            ASTROCRUDO — ASTROLOGÍA DE LA SOMBRA<br>
+            <span class="text-[10px]">Una naturaleza. Un cuerpo. Una tradición.</span>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -145,6 +145,7 @@ Todos tienen comentarios claros indicando qué editar.
 | Roasts / Espejo de la Sombra| `assets/js/script.js` → `SHADOW_MIRROR` |
 | Videos por signo            | `assets/videos/{signo}/`    |
 | Video Aspecto Prohibido     | `assets/js/script.js` → `playForbiddenAspect` |
+| Planetas Clásicos (nueva sección) | `/planetas/` (data.js + páginas individuales) |
 
 ---
 
@@ -168,6 +169,32 @@ Todos tienen comentarios claros indicando qué editar.
 Sube los archivos a un repositorio y actívalo en Settings → Pages.
 
 **Nota importante:** Si usas videos reales pesados, súbelos a Cloudinary/Bunny y usa URLs en vez de archivos locales.
+
+---
+
+## Sección Planetas Clásicos (Nueva)
+
+Se agregó una sección completa `/planetas` con la versión clásica de los 10 cuerpos celestes (Sol, Luna + Mercurio a Plutón).
+
+**Estructura:**
+- `planetas/index.html` — Listado principal con todos los planetas
+- `planetas/data.js` — `PLANETAS_DATA` con descripciones clásicas completas (domicilio, exaltación, caída, exilio, partes del cuerpo, texto tradicional y nota de sombra AstroCrudo)
+- `planetas/plantilla.html` + `js/planet-page.js` — Sistema de páginas individuales (igual patrón que `/naturaleza`)
+- 10 subcarpetas (`sol/`, `luna/`, `mercurio/`, `venus/`, `marte/`, `jupiter/`, `saturno/`, `urano/`, `neptuno/`, `pluton/`) con sus `index.html`
+
+**Videos (ahora son DOS por planeta):**
+Cada planeta tiene dos videos:
+- `sol-bien.mp4` + `sol-mal.mp4`
+- `luna-bien.mp4` + `luna-mal.mp4`
+- etc.
+
+Ruta recomendada: `assets/videos/clasica/sol-bien.mp4` y `sol-mal.mp4`
+
+En cada página de planeta se muestran dos tarjetas:
+- **Versión Bien Dignificada**
+- **Versión Mal Dignificada**
+
+La navegación principal y un teaser en la home ya enlazan a esta sección.
 
 ---
 
