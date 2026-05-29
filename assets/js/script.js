@@ -240,16 +240,16 @@ function playHoroscopeVideo(sign, buttonEl) {
 // ============================================
 
 function playForbiddenAspect() {
-  const title = "Venus en Conjunción con Lilith";
+  const title = "Venus en Cáncer □ Saturno en Aries";
   
-  const prompt = `Pieza cinematográfica de alto nivel sobre la conjunción de Venus y Lilith. Dos arquetipos femeninos enfrentados: el deseo domesticado y el deseo exiliado. Encuentro cargado de tensión arquetípica, poder sexual como fuerza psíquica, no como entretenimiento. Atmósfera oscura, elegante, misteriosa. Negros profundos, rojos sangre, oro antiguo. Estilo serio, casi ritual.`;
+  const prompt = `Pieza cinematográfica brutal y sin filtros sobre la cuadratura de Venus en Cáncer y Saturno en Aries. Tensión cruda entre la necesidad emocional de ser contenida y el impulso primitivo de dominar y tomar. Vulnerabilidad erótica convertida en transgresión. Hambre, control y rendición sin romanticismo. Atmósfera tensa, oscura, casi violenta en su honestidad psicológica. Negros profundos, rojos sangre, grises fríos y acero. Estilo crudo, psicológico, directo.`;
 
   const narration = [
-    "Venus representa lo que hemos aprendido a desear de forma aceptable.",
-    "Lilith representa todo lo que fuimos obligados a cortar de nuestro deseo para ser aceptados.",
-    "Cuando estos dos se encuentran, ya no hay forma de seguir fingiendo.",
-    "Lo que emerge no es romance. Es una verdad que muchos prefieren no mirar.",
-    "Este tránsito no pregunta si estás listo. Solo te recuerda que ya no puedes seguir evadiéndolo."
+    "Venus en Cáncer necesita ser contenida. Saturno en Aries quiere tomar sin pedir permiso.",
+    "Esta cuadratura no negocia. Pone en tensión el deseo de entrega emocional con el impulso de dominar y controlar.",
+    "Lo que debería sentirse como protección, se vuelve restricción. Lo que debería ser sexo, se vuelve transgresión.",
+    "El miedo a ser destruida emocionalmente se mezcla con la excitación de ser tomada sin piedad.",
+    "Aquí no hay romanticismo. Hay hambre, control y rendición. La vulnerabilidad se vuelve erótica y el deseo no pide disculpas."
   ];
 
   // ============================================
@@ -260,8 +260,8 @@ function playForbiddenAspect() {
       title, 
       prompt, 
       narration, 
-      'venus-lilith', 
-      'assets/videos/venus-lilith/venus-lilith.mp4'
+      'venus-saturno-cuadratura', 
+      'assets/videos/venus-saturno-cuadratura/venus-cancer-cuadratura-saturno-aries.mp4'
     );
   });
 }

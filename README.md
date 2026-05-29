@@ -108,13 +108,15 @@ Ejemplos concretos:
 
 2. El sistema ya está preparado. La función `playHoroscopeVideo` buscará automáticamente el video en esa ruta.
 
-#### Para el video de Aspectos Prohibidos (Venus × Lilith)
+#### Para el video del Aspecto Destacado (Venus en Cáncer □ Saturno en Aries)
 
 La ruta actual está en `playForbiddenAspect()`:
 
 ```js
-'assets/videos/venus-lilith/venus-lilith.mp4'
+'assets/videos/venus-saturno-cuadratura/venus-cancer-cuadratura-saturno-aries.mp4'
 ```
+
+> El aspecto anterior (Venus-Lilith) fue reemplazado. La carpeta `venus-lilith/` sigue existiendo por si se quiere recuperar contenido anterior.
 
 #### Consejo para producción
 

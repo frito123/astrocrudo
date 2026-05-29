@@ -1,0 +1,40 @@
+# AstroCrudo - .gitignore
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores e IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Dependencias (si en el futuro se agrega Node, etc.)
+node_modules/
+dist/
+build/
+
+# Archivos de log y temporales
+*.log
+*.tmp
+.env
+.env.local
+
+# Videos grandes (recomendado)
+# Los videos ya están versionados en el historial.
+# Para el futuro, considera subirlos a Cloudinary / Bunny.net / Git LFS
+# y descomentar la siguiente línea si quieres dejar de trackear MP4 nuevos:
+# assets/videos/**/*.mp4
+
+# Imágenes grandes (si las agregas)
+# assets/images/**/*.psd
+# assets/images/raw/
+
+# Herramientas de despliegue locales (Netlify/Vercel)
+.netlify/
+.vercel/
