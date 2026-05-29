@@ -110,7 +110,7 @@
                     <p style="margin-bottom:16px;">Este espacio está preparado para el video cinematográfico de la Naturaleza del Signo.</p>
                     <p style="font-size:13px; color:#888;">
                         Agrega el archivo en:<br>
-                        <code style="background:#111; padding:2px 6px; border-radius:4px;">/assets/videos/clasica/${signName.toLowerCase()}.mp4</code>
+                        <code style="background:#111; padding:2px 6px; border-radius:4px;">../../assets/videos/clasica/${signName.toLowerCase()}.mp4</code>
                     </p>
                 </div>
             `;

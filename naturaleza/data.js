@@ -30,7 +30,7 @@ const ASPECTOS_DATA = {
 
     shadowNote: "Esta energía no distingue género. La misma fuerza que abre caminos puede volverse destrucción cuando no aprende a sostener lo que inicia. El trabajo con la sombra de Aries es aprender que el coraje verdadero incluye la capacidad de esperar y de perder sin desaparecer.",
 
-    video: "/assets/videos/clasica/aries.mp4"
+    video: "../../assets/videos/clasica/aries.mp4"
   },
 
   "Tauro": {
@@ -48,7 +48,7 @@ const ASPECTOS_DATA = {
 
     shadowNote: "La misma fuerza que construye legados puede volverse prisión cuando se confunde arraigo con inmovilidad. El trabajo con la sombra de Tauro consiste en distinguir entre lo que nutre y lo que solo adormece el miedo a perder.",
 
-    video: "/assets/videos/clasica/tauro.mp4"
+    video: "../../assets/videos/clasica/tauro.mp4"
   },
 
   "Géminis": {
@@ -66,7 +66,7 @@ const ASPECTOS_DATA = {
 
     shadowNote: "La mente que todo lo toca puede volverse una forma elegante de no habitar nada. El trabajo con la sombra de Géminis es aprender a permanecer en una verdad aunque duela más que seguir saltando entre versiones.",
 
-    video: "/assets/videos/clasica/geminis.mp4"
+    video: "../../assets/videos/clasica/geminis.mp4"
   },
 
   "Cáncer": {
@@ -84,7 +84,7 @@ const ASPECTOS_DATA = {
 
     shadowNote: "La misma fuerza que crea refugio puede volverse control cuando el miedo al abandono gobierna. El trabajo con la sombra de Cáncer es aprender a contener sin poseer y a soltar sin desaparecer.",
 
-    video: "/assets/videos/clasica/cancer.mp4"
+    video: "../../assets/videos/clasica/cancer.mp4"
   },
 
   "Leo": {
@@ -102,7 +102,7 @@ const ASPECTOS_DATA = {
 
     shadowNote: "La misma luz que ilumina puede volverse ceguera cuando exige ser el centro a toda costa. El trabajo con la sombra de Leo es aprender que la dignidad verdadera no depende de ser aplaudido.",
 
-    video: "/assets/videos/clasica/leo.mp4"
+    video: "../../assets/videos/clasica/leo.mp4"
   },
 
   "Virgo": {
@@ -120,7 +120,7 @@ const ASPECTOS_DATA = {
 
     shadowNote: "La misma precisión que sana puede volverse tortura cuando nada es nunca suficiente. El trabajo con la sombra de Virgo es aprender a servir sin sacrificarse y a aceptar lo imperfecto como parte de lo real.",
 
-    video: "/assets/videos/clasica/virgo.mp4"
+    video: "../../assets/videos/clasica/virgo.mp4"
   },
 
   "Libra": {
@@ -138,7 +138,7 @@ const ASPECTOS_DATA = {
 
     shadowNote: "La misma búsqueda de armonía puede volverse parálisis cuando el miedo al conflicto impide elegir. El trabajo con la sombra de Libra es aprender a sostener el peso de una decisión aunque incomode a otros.",
 
-    video: "/assets/videos/clasica/libra.mp4"
+    video: "../../assets/videos/clasica/libra.mp4"
   },
 
   "Escorpio": {
@@ -156,7 +156,7 @@ const ASPECTOS_DATA = {
 
     shadowNote: "La misma fuerza que penetra misterios puede volverse destrucción cuando se usa para controlar o vengarse. El trabajo con la sombra de Escorpio es aprender a morir sin matar lo que ama.",
 
-    video: "/assets/videos/clasica/escorpio.mp4"
+    video: "../../assets/videos/clasica/escorpio.mp4"
   },
 
   "Sagitario": {
@@ -174,7 +174,7 @@ const ASPECTOS_DATA = {
 
     shadowNote: "La misma sed de verdad puede volverse huida cuando ninguna respuesta es suficiente. El trabajo con la sombra de Sagitario es aprender que el viaje más importante a veces es hacia adentro.",
 
-    video: "/assets/videos/clasica/sagitario.mp4"
+    video: "../../assets/videos/clasica/sagitario.mp4"
   },
 
   "Capricornio": {
@@ -192,7 +192,7 @@ const ASPECTOS_DATA = {
 
     shadowNote: "La misma disciplina que edifica puede volverse cárcel cuando el miedo a ser irrelevante lo gobierna todo. El trabajo con la sombra de Capricornio es aprender que el tiempo también exige soltar.",
 
-    video: "/assets/videos/clasica/capricornio.mp4"
+    video: "../../assets/videos/clasica/capricornio.mp4"
   },
 
   "Acuario": {
@@ -210,7 +210,7 @@ const ASPECTOS_DATA = {
 
     shadowNote: "La misma distancia que permite ver el todo puede volverse frialdad cuando se usa para no sentir. El trabajo con la sombra de Acuario es aprender que la verdadera revolución también ocurre en la intimidad.",
 
-    video: "/assets/videos/clasica/acuario.mp4"
+    video: "../../assets/videos/clasica/acuario.mp4"
   },
 
   "Piscis": {
@@ -228,7 +228,7 @@ const ASPECTOS_DATA = {
 
     shadowNote: "La misma apertura que permite la gracia puede volverse desaparición cuando no hay límites. El trabajo con la sombra de Piscis es aprender a ser un vaso sin dejar de ser alguien que lo sostiene.",
 
-    video: "/assets/videos/clasica/piscis.mp4"
+    video: "../../assets/videos/clasica/piscis.mp4"
   }
 
 };
