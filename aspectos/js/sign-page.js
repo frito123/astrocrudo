@@ -92,7 +92,7 @@
         if (!modal || !titleEl || !bodyEl) return;
 
         const signName = (typeof CURRENT_SIGN !== 'undefined') ? CURRENT_SIGN : 'Signo';
-        titleEl.textContent = `${signName} — Energía Clásica`;
+        titleEl.textContent = `${signName} — Naturaleza del Signo`;
 
         if (videoPath) {
             bodyEl.innerHTML = `
@@ -107,10 +107,10 @@
         } else {
             bodyEl.innerHTML = `
                 <div style="padding:40px 20px; text-align:center; color:#c5b8a0;">
-                    <p style="margin-bottom:16px;">Este espacio está preparado para el video cinematográfico del aspecto clásico.</p>
+                    <p style="margin-bottom:16px;">Este espacio está preparado para el video cinematográfico de la Naturaleza del Signo.</p>
                     <p style="font-size:13px; color:#888;">
                         Agrega el archivo en:<br>
-                        <code style="background:#111; padding:2px 6px; border-radius:4px;">${signName.toLowerCase()}/aspecto-clasico.mp4</code>
+                        <code style="background:#111; padding:2px 6px; border-radius:4px;">/assets/videos/clasica/${signName.toLowerCase()}.mp4</code>
                     </p>
                 </div>
             `;
@@ -134,7 +134,7 @@
     function updateDynamicMeta(data) {
         // Actualiza el título de la pestaña si es necesario
         if (data.title) {
-            document.title = `${data.title} — Aspecto Clásico | AstroCrudo`;
+            document.title = `${data.title} — Naturaleza del Signo | AstroCrudo`;
         }
     }
 
