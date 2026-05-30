@@ -35,7 +35,7 @@ const PLANETAS_DATA = {
     videoBien: "/assets/videos/clasica/sol-bien.mp4",
     videoBienDesc: "Cuando el Sol opera desde su centro más alto: autoridad natural, generosidad sin necesidad de aplauso, voluntad clara y vida que ilumina sin quemar.",
 
-    videoMal: "/assets/videos/clasica/sol-mal.mp4",
+    videoMal: "/assets/videos/clasica/sol-mal.mp4?v=20250530",
     videoMalDesc: "Cuando el Sol está herido o inflado: necesidad desesperada de ser el centro, tiranía del ego, vacío de identidad o arrogancia que destruye lo que toca."
   },
 
@@ -101,10 +101,10 @@ const PLANETAS_DATA = {
     classicalText: "Venus es la gran pacificadora y la señora del placer legítimo. Fría y húmeda, gobierna todo lo que atrae y todo lo que se desea por su propia bondad. Sus domicilios son Tauro (el placer sensual y posesivo) y Libra (el placer de la relación equilibrada). Se exalta en Piscis, donde el amor se vuelve compasión y entrega sin cálculo. Venus representa el valor que damos a las cosas, el gusto estético, la capacidad de recibir y la forma en que nos relacionamos con el otro sin guerra. Es el antídoto natural de Marte.",
     shadowNote: "El deseo de ser deseado puede volverse adicción. Cuando Venus se corrompe, la persona pierde su propio valor y se vuelve objeto de transacción: complaciente, superficial o dispuesta a cualquier cosa con tal de no ser rechazada. El trabajo con la sombra venusiana es recuperar el derecho a decir 'esto me gusta' sin pedir permiso ni disculparse por tener apetito.",
 
-    videoBien: "/assets/videos/clasica/venus-bien.mp4",
+    videoBien: "/assets/videos/clasica/venus-bien.mp4?v=20250530",
     videoBienDesc: "Venus dignificada: deseo sano, capacidad de recibir y dar placer sin culpa, gusto estético real, amor que valora sin poseer y relaciones de igual a igual.",
 
-    videoMal: "/assets/videos/clasica/venus-mal.mp4",
+    videoMal: "/assets/videos/clasica/venus-mal.mp4?v=20250530",
     videoMalDesc: "Venus aflictiva: complacencia por miedo al rechazo, pérdida de valor propio, esteticismo superficial o relaciones basadas en transacción y necesidad de ser deseado."
   },
 
