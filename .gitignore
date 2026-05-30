@@ -26,13 +26,14 @@ build/
 .env.local
 
 # Videos y archivos multimedia grandes
-# Nunca commitees videos pesados al repositorio.
-# Sube los videos a Cloudinary, Bunny.net, o usa Git LFS si es necesario.
-# Esta regla ignora todos los .mp4 nuevos (los antiguos que ya estaban trackeados se mantienen en el historial).
-assets/videos/**/*.mp4
-assets/videos/**/*.mov
-assets/videos/**/*.webm
-assets/videos/**/*.avi
+# Reglas comentadas para poder usar `git add` normal.
+# Con 10 GB de LFS disponibles, no tiene sentido bloquearlos por ahora.
+# Si en el futuro se acerca al límite, se pueden volver a activar.
+
+# assets/videos/**/*.mp4
+# assets/videos/**/*.mov
+# assets/videos/**/*.webm
+# assets/videos/**/*.avi
 
 # Archivo de instrucciones local (no es necesario en el repo)
 assets/videos/clasica/LEEME_VIDEOS_PLANETAS.txt
