@@ -1,32 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- HOME -->
   <url>
     <loc>https://astrocrudo.netlify.app/</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- SECCIONES PRINCIPALES -->
+  <url>
+    <loc>https://astrocrudo.netlify.app/planetas</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://astrocrudo.netlify.app/naturaleza</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- PLANETAS CLÁSICOS (páginas individuales) -->
+  <url>
+    <loc>https://astrocrudo.netlify.app/planetas/sol</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/planetas/luna</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/planetas/mercurio</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/planetas/venus</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/planetas/marte</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/planetas/jupiter</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/planetas/saturno</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/planetas/urano</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/planetas/neptuno</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/planetas/pluton</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- NATURALEZA DE LOS SIGNOS -->
+  <url>
+    <loc>https://astrocrudo.netlify.app/naturaleza/aries</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/naturaleza/tauro</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/naturaleza/geminis</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/naturaleza/cancer</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- PÁGINAS ESPECIALES / PROFUNDAS -->
   <url>
     <loc>https://astrocrudo.netlify.app/pluton</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
-
-  <url>
-    <loc>https://astrocrudo.netlify.app/venus-lilith</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <url>
     <loc>https://astrocrudo.netlify.app/saturno</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://astrocrudo.netlify.app/venus-lilith</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
 
 </urlset>
