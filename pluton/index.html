@@ -180,6 +180,42 @@
     </style>
 </head>
 <body>
+    <!-- AGE GATE +18 -->
+    <script>
+        (function() {
+            if (localStorage.getItem('astrocrudo_age_confirmed') === 'true') return;
+
+            const gate = document.createElement('div');
+            gate.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.97);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;';
+            gate.innerHTML = `
+                <div style="max-width:420px;width:100%;background:#0a0808;border:1px solid #333;border-radius:20px;padding:32px 28px;text-align:center;color:#e5e0d8;">
+                    <div style="color:#ff3366;font-size:11px;letter-spacing:3px;margin-bottom:8px;">CONTENIDO ADULTO</div>
+                    <h3 style="font-family:Georgia,serif;font-size:26px;line-height:1.1;margin-bottom:16px;">Este contenido es para personas mayores de 18 años</h3>
+                    <p style="color:#c5b8a0;font-size:14.5px;line-height:1.6;margin-bottom:24px;">
+                        Esta pieza contiene material explícito de naturaleza sexual y psicológica intensa.<br>
+                        Al continuar confirmas que tienes 18 años o más.
+                    </p>
+                    <button onclick="confirmAgeGate(this)" 
+                            style="width:100%;padding:16px 0;background:#8B0000;color:white;border:none;border-radius:12px;font-size:14px;font-weight:600;letter-spacing:0.5px;cursor:pointer;">
+                        SÍ, TENGO 18 AÑOS O MÁS
+                    </button>
+                    <button onclick="window.location.href='https://www.google.com'" 
+                            style="width:100%;margin-top:10px;padding:14px 0;background:transparent;color:#888;border:1px solid #444;border-radius:12px;font-size:13px;cursor:pointer;">
+                        NO, SOY MENOR DE EDAD
+                    </button>
+                    <p style="margin-top:20px;font-size:10px;color:#555;letter-spacing:1px;">AL CONTINUAR ACEPTAS QUE ERES MAYOR DE EDAD</p>
+                </div>
+            `;
+            document.body.appendChild(gate);
+
+            window.confirmAgeGate = function(btn) {
+                localStorage.setItem('astrocrudo_age_confirmed', 'true');
+                const modal = btn.closest('[style*="position:fixed"]');
+                if (modal) modal.remove();
+            };
+        })();
+    </script>
+
     <!-- NAV -->
     <nav>
         <div class="nav-content">
@@ -221,5 +257,10 @@
         ASTROCRUDO — ASTROLOGÍA DE LA SOMBRA<br>
         <span style="opacity:0.6;">Lo que muere, no vuelve igual.</span>
     </footer>
+
+    <div style="text-align:center; padding:20px 10px; font-size:10px; color:#444; max-width:700px; margin:0 auto; line-height:1.5;">
+        Este sitio contiene material explícito de carácter adulto. Solo para personas mayores de 18 años. 
+        El contenido es de naturaleza artística y psicológica. El acceso por menores está prohibido.
+    </div>
 </body>
 </html>
