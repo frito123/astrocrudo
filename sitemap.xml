@@ -162,4 +162,12 @@
     <priority>0.85</priority>
   </url>
 
+  <!-- LECTURAS TRADICIONALES (NUEVA) -->
+  <url>
+    <loc>https://astrocrudo.netlify.app/lecturas</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>
