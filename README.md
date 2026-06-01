@@ -12,28 +12,35 @@ Sitio web profesional de astrología profunda, psicológica y sin censura. Enfoq
 AstroCrudo/
 ├── index.html
 ├── README.md
+├── 404.html
+├── sitemap.xml
+│
+├── naturaleza/                    ← Naturaleza de los Signos (12/12 completos)
+│   ├── index.html
+│   ├── data.js                    ← ASPECTOS_DATA (textos clásicos + sombra)
+│   ├── js/sign-page.js
+│   └── [12 signos]/index.html     ← aries/, tauro/, ... piscis/
+│
+├── planetas/                      ← Planetas Clásicos (10 cuerpos)
+│   ├── index.html
+│   ├── data.js
+│   ├── js/planet-page.js
+│   └── [10 planetas]/index.html   ← sol/, luna/, ... pluton/
+│
+├── lecturas/
+│   └── index.html
+│
+├── pluton/, saturno/, venus-lilith/   ← Páginas especiales con video propio
+│
 └── assets/
-    ├── css/
-    │   └── styles.css
-    ├── js/
-    │   └── script.js
-    ├── videos/
-    │   ├── aries/
-    │   ├── tauro/
-    │   ├── geminis/
-    │   ├── cancer/
-    │   ├── leo/
-    │   ├── virgo/
-    │   ├── libra/
-    │   ├── escorpio/
-    │   │   └── escorpio-hoy.mp4          ← Video del horóscopo de Escorpio
-    │   ├── sagitario/
-    │   ├── capricornio/
-    │   ├── acuario/
-    │   ├── piscis/
-    │   └── venus-lilith/
-    │       └── venus-lilith.mp4          ← Video del Aspecto Prohibido
-    └── images/                           ← (reservado para futuras imágenes)
+    ├── css/styles.css
+    ├── js/script.js
+    └── videos/
+        ├── clasica/               ← Videos para Naturaleza + Planetas (bien/mal)
+        │   ├── aries.mp4, capricornio.mp4, ... piscis.mp4
+        │   └── sol-bien.mp4, sol-mal.mp4, ...
+        ├── aries/, escorpio/, ...     ← Videos de horóscopos diarios (*-hoy.mp4)
+        └── venus-saturno-cuadratura/, pluton/, saturno/  ← Contenido especial
 ```
 
 ---
@@ -122,6 +129,8 @@ La ruta actual está en `playForbiddenAspect()`:
 
 Para videos grandes, súbelos a **Cloudinary** o **Bunny.net** y reemplaza la ruta local por la URL directa del MP4.
 
+> **Nota**: Los videos de las secciones **Naturaleza** y **Planetas Clásicos** viven todos en `assets/videos/clasica/`. Los horóscopos diarios usan sus propias carpetas por signo (`aries/aries-hoy.mp4`, etc.).
+
 ### 4. Modificar Textos de Secciones Fijas
 
 Busca en `script.js` las constantes:
@@ -143,9 +152,11 @@ Todos tienen comentarios claros indicando qué editar.
 | Colores (rojo, dorado, negro) | `assets/css/styles.css`     |
 | Textos de horóscopos        | `assets/js/script.js` → `HOROSCOPES` |
 | Roasts / Espejo de la Sombra| `assets/js/script.js` → `SHADOW_MIRROR` |
-| Videos por signo            | `assets/videos/{signo}/`    |
+| Videos por signo (horóscopos diarios) | `assets/videos/{signo}/`    |
+| Videos Naturaleza + Planetas        | `assets/videos/clasica/`    |
 | Video Aspecto Prohibido     | `assets/js/script.js` → `playForbiddenAspect` |
-| Planetas Clásicos (nueva sección) | `/planetas/` (data.js + páginas individuales) |
+| Naturaleza de los Signos (12/12)    | `/naturaleza/` (data.js + 12 páginas) |
+| Planetas Clásicos                   | `/planetas/` (data.js + 10 páginas) |
 
 ---
 
@@ -195,6 +206,39 @@ En cada página de planeta se muestran dos tarjetas:
 - **Versión Mal Dignificada**
 
 La navegación principal y un teaser en la home ya enlazan a esta sección.
+
+---
+
+## Sección Naturaleza de los Signos (Completada)
+
+Sección completa con las **12 naturalezas tradicionales** de los signos según la astrología clásica (Ptolomeo, Lilly, tradición medieval).
+
+**Estado actual:** 12 de 12 signos publicados.
+
+**Estructura:**
+- `naturaleza/index.html` — Grid con las 12 tarjetas (todas activas)
+- `naturaleza/data.js` — `ASPECTOS_DATA` con:
+  - Datos tradicionales (regente, exaltación, parte del cuerpo, cualidad, elemento, modo)
+  - `classicalText`: descripción en lenguaje astrológico antiguo
+  - `shadowNote`: interpretación psicológica en tono AstroCrudo
+- `naturaleza/js/sign-page.js` — Sistema de páginas individuales + reproductor de video
+- 12 subcarpetas (`aries/`, `tauro/`, ... `piscis/`) con sus `index.html`
+
+**Videos:**
+Todos los videos de esta sección están centralizados en:
+
+`assets/videos/clasica/{signo-en-minúsculas}.mp4`
+
+Ejemplos:
+- `capricornio.mp4`
+- `acuario.mp4`
+- `piscis.mp4`
+
+Cada página muestra:
+- Datos tradicionales (regente, exaltación, parte del cuerpo, cualidad)
+- La descripción clásica completa
+- **Visión Cinematográfica** (un solo video por signo)
+- Nota de Trabajo con la Sombra (AstroCrudo)
 
 ---
 
