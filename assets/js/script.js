@@ -185,11 +185,6 @@ function renderHoroscopes(signs) {
           ${horoscope}
         </p>
       </div>
-
-      <button onclick="playHoroscopeVideo('${sign}', this)" 
-              class="mt-8 w-full flex items-center justify-center gap-x-2 text-xs tracking-[2px] h-12 rounded-2xl border border-white/15 hover:border-[#8B0000] hover:text-[#8B0000] transition-colors">
-        <span>VER VISIÓN ARQUETÍPICA</span>
-      </button>
     `;
     grid.appendChild(card);
   });
