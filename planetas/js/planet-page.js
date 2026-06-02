@@ -73,15 +73,19 @@
         const malContainer = document.getElementById('video-mal');
 
         if (bienContainer) {
-            bienContainer.setAttribute('data-video-path', data.videoBien || '');
+            const bienPath = data.videoBien || '';
+            bienContainer.setAttribute('data-video-path', bienPath);
             bienContainer.setAttribute('data-version', 'bien');
+
+            if (!bienPath) {
+                bienContainer.style.display = 'none';
+            }
         }
         if (malContainer) {
             const malPath = data.videoMal || '';
             malContainer.setAttribute('data-video-path', malPath);
             malContainer.setAttribute('data-version', 'mal');
 
-            // Si no hay video mal disponible (solo Saturno lo tiene por ahora), ocultamos la tarjeta
             if (!malPath) {
                 malContainer.style.display = 'none';
             }

@@ -32,7 +32,7 @@ const PLANETAS_DATA = {
     classicalText: "El Sol es la fuente de toda luz y vida en el sistema. En la astrología antigua se le considera el rey de los planetas: caliente y seco, de naturaleza ígnea y vital. Gobierna el corazón y la espalda, la vista derecha y el principio de la vida misma. Su domicilio es Leo, donde brilla con toda su fuerza; se exalta en Aries, signo de su máxima dignidad guerrera. Cuando está debilitado (Libra o Acuario) la voluntad se fragmenta o se vuelve demasiado impersonal. El Sol representa el centro del ser: aquello que no puede delegarse ni negociarse sin perder la propia sustancia.",
     shadowNote: "La misma luz que da vida puede cegar. Cuando el ego necesita ser el centro de todo, el Sol se vuelve tiranía. El trabajo con la sombra solar consiste en distinguir entre la dignidad legítima y la necesidad patológica de ser admirado. Un Sol herido no brilla más fuerte: quema lo que toca.",
 
-    videoBien: "/assets/videos/clasica/sol-bien.mp4",
+    videoBien: "",
     videoBienDesc: "Cuando el Sol opera desde su centro más alto: autoridad natural, generosidad sin necesidad de aplauso, voluntad clara y vida que ilumina sin quemar.",
 
     videoMal: "",
@@ -55,7 +55,7 @@ const PLANETAS_DATA = {
     classicalText: "La Luna es la señora de las mareas, de los ciclos y de todo lo que crece y decrece. Fría y húmeda por naturaleza, gobierna el principio de la forma y de la memoria. Su domicilio es Cáncer, donde la contención y el cuidado alcanzan su máxima expresión. Se exalta en Tauro, donde lo sensible se vuelve tangible y duradero. La Luna representa la madre arquetípica, el cuerpo emocional, los ritmos biológicos y todo lo que necesitamos para sentirnos seguros. Sin su luz reflejada, el mundo queda en tinieblas.",
     shadowNote: "La Luna que solo contiene termina ahogando. Cuando el miedo al abandono hace que una persona se vuelva pegajosa, manipuladora o incapaz de soltar, la Luna ha dejado de nutrir para controlar. El trabajo con la sombra lunar es aprender que la verdadera seguridad no viene de retener, sino de confiar en que uno puede sobrevivir a la pérdida.",
 
-    videoBien: "/assets/videos/clasica/luna-bien.mp4",
+    videoBien: "",
     videoBienDesc: "Luna en su expresión más sana: capacidad de nutrir sin ahogar, memoria emocional sana, contención que da seguridad real y ciclos que se respetan.",
 
     videoMal: "",
@@ -101,7 +101,7 @@ const PLANETAS_DATA = {
     classicalText: "Venus es la gran pacificadora y la señora del placer legítimo. Fría y húmeda, gobierna todo lo que atrae y todo lo que se desea por su propia bondad. Sus domicilios son Tauro (el placer sensual y posesivo) y Libra (el placer de la relación equilibrada). Se exalta en Piscis, donde el amor se vuelve compasión y entrega sin cálculo. Venus representa el valor que damos a las cosas, el gusto estético, la capacidad de recibir y la forma en que nos relacionamos con el otro sin guerra. Es el antídoto natural de Marte.",
     shadowNote: "El deseo de ser deseado puede volverse adicción. Cuando Venus se corrompe, la persona pierde su propio valor y se vuelve objeto de transacción: complaciente, superficial o dispuesta a cualquier cosa con tal de no ser rechazada. El trabajo con la sombra venusiana es recuperar el derecho a decir 'esto me gusta' sin pedir permiso ni disculparse por tener apetito.",
 
-    videoBien: "/assets/videos/clasica/venus-bien.mp4?v=20250530",
+    videoBien: "",
     videoBienDesc: "Venus dignificada: deseo sano, capacidad de recibir y dar placer sin culpa, gusto estético real, amor que valora sin poseer y relaciones de igual a igual.",
 
     videoMal: "",
