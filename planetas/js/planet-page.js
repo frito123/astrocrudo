@@ -77,8 +77,14 @@
             bienContainer.setAttribute('data-version', 'bien');
         }
         if (malContainer) {
-            malContainer.setAttribute('data-video-path', data.videoMal || '');
+            const malPath = data.videoMal || '';
+            malContainer.setAttribute('data-video-path', malPath);
             malContainer.setAttribute('data-version', 'mal');
+
+            // Si no hay video mal disponible (solo Saturno lo tiene por ahora), ocultamos la tarjeta
+            if (!malPath) {
+                malContainer.style.display = 'none';
+            }
         }
 
         console.log('[Planetas] Videos duales (bien/mal dignificado) configurados para', CURRENT_PLANET);
