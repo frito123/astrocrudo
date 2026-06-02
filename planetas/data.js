@@ -32,10 +32,10 @@ const PLANETAS_DATA = {
     classicalText: "El Sol es la fuente de toda luz y vida en el sistema. En la astrología antigua se le considera el rey de los planetas: caliente y seco, de naturaleza ígnea y vital. Gobierna el corazón y la espalda, la vista derecha y el principio de la vida misma. Su domicilio es Leo, donde brilla con toda su fuerza; se exalta en Aries, signo de su máxima dignidad guerrera. Cuando está debilitado (Libra o Acuario) la voluntad se fragmenta o se vuelve demasiado impersonal. El Sol representa el centro del ser: aquello que no puede delegarse ni negociarse sin perder la propia sustancia.",
     shadowNote: "La misma luz que da vida puede cegar. Cuando el ego necesita ser el centro de todo, el Sol se vuelve tiranía. El trabajo con la sombra solar consiste en distinguir entre la dignidad legítima y la necesidad patológica de ser admirado. Un Sol herido no brilla más fuerte: quema lo que toca.",
 
-    videoBien: "",
+    videoBien: "/assets/videos/clasica/sol-bien.mp4",
     videoBienDesc: "Cuando el Sol opera desde su centro más alto: autoridad natural, generosidad sin necesidad de aplauso, voluntad clara y vida que ilumina sin quemar.",
 
-    videoMal: "",
+    videoMal: "/assets/videos/clasica/sol-mal.mp4",
     videoMalDesc: "Cuando el Sol está herido o inflado: necesidad desesperada de ser el centro, tiranía del ego, vacío de identidad o arrogancia que destruye lo que toca."
   },
 
@@ -55,10 +55,10 @@ const PLANETAS_DATA = {
     classicalText: "La Luna es la señora de las mareas, de los ciclos y de todo lo que crece y decrece. Fría y húmeda por naturaleza, gobierna el principio de la forma y de la memoria. Su domicilio es Cáncer, donde la contención y el cuidado alcanzan su máxima expresión. Se exalta en Tauro, donde lo sensible se vuelve tangible y duradero. La Luna representa la madre arquetípica, el cuerpo emocional, los ritmos biológicos y todo lo que necesitamos para sentirnos seguros. Sin su luz reflejada, el mundo queda en tinieblas.",
     shadowNote: "La Luna que solo contiene termina ahogando. Cuando el miedo al abandono hace que una persona se vuelva pegajosa, manipuladora o incapaz de soltar, la Luna ha dejado de nutrir para controlar. El trabajo con la sombra lunar es aprender que la verdadera seguridad no viene de retener, sino de confiar en que uno puede sobrevivir a la pérdida.",
 
-    videoBien: "",
+    videoBien: "/assets/videos/clasica/luna-bien.mp4",
     videoBienDesc: "Luna en su expresión más sana: capacidad de nutrir sin ahogar, memoria emocional sana, contención que da seguridad real y ciclos que se respetan.",
 
-    videoMal: "",
+    videoMal: "/assets/videos/clasica/luna-mal.mp4",
     videoMalDesc: "Luna aflictiva: dependencia emocional, manipulación por miedo al abandono, memoria que no suelta y contención que se vuelve cárcel."
   },
 
