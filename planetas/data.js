@@ -81,7 +81,7 @@ const PLANETAS_DATA = {
     videoBien: "/assets/videos/clasica/mercurio-bien.mp4",
     videoBienDesc: "Mercurio en su mejor expresión: mente clara, palabra precisa, capacidad de conectar mundos sin perder profundidad, curiosidad sana y discriminación aguda.",
 
-    videoMal: "",
+    videoMal: "/assets/videos/clasica/mercurio-mal.mp4",
     videoMalDesc: "Mercurio aflictivo: dispersión, sarcasmo como escudo, incapacidad de comprometerse, mente que huye de la emoción a través del análisis infinito."
   },
 
@@ -101,10 +101,10 @@ const PLANETAS_DATA = {
     classicalText: "Venus es la gran pacificadora y la señora del placer legítimo. Fría y húmeda, gobierna todo lo que atrae y todo lo que se desea por su propia bondad. Sus domicilios son Tauro (el placer sensual y posesivo) y Libra (el placer de la relación equilibrada). Se exalta en Piscis, donde el amor se vuelve compasión y entrega sin cálculo. Venus representa el valor que damos a las cosas, el gusto estético, la capacidad de recibir y la forma en que nos relacionamos con el otro sin guerra. Es el antídoto natural de Marte.",
     shadowNote: "El deseo de ser deseado puede volverse adicción. Cuando Venus se corrompe, la persona pierde su propio valor y se vuelve objeto de transacción: complaciente, superficial o dispuesta a cualquier cosa con tal de no ser rechazada. El trabajo con la sombra venusiana es recuperar el derecho a decir 'esto me gusta' sin pedir permiso ni disculparse por tener apetito.",
 
-    videoBien: "",
+    videoBien: "/assets/videos/clasica/venus-bien.mp4",
     videoBienDesc: "Venus dignificada: deseo sano, capacidad de recibir y dar placer sin culpa, gusto estético real, amor que valora sin poseer y relaciones de igual a igual.",
 
-    videoMal: "",
+    videoMal: "/assets/videos/clasica/venus-mal.mp4",
     videoMalDesc: "Venus aflictiva: complacencia por miedo al rechazo, pérdida de valor propio, esteticismo superficial o relaciones basadas en transacción y necesidad de ser deseado."
   },
 
@@ -127,7 +127,7 @@ const PLANETAS_DATA = {
     videoBien: "/assets/videos/clasica/marte-bien.mp4",
     videoBienDesc: "Marte dignificado: coraje limpio, capacidad de defender lo que importa, deseo sexual claro, acción decidida sin crueldad innecesaria y límites sanos.",
 
-    videoMal: "",
+    videoMal: "/assets/videos/clasica/marte-mal.mp4",
     videoMalDesc: "Marte aflictivo: violencia gratuita, ira explosiva o completamente bloqueada, agresión pasiva, guerra interna constante o destrucción como forma de existir."
   },
 
@@ -150,7 +150,7 @@ const PLANETAS_DATA = {
     videoBien: "/assets/videos/clasica/jupiter-bien.mp4",
     videoBienDesc: "Júpiter en su expresión más noble: fe que expande sin inflar, generosidad real, sentido de propósito, optimismo fundamentado y capacidad de inspirar sin fanatismo.",
 
-    videoMal: "",
+    videoMal: "/assets/videos/clasica/jupiter-mal.mp4",
     videoMalDesc: "Júpiter aflictivo: inflación del ego, fanatismo, exceso sin responsabilidad, arrogancia espiritual o la creencia de que las reglas no aplican a uno."
   },
 
@@ -196,7 +196,7 @@ const PLANETAS_DATA = {
     videoBien: "/assets/videos/clasica/urano-bien.mp4",
     videoBienDesc: "Urano en su mejor forma: ruptura liberadora, genio que sirve, originalidad que no necesita escandalizar, y cambios que realmente abren futuro en vez de solo destruir el presente.",
 
-    videoMal: "",
+    videoMal: "/assets/videos/clasica/urano-mal.mp4",
     videoMalDesc: "Urano aflictivo: rebelión por rebeldía, incapacidad de comprometerse, destrucción compulsiva, aislamiento por 'ser diferente' y adicción a lo nuevo como forma de no sentir."
   },
 
@@ -219,7 +219,7 @@ const PLANETAS_DATA = {
     videoBien: "/assets/videos/clasica/neptuno-bien.mp4",
     videoBienDesc: "Neptuno en su expresión más alta: compasión real, arte que toca lo sagrado, entrega espiritual sin perder el yo, y capacidad de disolverse en algo más grande sin desaparecer.",
 
-    videoMal: "",
+    videoMal: "/assets/videos/clasica/neptuno-mal.mp4",
     videoMalDesc: "Neptuno aflictivo: evasión espiritualizada, adicciones, mentiras piadosas, relaciones tóxicas justificadas como 'amor incondicional', y pérdida total de contornos personales."
   },
 
@@ -242,7 +242,7 @@ const PLANETAS_DATA = {
     videoBien: "/assets/videos/clasica/pluton-bien.mp4",
     videoBienDesc: "Plutón dignificado: transformación profunda que no necesita destruir todo, poder regenerativo, capacidad de renacer una y otra vez sin apego al cadáver de la identidad anterior.",
 
-    videoMal: "",
+    videoMal: "/assets/videos/clasica/pluton-mal.mp4",
     videoMalDesc: "Plutón aflictivo: control a través del miedo, sadismo encubierto, adicción al poder sobre la vida y muerte ajena, y negación total a soltar lo que ya está muerto."
   }
 

@@ -129,10 +129,10 @@ function init() {
   initShadowMirror();
   initMobileMenu();
 
-  // ============================================
-  // AGE GATE AL INGRESAR AL SITIO (Opción A)
-  // ============================================
-  initAgeGateOnLoad();
+  // NOTA: Se removió el gate de edad obligatorio al entrar al sitio principal.
+  // Ya no hay material gráfico explícito. Se mantiene showAgeGate() solo para
+  // el Aspecto Prohibido (Venus □ Saturno), que sí tiene lenguaje cargado.
+  // Las páginas especiales (saturno especialmente) tienen sus propias notas.
   
   console.log('%c[AstroCrudo] Sitio profesional de astrología de la sombra inicializado.', 'color:#8B0000');
 }
@@ -220,14 +220,25 @@ function playHoroscopeVideo(sign, buttonEl) {
 
   // ============================================
   // LÓGICA DE VIDEO PARA SIGNOS (horóscopos del día)
-  // Prioridad: *-energia.mp4 (recomendado para piezas diarias)
-  // Fallbacks: *-hoy.mp4 | *.mp4
+  // Prioridad: *-energia.mp4 (recomendado)
+  // Fallbacks: *-hoy.mp4 | nombre especial por signo | error UI
   // ============================================
   const signSlug = sign.toLowerCase()
     .replace('á', 'a').replace('é', 'e').replace('í', 'i')
     .replace('ó', 'o').replace('ú', 'u').replace('ñ', 'n');
 
-  const videoPath = `assets/videos/${signSlug}/${signSlug}-energia.mp4`;
+  // Permitir que Saturno reutilice su video especial existente mientras no haya uno dedicado de "energia diaria"
+  const specialFallbacks = {
+    saturno: 'assets/videos/saturno/saturno-el-limite-necesario.mp4'
+  };
+
+  let videoPath = `assets/videos/${signSlug}/${signSlug}-energia.mp4`;
+
+  // Si más adelante se quiere un mapa de nombres raros por signo, se puede extender aquí
+  if (specialFallbacks[signSlug]) {
+    // El openGrokVideo ya tiene lógica de fallback a -hoy.mp4 en el onerror del video.
+    // Aquí solo preparamos el primario. El special se intentará en el manejador de error de openGrokVideo si es necesario.
+  }
 
   openGrokVideo(
     `Signo • ${sign}`,
@@ -255,9 +266,7 @@ function playForbiddenAspect() {
     "Aquí no hay romanticismo. Hay hambre, control y rendición. La vulnerabilidad se vuelve erótica y el deseo no pide disculpas."
   ];
 
-  // ============================================
-  // AGE GATE + VIDEO REAL
-  // ============================================
+  // Gate ligero solo para esta pieza (su narración sí es explícita en dinámicas erótico-poder).
   showAgeGate(() => {
     openGrokVideo(
       title, 
@@ -270,7 +279,7 @@ function playForbiddenAspect() {
 }
 
 // ============================================
-// AGE GATE - Advertencia de mayor de 18
+// AGE GATE ligero (usado solo para el Aspecto Prohibido / contenido más cargado)
 // ============================================
 let pendingAgeCallback = null;
 
@@ -295,7 +304,7 @@ function showAgeGate(onConfirm) {
       </h3>
       
       <p class="text-[#c5b8a0] text-[15px] leading-relaxed mb-8">
-        AstroCrudo explora temas de sombra, deseo, poder y arquetipos que pueden resultar intensos o explícitos. 
+        Esta pieza explora dinámicas de poder, deseo y sombra de forma cruda y sin filtros. 
         Al continuar confirmas que tienes 18 años o más.
       </p>
 
@@ -368,17 +377,30 @@ function openGrokVideo(title, prompt, narrationLines, visualType = 'default', vi
     const vid = playerArea.querySelector('video');
     if (vid) {
       let triedFallback = false;
+      let triedSaturnoSpecial = false;
       vid.onerror = function() {
         const container = this.parentElement;
+
+        // 1. Fallback estándar -hoy.mp4
         if (!triedFallback && videoSrc && videoSrc.includes('-energia.mp4')) {
-          // Intenta automáticamente el nombre alternativo -hoy.mp4
           triedFallback = true;
           const fallback = videoSrc.replace('-energia.mp4', '-hoy.mp4');
           this.innerHTML = `<source src="${fallback}" type="video/mp4">`;
           this.load();
-          console.log('[AstroCrudo] Fallback video:', fallback);
+          console.log('[AstroCrudo] Fallback video (hoy):', fallback);
           return;
         }
+
+        // 2. Para Saturno: reutilizar el video especial que ya existe mientras no haya uno de "energia diaria"
+        if (!triedSaturnoSpecial && videoSrc && videoSrc.includes('saturno-energia')) {
+          triedSaturnoSpecial = true;
+          const saturnoSpecial = 'assets/videos/saturno/saturno-el-limite-necesario.mp4';
+          this.innerHTML = `<source src="${saturnoSpecial}" type="video/mp4">`;
+          this.load();
+          console.log('[AstroCrudo] Fallback Saturno special:', saturnoSpecial);
+          return;
+        }
+
         container.innerHTML = `
           <div class="text-center p-8">
             <div class="text-[#8B0000] text-xs tracking-[3px] mb-3">ARCHIVO NO ENCONTRADO</div>
@@ -559,82 +581,11 @@ function initMobileMenu() {
 }
 
 // ============================================
-// AGE GATE AL INGRESAR AL SITIO (Opción A)
-// ============================================
-function initAgeGateOnLoad() {
-  // Si ya confirmó anteriormente, no muestra nada
-  if (localStorage.getItem('astrocrudo_age_confirmed') === 'true') {
-    return;
-  }
-
-  const modal = document.createElement('div');
-  modal.className = `fixed inset-0 z-[300] bg-black/95 flex items-center justify-center p-6`;
-
-  modal.innerHTML = `
-    <div class="max-w-md w-full bg-[#0a0808] border border-white/10 rounded-3xl p-10 text-center">
-      <div class="text-[#8B0000] text-xs tracking-[3px] mb-3">CONTENIDO ADULTO</div>
-      
-      <h3 class="font-serif text-3xl tracking-tight mb-6">
-        Este contenido es para<br>personas mayores de 18 años
-      </h3>
-      
-      <p class="text-[#c5b8a0] text-[15px] leading-relaxed mb-8">
-        AstroCrudo es un espacio de astrología de la sombra, deseo y arquetipos profundos. 
-        El contenido puede ser intenso o explícito. Al continuar confirmas que tienes 18 años o más.
-      </p>
-
-      <div class="flex flex-col gap-3">
-        <button onclick="confirmAgeForSiteEntry(this)" 
-                class="w-full h-14 bg-[#8B0000] hover:bg-[#5c1a1a] rounded-2xl text-sm tracking-wider transition-colors">
-          SÍ, TENGO 18 AÑOS O MÁS
-        </button>
-        
-        <button onclick="showExitMessage(this)" 
-                class="w-full h-14 border border-white/20 hover:border-white/40 rounded-2xl text-sm tracking-wider transition-colors">
-          SALIR DEL SITIO
-        </button>
-      </div>
-
-      <p class="text-[10px] text-white/40 mt-6 tracking-wider">
-        AL CONTINUAR ACEPTAS QUE ERES MAYOR DE EDAD
-      </p>
-    </div>
-  `;
-
-  document.body.appendChild(modal);
-}
-
-// Función para mostrar mensaje de salida cuando el usuario es menor de edad
-function showExitMessage(element) {
-  const container = element.closest('.max-w-md');
-  
-  container.innerHTML = `
-    <div class="text-center py-4">
-      <div class="text-[#8B0000] text-4xl mb-4">🛑</div>
-      <h3 class="font-serif text-2xl tracking-tight mb-4">Acceso Restringido</h3>
-      <p class="text-[#c5b8a0] mb-8 leading-relaxed">
-        Este sitio está destinado exclusivamente para personas mayores de 18 años.<br>
-        Serás redirigido ahora.
-      </p>
-      <button onclick="window.location.href='https://www.google.com'" 
-              class="w-full h-12 bg-white text-black rounded-2xl text-sm tracking-wider hover:bg-[#c5b8a0] transition-colors">
-        SALIR DEL SITIO
-      </button>
-    </div>
-  `;
-}
-
-function confirmAgeForSiteEntry(element) {
-  localStorage.setItem('astrocrudo_age_confirmed', 'true');
-  const modal = element.closest('.fixed');
-  if (modal) modal.remove();
-}
-
-// ============================================
 // Función para salir del sitio (limpia la confirmación de edad)
+// (ya no hay gate obligatorio en la home; se mantiene por compatibilidad
+//  y por si se quiere restaurar el comportamiento anterior)
 // ============================================
 function exitSite() {
-  // Eliminamos la confirmación de edad para que al volver pregunte de nuevo
   localStorage.removeItem('astrocrudo_age_confirmed');
   window.location.href = 'https://www.google.com';
 }
