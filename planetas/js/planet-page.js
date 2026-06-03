@@ -133,6 +133,7 @@
                 <video 
                     controls 
                     autoplay 
+                    muted
                     playsinline 
                     preload="metadata"
                     style="width:100%; border-radius:12px; background:#000; max-height:70vh; display:block;"
@@ -140,6 +141,7 @@
                     <source src="${videoPath}" type="video/mp4">
                     Tu navegador no soporta la reproducción de video.
                 </video>
+                <div style="font-size:10px; color:#666; text-align:center; margin-top:4px;">(haz clic en el video o en los controles si no inicia automáticamente)</div>
             `;
 
             // Error handler amigable (si el MP4 no existe o falla la carga)
