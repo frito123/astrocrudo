@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /pluton/
-Disallow: /venus-lilith/
-Disallow: /saturno/
 
 Sitemap: https://astrocrudo.netlify.app/sitemap.xml
