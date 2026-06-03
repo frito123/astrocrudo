@@ -8,7 +8,7 @@
 // ============================================
 
 /**
- * HORÓSCOPOS PROFUNDOS DEL DÍA
+ * SIGNOS ZODIACALES / HORÓSCOPOS DEL DÍA
  * 
  * INSTRUCCIONES:
  * - Cada signo tiene 3 textos. Puedes agregar más o reemplazarlos.
@@ -143,7 +143,7 @@ function initTailwind() {
 }
 
 // ============================================
-// HORÓSCOPOS
+// SIGNOS ZODIACALES (sección principal de la home)
 // ============================================
 
 function initHoroscopes() {
@@ -154,7 +154,8 @@ function initHoroscopes() {
   // SIGNOS QUE APARECEN EN LA PÁGINA PRINCIPAL
   // Cambiar aquí para modificar los 3 signos del día
   // ============================================
-  const signsToShow = ["Escorpio", "Capricornio", "Piscis"];
+  // Muestra los primeros 3 signos en orden zodiacal (Aries primero)
+  const signsToShow = ["Aries", "Tauro", "Géminis"];
   
   renderHoroscopes(signsToShow);
 }
@@ -185,6 +186,13 @@ function renderHoroscopes(signs) {
           ${horoscope}
         </p>
       </div>
+
+      <div class="mt-auto pt-6">
+        <button onclick="event.stopImmediatePropagation(); playHoroscopeVideo('${sign}', this)"
+                class="text-[11px] tracking-[2px] text-[#8B0000] hover:text-white flex items-center gap-x-2 group-hover:gap-x-3 transition-all">
+          VER ENERGÍA CINEMATOGRÁFICA <span class="text-base leading-none">→</span>
+        </button>
+      </div>
     `;
     grid.appendChild(card);
   });
@@ -211,22 +219,22 @@ function playHoroscopeVideo(sign, buttonEl) {
   ];
 
   // ============================================
-  // NUEVA LÓGICA: Busca video real por signo
-  // Ruta esperada: assets/videos/{sign-lower}/{sign-lower}-hoy.mp4
-  // Ejemplo: assets/videos/escorpio/escorpio-hoy.mp4
+  // LÓGICA DE VIDEO PARA SIGNOS (horóscopos del día)
+  // Prioridad: *-energia.mp4 (recomendado para piezas diarias)
+  // Fallbacks: *-hoy.mp4 | *.mp4
   // ============================================
   const signSlug = sign.toLowerCase()
     .replace('á', 'a').replace('é', 'e').replace('í', 'i')
     .replace('ó', 'o').replace('ú', 'u').replace('ñ', 'n');
 
-  const videoPath = `assets/videos/${signSlug}/${signSlug}-hoy.mp4`;
+  const videoPath = `assets/videos/${signSlug}/${signSlug}-energia.mp4`;
 
   openGrokVideo(
-    `Horóscopo Profundo • ${sign}`,
+    `Signo • ${sign}`,
     prompt,
     narration,
     'default',
-    videoPath   // Intenta cargar video real. Si no existe, el <video> mostrará error (puedes mejorar con onerror)
+    videoPath
   );
 }
 
@@ -355,6 +363,32 @@ function openGrokVideo(title, prompt, narrationLines, visualType = 'default', vi
         </video>
       </div>
     `;
+
+    // Manejo robusto de error de carga (404, formato, etc.)
+    const vid = playerArea.querySelector('video');
+    if (vid) {
+      let triedFallback = false;
+      vid.onerror = function() {
+        const container = this.parentElement;
+        if (!triedFallback && videoSrc && videoSrc.includes('-energia.mp4')) {
+          // Intenta automáticamente el nombre alternativo -hoy.mp4
+          triedFallback = true;
+          const fallback = videoSrc.replace('-energia.mp4', '-hoy.mp4');
+          this.innerHTML = `<source src="${fallback}" type="video/mp4">`;
+          this.load();
+          console.log('[AstroCrudo] Fallback video:', fallback);
+          return;
+        }
+        container.innerHTML = `
+          <div class="text-center p-8">
+            <div class="text-[#8B0000] text-xs tracking-[3px] mb-3">ARCHIVO NO ENCONTRADO</div>
+            <p class="text-[#c5b8a0] text-sm">El video cinematográfico para este signo aún no está disponible.</p>
+            <p class="text-[10px] text-white/40 mt-3 font-mono break-all">${videoSrc}</p>
+            <p class="text-[10px] text-white/30 mt-1">Agrega el MP4 (recomendado: *-energia.mp4 o *-hoy.mp4) en assets/videos/{signo}/</p>
+          </div>
+        `;
+      };
+    }
 
     narrationLines.forEach((line, i) => {
       const p = document.createElement('p');

@@ -39,7 +39,7 @@ AstroCrudo/
         ├── clasica/               ← Videos para Naturaleza + Planetas (bien/mal)
         │   ├── aries.mp4, capricornio.mp4, ... piscis.mp4
         │   └── sol-bien.mp4, sol-mal.mp4, ...
-        ├── aries/, escorpio/, ...     ← Videos de horóscopos diarios (*-hoy.mp4)
+        ├── aries/, escorpio/, ...     ← Videos de signos/horóscopos diarios (*-energia.mp4 preferido)
         └── venus-saturno-cuadratura/, pluton/, saturno/  ← Contenido especial
 ```
 
@@ -47,7 +47,7 @@ AstroCrudo/
 
 ## Cómo Actualizar el Contenido Diariamente (Muy Fácil)
 
-### 1. Horóscopos Profundos del Día
+### 1. Signos Zodiacales (antes "Horóscopos Profundos")
 
 Abre `script.js` y busca la sección:
 
@@ -71,7 +71,7 @@ const HOROSCOPES = {
 En la función `initHoroscopes()` (alrededor de la línea 280), modifica esta línea:
 
 ```js
-const signsToShow = ["Escorpio", "Capricornio", "Piscis"]; // ← Cambia aquí
+const signsToShow = ["Aries", "Tauro", "Géminis"]; // ← Cambia aquí (orden zodiacal, empieza en Aries)
 ```
 
 ### 3. Actualizar o Agregar Videos Cinematográficos
@@ -89,18 +89,18 @@ Cada signo tiene su propia carpeta:
 
 **Convención de nombres recomendada:**
 
-- Horóscopos diarios: `{signo-en-minúsculas}-hoy.mp4`
+- Signos / Horóscopos diarios: `{signo-en-minúsculas}-energia.mp4` (preferido) o `{signo}-hoy.mp4` como fallback
 
 Ejemplos concretos:
 
 | Signo       | Carpeta          | Nombre del archivo          | Ruta completa                                      |
 |-------------|------------------|-----------------------------|----------------------------------------------------|
-| Virgo       | `virgo/`         | `virgo-hoy.mp4`             | `assets/videos/virgo/virgo-hoy.mp4`                |
-| Escorpio    | `escorpio/`      | `escorpio-hoy.mp4`          | `assets/videos/escorpio/escorpio-hoy.mp4`          |
-| Leo         | `leo/`           | `leo-hoy.mp4`               | `assets/videos/leo/leo-hoy.mp4`                    |
-| Géminis     | `geminis/`       | `geminis-hoy.mp4`           | `assets/videos/geminis/geminis-hoy.mp4`            |
-| Cáncer      | `cancer/`        | `cancer-hoy.mp4`            | `assets/videos/cancer/cancer-hoy.mp4`              |
-| Sagitario   | `sagitario/`     | `sagitario-hoy.mp4`         | `assets/videos/sagitario/sagitario-hoy.mp4`        |
+| Virgo       | `virgo/`         | `virgo-energia.mp4` (o -hoy) | `assets/videos/virgo/virgo-energia.mp4`            |
+| Escorpio    | `escorpio/`      | `escorpio-energia.mp4`      | `assets/videos/escorpio/escorpio-energia.mp4`      |
+| Leo         | `leo/`           | `leo-energia.mp4`           | `assets/videos/leo/leo-energia.mp4`                |
+| Géminis     | `geminis/`       | `geminis-energia.mp4`       | `assets/videos/geminis/geminis-energia.mp4`        |
+| Cáncer      | `cancer/`        | `cancer-energia.mp4`        | `assets/videos/cancer/cancer-energia.mp4`          |
+| Sagitario   | `sagitario/`     | `sagitario-energia.mp4`     | `assets/videos/sagitario/sagitario-energia.mp4`    |
 
 > **Nota importante**: La función `playHoroscopeVideo` convierte automáticamente el nombre del signo a minúsculas y elimina acentos. Por eso usamos `geminis` (sin tilde) y `cancer` (sin tilde).
 
@@ -111,7 +111,7 @@ Ejemplos concretos:
 #### Cómo agregar un video real para un signo
 
 1. Coloca el archivo MP4 en la carpeta correspondiente:
-   `assets/videos/escorpio/escorpio-hoy.mp4`
+   `assets/videos/escorpio/escorpio-energia.mp4` (o escorpio-hoy.mp4)
 
 2. El sistema ya está preparado. La función `playHoroscopeVideo` buscará automáticamente el video en esa ruta.
 
@@ -129,7 +129,7 @@ La ruta actual está en `playForbiddenAspect()`:
 
 Para videos grandes, súbelos a **Cloudinary** o **Bunny.net** y reemplaza la ruta local por la URL directa del MP4.
 
-> **Nota**: Los videos de las secciones **Naturaleza** y **Planetas Clásicos** viven todos en `assets/videos/clasica/`. Los horóscopos diarios usan sus propias carpetas por signo (`aries/aries-hoy.mp4`, etc.).
+> **Nota**: Los videos de las secciones **Naturaleza** y **Planetas Clásicos** viven todos en `assets/videos/clasica/`. Los videos de Signos (horóscopos del día) usan sus propias carpetas por signo con preferencia por `aries/aries-energia.mp4` (el reproductor también acepta *-hoy.mp4 como fallback).
 
 ### 4. Modificar Textos de Secciones Fijas
 
@@ -150,9 +150,9 @@ Todos tienen comentarios claros indicando qué editar.
 | Nombre del sitio            | `index.html` (logo)           |
 | Tagline principal           | `index.html` (Hero)           |
 | Colores (rojo, dorado, negro) | `assets/css/styles.css`     |
-| Textos de horóscopos        | `assets/js/script.js` → `HOROSCOPES` |
-| Roasts / Espejo de la Sombra| `assets/js/script.js` → `SHADOW_MIRROR` |
-| Videos por signo (horóscopos diarios) | `assets/videos/{signo}/`    |
+| Textos de signos            | `assets/js/script.js` → `HOROSCOPES` |
+| Espejo de la Sombra         | `assets/js/script.js` → `SHADOW_MIRROR` |
+| Videos por signo (diarios)  | `assets/videos/{signo}/` (usa *-energia.mp4 preferentemente) |
 | Videos Naturaleza + Planetas        | `assets/videos/clasica/`    |
 | Video Aspecto Prohibido     | `assets/js/script.js` → `playForbiddenAspect` |
 | Naturaleza de los Signos (12/12)    | `/naturaleza/` (data.js + 12 páginas) |

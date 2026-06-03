@@ -130,14 +130,31 @@
 
         if (videoPath) {
             bodyEl.innerHTML = `
-                <video controls autoplay style="width:100%; border-radius:12px; background:#000; max-height:70vh;">
+                <video 
+                    controls 
+                    autoplay 
+                    playsinline 
+                    preload="metadata"
+                    style="width:100%; border-radius:12px; background:#000; max-height:70vh; display:block;"
+                >
                     <source src="${videoPath}" type="video/mp4">
                     Tu navegador no soporta la reproducción de video.
                 </video>
-                <p style="margin-top:16px; font-size:12px; color:#666; font-family:monospace;">
-                    ${videoPath}
-                </p>
             `;
+
+            // Error handler amigable (si el MP4 no existe o falla la carga)
+            const vid = bodyEl.querySelector('video');
+            if (vid) {
+                vid.onerror = function() {
+                    this.outerHTML = `
+                        <div style="padding: 2.5rem 1.5rem; text-align:center; background:#111; border-radius:12px;">
+                            <div style="color:#8B0000; font-size:10px; letter-spacing:2px; margin-bottom:8px;">VIDEO NO CARGÓ</div>
+                            <p style="color:#c5b8a0; font-size:14px; margin-bottom:8px;">El archivo de video no está disponible en este momento.</p>
+                            <code style="font-size:11px; color:#666; background:#0a0808; padding:2px 6px; border-radius:4px;">${videoPath}</code>
+                        </div>
+                    `;
+                };
+            }
         } else {
             bodyEl.innerHTML = `
                 <div style="padding:40px 20px; text-align:center; color:#c5b8a0;">
