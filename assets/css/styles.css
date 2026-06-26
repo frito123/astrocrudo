@@ -156,6 +156,50 @@ body {
   border-color: #8B0000;
 }
 
+/* Hero — panel de posiciones planetarias */
+.hero-positions-panel {
+  min-width: 0;
+}
+
+.hero-planets-table {
+  border-collapse: collapse;
+}
+
+.hero-planets-table th,
+.hero-planets-table td {
+  padding: 0.625rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hero-planets-table th {
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.hero-planets-table td {
+  font-size: 0.8125rem;
+  color: #c5b8a0;
+}
+
+.hero-planets-table tbody tr:hover {
+  background: rgba(139, 0, 0, 0.1);
+}
+
+.hero-planets-table .tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1023px) {
+  .hero-content {
+    max-width: 100%;
+  }
+}
+
 /* Hero */
 h1 {
   font-feature-settings: "kern";

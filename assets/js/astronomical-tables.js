@@ -4,15 +4,62 @@
 
 const POSITIONS_JSON_URL = '/assets/data/positions.json';
 
+const HERO_PLANET_IDS = [
+  'sol', 'luna', 'mercurio', 'venus', 'marte',
+  'jupiter', 'saturno', 'urano', 'neptuno', 'pluton'
+];
+
+const PLANET_SYMBOLS = {
+  'Sol': '☉', 'Luna': '☽', 'Mercurio': '☿', 'Venus': '♀', 'Marte': '♂',
+  'Júpiter': '♃', 'Saturno': '♄', 'Urano': '♅', 'Neptuno': '♆', 'Plutón': '♇'
+};
+
 function cell(value) {
   const v = value ?? "—";
   return v === "N/A" ? `<span class="text-white/30">N/A</span>` : v;
+}
+
+function renderHeroPlanetsTable(meta, bodies) {
+  const heroTime = document.getElementById("hero-analysis-time");
+  const heroTable = document.getElementById("hero-planets-tbody");
+
+  if (heroTime && meta) {
+    heroTime.textContent = `${meta.utc} · ${meta.local}`;
+  }
+
+  if (!heroTable || !bodies) return;
+
+  const planets = bodies.filter(body => HERO_PLANET_IDS.includes(body.id));
+
+  if (!planets.length) {
+    heroTable.innerHTML = `
+      <tr>
+        <td colspan="3" class="text-center text-white/40 py-8 text-xs tracking-wider">Sin datos planetarios</td>
+      </tr>
+    `;
+    return;
+  }
+
+  heroTable.innerHTML = planets.map(body => {
+    const symbol = PLANET_SYMBOLS[body.name] || '';
+    return `
+      <tr>
+        <td class="font-medium text-white/90 whitespace-nowrap">
+          <span class="text-[#8B0000] mr-1.5">${symbol}</span>${body.name}
+        </td>
+        <td class="text-[#c5b8a0]">${cell(body.position)}</td>
+        <td class="tabular-nums text-white/70 whitespace-nowrap">${cell(body.velocity)}</td>
+      </tr>
+    `;
+  }).join("");
 }
 
 function renderAstronomicalTables() {
   if (typeof ASTRONOMICAL_POSITIONS === "undefined") return;
 
   const { meta, bodies, stars, lots } = ASTRONOMICAL_POSITIONS;
+
+  renderHeroPlanetsTable(meta, bodies);
 
   const timestampEl = document.getElementById("astro-analysis-timestamp");
   if (timestampEl && meta) {

@@ -297,43 +297,81 @@
     </nav>
 
     <!-- HERO -->
-    <section class="relative min-h-[100dvh] flex items-center justify-center pt-20 border-b border-white/10">
-        <!-- Subtle background texture -->
+    <section class="hero-section relative min-h-[100dvh] flex items-center pt-20 pb-16 border-b border-white/10">
         <div class="absolute inset-0 bg-[radial-gradient(#1f1a1a_0.8px,transparent_1px)] bg-[length:4px_4px] opacity-60"></div>
-        
-        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <div class="mb-6 md:mb-8">
-                <p class="font-serif text-[20px] sm:text-[22px] md:text-[36px] tracking-[0.14em] md:tracking-[0.18em] text-white font-normal">
-                    AstroCrudo
-                </p>
-                <div class="mt-4 mx-auto w-24 md:w-32 h-px bg-gradient-to-r from-transparent via-[#8B0000]/90 to-transparent"></div>
-            </div>
 
-            <h1 class="font-serif text-[52px] md:text-[72px] leading-[0.95] tracking-[-3px] text-white mb-4">
-                Astrología tradicional<br>sin filtros
-            </h1>
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-8 lg:py-12">
+            <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 xl:gap-14 items-center">
 
-            <p class="max-w-2xl mx-auto text-[21px] md:text-[26px] text-[#ff6666] tracking-[-0.3px] font-medium mb-3">
-                Clásica • Medieval • Renacentista
-            </p>
+                <div class="hero-content text-left max-w-xl lg:max-w-none">
+                    <div class="mb-6 md:mb-8">
+                        <p class="font-serif text-[20px] sm:text-[22px] md:text-[32px] lg:text-[36px] tracking-[0.14em] md:tracking-[0.18em] text-white font-normal">
+                            AstroCrudo
+                        </p>
+                        <div class="mt-4 w-24 md:w-32 h-px bg-gradient-to-r from-[#8B0000]/90 via-[#8B0000]/50 to-transparent"></div>
+                    </div>
 
-            <p class="max-w-2xl mx-auto text-lg md:text-xl text-[#c5b8a0] tracking-[-0.3px] font-light leading-relaxed">
-                Carta natal, tránsitos, dignidades planetarias y estrellas fijas explicadas con profundidad, técnica y crudeza.
-            </p>
+                    <h1 class="font-serif text-[44px] sm:text-[52px] md:text-[64px] lg:text-[72px] leading-[0.95] tracking-[-3px] text-white mb-4">
+                        Astrología tradicional<br>sin filtros
+                    </h1>
 
-            <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#horoscopos" 
-                   class="inline-flex items-center justify-center px-9 h-14 border border-[#8B0000] hover:bg-[#8B0000] hover:text-white transition-colors text-sm tracking-[1.5px] rounded-full">
-                    VER ANÁLISIS DEL DÍA
-                </a>
-                <a href="/planetas" 
-                   class="inline-flex items-center justify-center px-9 h-14 border border-white/30 hover:border-white/60 transition-colors text-sm tracking-[1.5px] rounded-full">
-                    EXPLORAR ASTROLOGÍA TRADICIONAL
-                </a>
+                    <p class="text-[19px] md:text-[24px] lg:text-[26px] text-[#ff6666] tracking-[-0.3px] font-medium mb-3">
+                        Clásica • Medieval • Renacentista
+                    </p>
+
+                    <p class="text-base md:text-lg lg:text-xl text-[#c5b8a0] tracking-[-0.3px] font-light leading-relaxed max-w-lg">
+                        Carta natal, tránsitos, dignidades planetarias y estrellas fijas explicadas con profundidad, técnica y crudeza.
+                    </p>
+
+                    <div class="mt-10 flex flex-col sm:flex-row gap-4 sm:justify-start">
+                        <a href="#horoscopos"
+                           class="inline-flex items-center justify-center px-9 h-14 border border-[#8B0000] hover:bg-[#8B0000] hover:text-white transition-colors text-sm tracking-[1.5px] rounded-full">
+                            VER ANÁLISIS DEL DÍA
+                        </a>
+                        <a href="/planetas"
+                           class="inline-flex items-center justify-center px-9 h-14 border border-white/30 hover:border-white/60 transition-colors text-sm tracking-[1.5px] rounded-full">
+                            EXPLORAR ASTROLOGÍA TRADICIONAL
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-positions-panel w-full lg:max-w-xl lg:ml-auto xl:max-w-none">
+                    <div class="border border-white/10 rounded-2xl bg-[#111]/90 backdrop-blur-sm overflow-hidden shadow-2xl">
+                        <div class="px-5 py-4 border-b border-white/10 bg-black/30">
+                            <div class="text-[#8B0000] text-[10px] tracking-[3px] mb-1">CIELO ACTUAL</div>
+                            <h2 class="font-serif text-xl tracking-tight text-white">Posiciones planetarias</h2>
+                            <p id="hero-analysis-time" class="mt-2 text-[10px] tracking-[1px] text-white/40 font-mono leading-relaxed">
+                                Cargando…
+                            </p>
+                        </div>
+                        <div class="overflow-x-auto max-h-[min(52vh,420px)] overflow-y-auto">
+                            <table class="hero-planets-table w-full text-sm">
+                                <thead class="sticky top-0 z-10 bg-[#151111]">
+                                    <tr>
+                                        <th>Planeta</th>
+                                        <th>Posición zodiacal</th>
+                                        <th>Vel.</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="hero-planets-tbody">
+                                    <tr>
+                                        <td colspan="3" class="text-center text-white/40 py-8 text-xs tracking-wider">Cargando posiciones…</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="px-5 py-3 border-t border-white/10 bg-black/20 text-right">
+                            <a href="#posiciones-actuales" class="text-[10px] tracking-[2px] text-[#8B0000] hover:text-white transition-colors">
+                                VER ÍNDICE COMPLETO →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-[10px] tracking-[3px] text-white/40">
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] tracking-[3px] text-white/40 hidden md:block">
             SCROLL PARA DESCENDER
         </div>
     </section>
