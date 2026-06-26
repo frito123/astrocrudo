@@ -211,6 +211,72 @@ def build_payload(
     }
 
 
+def _es_raiz_astrocrudo(base: Path) -> bool:
+    return (base / "scripts" / "web_export.py").exists() and (base / "assets").exists()
+
+
+def _candidatos_raiz_proyecto() -> List[Path]:
+    home = Path.home()
+    candidatos: List[Path] = []
+
+    try:
+        candidatos.append(Path(__file__).resolve().parents[1])
+    except NameError:
+        pass
+
+    candidatos.extend([
+        Path.cwd(),
+        *Path.cwd().parents,
+        home / "OneDrive" / "Escritorio" / "AstroCrudo",
+        home / "Escritorio" / "AstroCrudo",
+        home / "Desktop" / "AstroCrudo",
+        Path(r"C:\Users\jorge\OneDrive\Escritorio\AstroCrudo"),
+    ])
+
+    for base in [Path.cwd(), *Path.cwd().parents]:
+        if (base / "astrocrudo-lilly.ipynb").exists():
+            candidatos.insert(0, base)
+
+    vistos = set()
+    unicos: List[Path] = []
+    for base in candidatos:
+        try:
+            resolved = base.resolve()
+        except OSError:
+            continue
+        if resolved in vistos:
+            continue
+        vistos.add(resolved)
+        unicos.append(resolved)
+    return unicos
+
+
+def encontrar_raiz_proyecto() -> Path:
+    for base in _candidatos_raiz_proyecto():
+        if _es_raiz_astrocrudo(base):
+            return base
+    raise FileNotFoundError(
+        "No se encontró AstroCrudo. La carpeta debe contener scripts/web_export.py y assets/."
+    )
+
+
+def preparar_scripts_en_path() -> Path:
+    import sys
+
+    root = encontrar_raiz_proyecto()
+    scripts = root / "scripts"
+    scripts_str = str(scripts)
+    if scripts_str not in sys.path:
+        sys.path.insert(0, scripts_str)
+    return root
+
+
+def resolver_raiz_proyecto(project_root: Optional[Path] = None) -> Path:
+    if project_root is not None:
+        return Path(project_root)
+    return encontrar_raiz_proyecto()
+
+
 def exportar_posiciones_web(
     pos: Dict,
     lotes: Dict[str, float],
@@ -223,13 +289,44 @@ def exportar_posiciones_web(
     if determinar_casa_fn is None:
         raise ValueError("Se requiere determinar_casa_con_regla del notebook.")
 
-    root = Path(project_root or Path.cwd())
+    root = resolver_raiz_proyecto(project_root)
     out_path = root / "assets" / "data" / "positions.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     payload = build_payload(pos, lotes, casas, t_now, t_manual, determinar_casa_fn)
-    out_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    json_text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+    out_path.write_text(json_text, encoding="utf-8")
 
-    print(f"\n[Web] Posiciones exportadas → {out_path}")
+    js_path = root / "assets" / "js" / "astronomical-positions.js"
+    utc = payload.get("meta", {}).get("utc", "")
+    local = payload.get("meta", {}).get("local", "")
+    js_payload = json.dumps(payload, ensure_ascii=False, indent=2)
+    js_text = (
+        "// ============================================\n"
+        "// ASTROCRUDO — Posiciones Astronómicas\n"
+        "// ============================================\n"
+        "//\n"
+        "// Respaldo embebido si positions.json no está disponible.\n"
+        "// Generado automáticamente por scripts/web_export.py\n"
+        "//\n"
+        f"// Último análisis: {utc} | {local}\n\n"
+        f"const ASTRONOMICAL_POSITIONS = {js_payload};\n\n"
+        "function updateAstronomicalPositions(newData) {\n"
+        "  if (!newData || typeof newData !== \"object\") return false;\n\n"
+        "  if (newData.meta) Object.assign(ASTRONOMICAL_POSITIONS.meta, newData.meta);\n"
+        "  if (Array.isArray(newData.bodies)) ASTRONOMICAL_POSITIONS.bodies = newData.bodies;\n"
+        "  if (Array.isArray(newData.stars)) ASTRONOMICAL_POSITIONS.stars = newData.stars;\n"
+        "  if (Array.isArray(newData.lots)) ASTRONOMICAL_POSITIONS.lots = newData.lots;\n\n"
+        "  if (typeof renderAstronomicalTables === \"function\") {\n"
+        "    renderAstronomicalTables();\n"
+        "  }\n\n"
+        "  return true;\n"
+        "}\n"
+    )
+    js_path.write_text(js_text, encoding="utf-8")
+
+    print(f"[Web] OK — JSON guardado en: {out_path}")
+    print(f"[Web] OK — Respaldo JS guardado en: {js_path}")
     print(f"[Web] {len(payload['bodies'])} cuerpos | {len(payload['stars'])} estrellas | {len(payload['lots'])} lotes")
+    print(f"[Web] Hora análisis: {utc} | {local}")
     return out_path
