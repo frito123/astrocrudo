@@ -128,6 +128,8 @@ function init() {
   initHoroscopes();
   initShadowMirror();
   initMobileMenu();
+  initNavDropdowns();
+  initAstronomicalTables();
 
   // NOTA: Se removió el gate de edad obligatorio al entrar al sitio principal.
   // Ya no hay material gráfico explícito. Se mantiene showAgeGate() solo para
@@ -576,6 +578,53 @@ function initMobileMenu() {
     link.addEventListener('click', () => {
       menu.classList.add('hidden');
       btn.textContent = '☰';
+    });
+  });
+}
+
+function initNavDropdowns() {
+  document.querySelectorAll('[data-mobile-nav-toggle]').forEach(toggle => {
+    const listId = toggle.dataset.mobileNavToggle;
+    const list = document.getElementById(listId);
+    const chevron = toggle.querySelector('.mobile-nav-chevron');
+
+    if (!list) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = !list.classList.contains('hidden');
+      list.classList.toggle('hidden', isOpen);
+      if (chevron) {
+        chevron.classList.toggle('open', !isOpen);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-nav-dropdown]').forEach(dropdown => {
+    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+    if (!trigger) return;
+
+    let closeTimer = null;
+
+    const openDropdown = () => {
+      clearTimeout(closeTimer);
+      dropdown.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+    };
+
+    const closeDropdown = () => {
+      closeTimer = setTimeout(() => {
+        dropdown.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }, 120);
+    };
+
+    dropdown.addEventListener('mouseenter', openDropdown);
+    dropdown.addEventListener('mouseleave', closeDropdown);
+    dropdown.addEventListener('focusin', openDropdown);
+    dropdown.addEventListener('focusout', (event) => {
+      if (!dropdown.contains(event.relatedTarget)) {
+        closeDropdown();
+      }
     });
   });
 }

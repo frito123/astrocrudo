@@ -52,6 +52,110 @@ body {
   color: #8B0000;
 }
 
+/* Nav dropdowns */
+.nav-dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.625rem;
+  font-size: 0.8125rem;
+  color: #c5b8a0;
+  transition: all 0.2s ease;
+}
+
+.nav-dropdown-link span {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.nav-dropdown-link:hover {
+  color: #fff;
+  background: rgba(139, 0, 0, 0.15);
+}
+
+.mobile-nav-sublink {
+  display: block;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+  color: #c5b8a0;
+  transition: color 0.2s ease;
+}
+
+.mobile-nav-sublink:hover {
+  color: #8B0000;
+}
+
+.mobile-nav-chevron.open {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown.is-open .nav-dropdown-panel,
+.nav-dropdown:hover .nav-dropdown-panel,
+.nav-dropdown:focus-within .nav-dropdown-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Astro index tables & anchor scroll */
+#posiciones-actuales tr[id],
+#estrellas-fijas tr[id],
+#indice-astrologico tr[id],
+#indice-astrologico article[id],
+.astro-data-card {
+  scroll-margin-top: 5.5rem;
+}
+
+.astro-index-table .tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8125rem;
+}
+
+.astro-index-table {
+  border-collapse: collapse;
+}
+
+.astro-index-table th,
+.astro-index-table td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.astro-index-table th {
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.astro-index-table td {
+  color: #c5b8a0;
+}
+
+.astro-index-table tbody tr:hover {
+  background: rgba(139, 0, 0, 0.08);
+}
+
+.astro-index-table tbody tr:target {
+  background: rgba(139, 0, 0, 0.18);
+}
+
+.astro-index-table tbody tr:target td:first-child {
+  color: #fff;
+}
+
+.astro-data-card {
+  transition: border-color 0.3s ease;
+}
+
+.astro-data-card:target {
+  border-color: #8B0000;
+}
+
 /* Hero */
 h1 {
   font-feature-settings: "kern";

@@ -7,6 +7,7 @@
     <meta name="description" content="Lecturas de carta astral según las reglas de la astrología clásica medieval y renacentista. Sin filtros modernos. Se dice lo que la carta indica según los principios tradicionales.">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85'>🜁</text></svg>">
     
     <style>
@@ -31,13 +32,93 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0808]/95 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
             <a href="/" class="font-serif text-2xl tracking-tight">AstroCrudo</a>
-            <div class="hidden md:flex items-center gap-x-8 text-sm tracking-wider">
-                <a href="/#horoscopos" class="hover:text-[#8B0000]">Signos</a>
+            <div class="hidden md:flex items-center gap-x-6 text-sm tracking-wider">
+                <div class="relative group nav-dropdown">
+                    <button type="button" class="flex items-center gap-1.5 hover:text-[#8B0000] transition-colors">Signos <span class="text-[9px] opacity-50 group-hover:opacity-100">▼</span></button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-4 shadow-2xl min-w-[300px]">
+                            <a href="/naturaleza" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">VER TODOS LOS SIGNOS →</a>
+                            <div class="grid grid-cols-2 gap-1">
+                                <a href="/naturaleza/aries/" class="nav-dropdown-link"><span>♈</span> Aries</a>
+                                <a href="/naturaleza/tauro/" class="nav-dropdown-link"><span>♉</span> Tauro</a>
+                                <a href="/naturaleza/geminis/" class="nav-dropdown-link"><span>♊</span> Géminis</a>
+                                <a href="/naturaleza/cancer/" class="nav-dropdown-link"><span>♋</span> Cáncer</a>
+                                <a href="/naturaleza/leo/" class="nav-dropdown-link"><span>♌</span> Leo</a>
+                                <a href="/naturaleza/virgo/" class="nav-dropdown-link"><span>♍</span> Virgo</a>
+                                <a href="/naturaleza/libra/" class="nav-dropdown-link"><span>♎</span> Libra</a>
+                                <a href="/naturaleza/escorpio/" class="nav-dropdown-link"><span>♏</span> Escorpio</a>
+                                <a href="/naturaleza/sagitario/" class="nav-dropdown-link"><span>♐</span> Sagitario</a>
+                                <a href="/naturaleza/capricornio/" class="nav-dropdown-link"><span>♑</span> Capricornio</a>
+                                <a href="/naturaleza/acuario/" class="nav-dropdown-link"><span>♒</span> Acuario</a>
+                                <a href="/naturaleza/piscis/" class="nav-dropdown-link"><span>♓</span> Piscis</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <a href="/#transitos" class="hover:text-[#8B0000]">Aspectos del Día</a>
-                <a href="/naturaleza" class="hover:text-[#8B0000]">Naturaleza</a>
-                <a href="/planetas" class="hover:text-[#8B0000]">Planetas</a>
+                <div class="relative group nav-dropdown">
+                    <button type="button" class="flex items-center gap-1.5 hover:text-[#8B0000] transition-colors">Planetas <span class="text-[9px] opacity-50 group-hover:opacity-100">▼</span></button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-4 shadow-2xl min-w-[300px]">
+                            <a href="/planetas" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">VER TODOS LOS PLANETAS →</a>
+                            <div class="grid grid-cols-2 gap-1">
+                                <a href="/planetas/sol/" class="nav-dropdown-link"><span>☉</span> Sol</a>
+                                <a href="/planetas/luna/" class="nav-dropdown-link"><span>☽</span> Luna</a>
+                                <a href="/planetas/mercurio/" class="nav-dropdown-link"><span>☿</span> Mercurio</a>
+                                <a href="/planetas/venus/" class="nav-dropdown-link"><span>♀</span> Venus</a>
+                                <a href="/planetas/marte/" class="nav-dropdown-link"><span>♂</span> Marte</a>
+                                <a href="/planetas/jupiter/" class="nav-dropdown-link"><span>♃</span> Júpiter</a>
+                                <a href="/planetas/saturno/" class="nav-dropdown-link"><span>♄</span> Saturno</a>
+                                <a href="/planetas/urano/" class="nav-dropdown-link"><span>♅</span> Urano</a>
+                                <a href="/planetas/neptuno/" class="nav-dropdown-link"><span>♆</span> Neptuno</a>
+                                <a href="/planetas/pluton/" class="nav-dropdown-link"><span>♇</span> Plutón</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <a href="/lecturas" class="hover:text-[#8B0000] text-[#c5b8a0]">Lecturas</a>
-                <a href="/#espejo" class="hover:text-[#8B0000]">Espejo de la Sombra</a>
+                <div class="relative group nav-dropdown">
+                    <button type="button" class="flex items-center gap-1.5 hover:text-[#8B0000] transition-colors">Estrellas <span class="text-[9px] opacity-50 group-hover:opacity-100">▼</span></button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-4 shadow-2xl min-w-[280px]">
+                            <a href="/#estrellas-fijas" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">ÍNDICE DE ESTRELLAS →</a>
+                            <div class="grid grid-cols-2 gap-1">
+                                <a href="/#estrella-algol" class="nav-dropdown-link">Algol</a>
+                                <a href="/#estrella-regulus" class="nav-dropdown-link">Regulus</a>
+                                <a href="/#estrella-antares" class="nav-dropdown-link">Antares</a>
+                                <a href="/#estrella-spica" class="nav-dropdown-link">Spica</a>
+                                <a href="/#estrella-fomalhaut" class="nav-dropdown-link">Fomalhaut</a>
+                                <a href="/#estrella-sirius" class="nav-dropdown-link">Sirius</a>
+                                <a href="/#estrella-canopus" class="nav-dropdown-link">Canopus</a>
+                                <a href="/#estrella-rigel-kentaurus" class="nav-dropdown-link">Rigel Kent.</a>
+                                <a href="/#estrella-arcturus" class="nav-dropdown-link col-span-2">Arcturus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group nav-dropdown">
+                    <button type="button" class="flex items-center gap-1.5 hover:text-[#8B0000] transition-colors">Índice <span class="text-[9px] opacity-50 group-hover:opacity-100">▼</span></button>
+                    <div class="nav-dropdown-panel absolute top-full right-0 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-4 shadow-2xl min-w-[280px]">
+                            <a href="/#indice-astrologico" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">ÍNDICE COMPLETO →</a>
+                            <div class="text-[9px] tracking-[2px] text-white/40 mb-2">NODOS</div>
+                            <div class="grid grid-cols-1 gap-1 mb-3">
+                                <a href="/#nodo-norte" class="nav-dropdown-link">☊ Nodo Norte</a>
+                                <a href="/#nodo-sur" class="nav-dropdown-link">☋ Nodo Sur</a>
+                            </div>
+                            <div class="text-[9px] tracking-[2px] text-white/40 mb-2 pt-2 border-t border-white/10">LOTES</div>
+                            <div class="grid grid-cols-1 gap-1">
+                                <a href="/#lote-fortuna" class="nav-dropdown-link">Fortuna</a>
+                                <a href="/#lote-espiritu" class="nav-dropdown-link">Espíritu</a>
+                                <a href="/#lote-eros" class="nav-dropdown-link">Eros</a>
+                                <a href="/#lote-necesidad" class="nav-dropdown-link">Necesidad</a>
+                                <a href="/#lote-coraje" class="nav-dropdown-link">Coraje</a>
+                                <a href="/#lote-victoria" class="nav-dropdown-link">Victoria</a>
+                                <a href="/#lote-nemesis" class="nav-dropdown-link">Némesis</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <a href="/" class="text-sm text-white/50 hover:text-[#8B0000]">← Volver al sitio</a>
         </div>
