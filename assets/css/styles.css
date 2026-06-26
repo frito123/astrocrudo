@@ -188,6 +188,20 @@ body {
   background: rgba(139, 0, 0, 0.1);
 }
 
+.hero-planets-table tbody tr.hero-table-section:hover {
+  background: transparent;
+}
+
+.hero-planets-table .hero-table-section td {
+  padding-top: 0.875rem;
+  padding-bottom: 0.375rem;
+  font-size: 0.5625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(139, 0, 0, 0.85);
+  border-bottom-color: rgba(139, 0, 0, 0.2);
+}
+
 .hero-planets-table .tabular-nums {
   font-variant-numeric: tabular-nums;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;

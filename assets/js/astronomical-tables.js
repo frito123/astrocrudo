@@ -9,9 +9,29 @@ const HERO_PLANET_IDS = [
   'jupiter', 'saturno', 'urano', 'neptuno', 'pluton'
 ];
 
+const HERO_NODE_IDS = ['nodo-norte', 'nodo-sur'];
+const HERO_STAR_IDS = ['algol', 'regulus', 'spica'];
+const HERO_LOT_IDS = ['fortuna'];
+
 const PLANET_SYMBOLS = {
   'Sol': '☉', 'Luna': '☽', 'Mercurio': '☿', 'Venus': '♀', 'Marte': '♂',
   'Júpiter': '♃', 'Saturno': '♄', 'Urano': '♅', 'Neptuno': '♆', 'Plutón': '♇'
+};
+
+const HERO_SYMBOLS = {
+  ...PLANET_SYMBOLS,
+  'nodo-norte': '☊',
+  'nodo-sur': '☋',
+  'fortuna': '⊗',
+  'algol': '★',
+  'regulus': '★',
+  'spica': '★'
+};
+
+const HERO_LABELS = {
+  'nodo-norte': 'Nodo Norte',
+  'nodo-sur': 'Nodo Sur',
+  'fortuna': 'Fortuna (Tychê)'
 };
 
 function cell(value) {
@@ -19,7 +39,29 @@ function cell(value) {
   return v === "N/A" ? `<span class="text-white/30">N/A</span>` : v;
 }
 
-function renderHeroPlanetsTable(meta, bodies) {
+function heroSectionRow(label) {
+  return `
+    <tr class="hero-table-section">
+      <td colspan="3">${label}</td>
+    </tr>
+  `;
+}
+
+function heroBodyRow(id, name, position, velocity) {
+  const symbol = HERO_SYMBOLS[id] || HERO_SYMBOLS[name] || '';
+  const label = HERO_LABELS[id] || name;
+  return `
+    <tr>
+      <td class="font-medium text-white/90 whitespace-nowrap">
+        <span class="text-[#8B0000] mr-1.5">${symbol}</span>${label}
+      </td>
+      <td class="text-[#c5b8a0]">${cell(position)}</td>
+      <td class="tabular-nums text-white/70 whitespace-nowrap">${cell(velocity)}</td>
+    </tr>
+  `;
+}
+
+function renderHeroCelestialTable(meta, bodies, stars, lots) {
   const heroTime = document.getElementById("hero-analysis-time");
   const heroTable = document.getElementById("hero-planets-tbody");
 
@@ -27,31 +69,60 @@ function renderHeroPlanetsTable(meta, bodies) {
     heroTime.textContent = `${meta.utc} · ${meta.local}`;
   }
 
-  if (!heroTable || !bodies) return;
+  if (!heroTable) return;
 
-  const planets = bodies.filter(body => HERO_PLANET_IDS.includes(body.id));
+  const rows = [];
 
-  if (!planets.length) {
+  if (bodies) {
+    const planets = bodies.filter(body => HERO_PLANET_IDS.includes(body.id));
+    if (planets.length) {
+      rows.push(heroSectionRow('Planetas'));
+      planets.forEach(body => {
+        rows.push(heroBodyRow(body.id, body.name, body.position, body.velocity));
+      });
+    }
+
+    const nodes = bodies.filter(body => HERO_NODE_IDS.includes(body.id));
+    if (nodes.length) {
+      rows.push(heroSectionRow('Nodos'));
+      nodes.forEach(body => {
+        rows.push(heroBodyRow(body.id, body.name, body.position, body.velocity));
+      });
+    }
+  }
+
+  if (lots) {
+    const heroLots = lots.filter(lote => HERO_LOT_IDS.includes(lote.id));
+    if (heroLots.length) {
+      rows.push(heroSectionRow('Lote árabe'));
+      heroLots.forEach(lote => {
+        const position = lote.sign ? `${lote.sign} (${lote.position})` : lote.position;
+        const house = lote.house != null ? `Casa ${lote.house}` : '—';
+        rows.push(heroBodyRow(lote.id, lote.name, position, house));
+      });
+    }
+  }
+
+  if (stars) {
+    const heroStars = stars.filter(star => HERO_STAR_IDS.includes(star.id));
+    if (heroStars.length) {
+      rows.push(heroSectionRow('Estrellas fijas'));
+      heroStars.forEach(star => {
+        rows.push(heroBodyRow(star.id, star.name, star.position, 'Fija'));
+      });
+    }
+  }
+
+  if (!rows.length) {
     heroTable.innerHTML = `
       <tr>
-        <td colspan="3" class="text-center text-white/40 py-8 text-xs tracking-wider">Sin datos planetarios</td>
+        <td colspan="3" class="text-center text-white/40 py-8 text-xs tracking-wider">Sin datos celestes</td>
       </tr>
     `;
     return;
   }
 
-  heroTable.innerHTML = planets.map(body => {
-    const symbol = PLANET_SYMBOLS[body.name] || '';
-    return `
-      <tr>
-        <td class="font-medium text-white/90 whitespace-nowrap">
-          <span class="text-[#8B0000] mr-1.5">${symbol}</span>${body.name}
-        </td>
-        <td class="text-[#c5b8a0]">${cell(body.position)}</td>
-        <td class="tabular-nums text-white/70 whitespace-nowrap">${cell(body.velocity)}</td>
-      </tr>
-    `;
-  }).join("");
+  heroTable.innerHTML = rows.join('');
 }
 
 function renderAstronomicalTables() {
@@ -59,7 +130,7 @@ function renderAstronomicalTables() {
 
   const { meta, bodies, stars, lots } = ASTRONOMICAL_POSITIONS;
 
-  renderHeroPlanetsTable(meta, bodies);
+  renderHeroCelestialTable(meta, bodies, stars, lots);
 
   const timestampEl = document.getElementById("astro-analysis-timestamp");
   if (timestampEl && meta) {
