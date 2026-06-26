@@ -34,9 +34,65 @@ const HERO_LABELS = {
   'fortuna': 'Fortuna (Tychê)'
 };
 
+function parseDms(str) {
+  const match = String(str).trim().match(/(-?\d+)°\s*(\d+)'\s*([\d.]+)"/);
+  if (!match) return null;
+  return Number(match[1]) + Number(match[2]) / 60 + Number(match[3]) / 3600;
+}
+
+function formatDms(degrees) {
+  const abs = Math.abs(degrees);
+  const d = Math.floor(abs);
+  const mFloat = (abs - d) * 60;
+  const m = Math.floor(mFloat);
+  const s = (mFloat - m) * 60;
+  return `${d}° ${String(m).padStart(2, '0')}' ${s.toFixed(2).padStart(5, '0')}"`;
+}
+
+function degreeInSign(lon) {
+  return ((lon % 360) + 360) % 360 % 30;
+}
+
+function normalizeLotPosition(position) {
+  const deg = parseDms(position);
+  if (deg === null) return position;
+  if (deg >= 30) return formatDms(degreeInSign(deg));
+  return position;
+}
+
+function normalizeZodiacPosition(position, sign = null) {
+  if (!position || position === 'N/A') return position;
+
+  const signMatch = position.match(/^(.+?)\s*\((-?\d+)°\s*(\d+)'\s*([\d.]+)"\)$/);
+  if (signMatch) {
+    const [, signName, d, m, s] = signMatch;
+    const absLon = Number(d) + Number(m) / 60 + Number(s) / 3600;
+    if (absLon >= 30) {
+      return `${signName} (${formatDms(degreeInSign(absLon))})`;
+    }
+    return position;
+  }
+
+  const deg = parseDms(position);
+  if (deg !== null && deg >= 30) {
+    if (sign) return `${sign} (${formatDms(degreeInSign(deg))})`;
+    return formatDms(degreeInSign(deg));
+  }
+
+  if (deg !== null && sign) {
+    return `${sign} (${position})`;
+  }
+
+  return position;
+}
+
 function cell(value) {
   const v = value ?? "—";
   return v === "N/A" ? `<span class="text-white/30">N/A</span>` : v;
+}
+
+function positionCell(value, sign = null) {
+  return cell(normalizeZodiacPosition(value, sign));
 }
 
 function heroSectionRow(label) {
@@ -47,15 +103,16 @@ function heroSectionRow(label) {
   `;
 }
 
-function heroBodyRow(id, name, position, velocity) {
+function heroBodyRow(id, name, position, velocity, sign = null) {
   const symbol = HERO_SYMBOLS[id] || HERO_SYMBOLS[name] || '';
   const label = HERO_LABELS[id] || name;
+  const displayPosition = normalizeZodiacPosition(position, sign);
   return `
     <tr>
       <td class="font-medium text-white/90 whitespace-nowrap">
         <span class="text-[#8B0000] mr-1.5">${symbol}</span>${label}
       </td>
-      <td class="text-[#c5b8a0]">${cell(position)}</td>
+      <td class="text-[#c5b8a0]">${cell(displayPosition)}</td>
       <td class="tabular-nums text-white/70 whitespace-nowrap">${cell(velocity)}</td>
     </tr>
   `;
@@ -96,9 +153,8 @@ function renderHeroCelestialTable(meta, bodies, stars, lots) {
     if (heroLots.length) {
       rows.push(heroSectionRow('Lote árabe'));
       heroLots.forEach(lote => {
-        const position = lote.sign ? `${lote.sign} (${lote.position})` : lote.position;
         const house = lote.house != null ? `Casa ${lote.house}` : '—';
-        rows.push(heroBodyRow(lote.id, lote.name, position, house));
+        rows.push(heroBodyRow(lote.id, lote.name, lote.position, house, lote.sign));
       });
     }
   }
@@ -142,7 +198,7 @@ function renderAstronomicalTables() {
     bodiesTable.innerHTML = bodies.map(body => `
       <tr id="cuerpo-${body.id}">
         <td class="font-medium text-white/90">${body.name}</td>
-        <td>${cell(body.position)}</td>
+        <td>${positionCell(body.position)}</td>
         <td class="tabular-nums">${cell(body.velocity)}</td>
         <td class="tabular-nums hidden lg:table-cell">${cell(body.altitude)}</td>
         <td class="tabular-nums hidden lg:table-cell">${cell(body.azimuth)}</td>
@@ -157,7 +213,7 @@ function renderAstronomicalTables() {
     starsTable.innerHTML = stars.map(star => `
       <tr id="estrella-${star.id}">
         <td class="font-medium text-white/90">${star.name}</td>
-        <td>${cell(star.position)}</td>
+        <td>${positionCell(star.position)}</td>
         <td class="tabular-nums hidden sm:table-cell">${cell(star.eclipticLatitude)}</td>
         <td class="tabular-nums">${cell(star.magnitude)}</td>
       </tr>
@@ -169,7 +225,7 @@ function renderAstronomicalTables() {
     lotsTable.innerHTML = lots.map(lote => `
       <tr id="lote-${lote.id}">
         <td class="font-medium text-white/90">${lote.name}</td>
-        <td class="tabular-nums">${cell(lote.position)}</td>
+        <td class="tabular-nums">${cell(normalizeLotPosition(lote.position))}</td>
         <td>${cell(lote.sign)}</td>
         <td class="tabular-nums">${cell(lote.house)}</td>
       </tr>
@@ -199,7 +255,7 @@ function renderAstronomicalTables() {
           <h4 class="font-serif text-2xl tracking-tight">${info.title}</h4>
           <p class="mt-4 text-sm text-[#c5b8a0] leading-relaxed">${info.desc}</p>
           <dl class="mt-5 space-y-2 text-sm">
-            <div><dt class="text-white/40 text-xs tracking-wider">POSICIÓN</dt><dd class="text-[#c5b8a0] tabular-nums">${cell(body.position)}</dd></div>
+            <div><dt class="text-white/40 text-xs tracking-wider">POSICIÓN</dt><dd class="text-[#c5b8a0] tabular-nums">${positionCell(body.position)}</dd></div>
             <div><dt class="text-white/40 text-xs tracking-wider">VELOCIDAD</dt><dd class="text-[#c5b8a0] tabular-nums">${cell(body.velocity)}</dd></div>
           </dl>
         </article>

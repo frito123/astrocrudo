@@ -72,6 +72,24 @@ def obtener_signo_zodiacal(lon: float) -> str:
     return SIGNOS[idx]
 
 
+def grado_en_signo(lon: float) -> float:
+    return lon % 30
+
+
+def _normalizar_posicion_zodiacal(position: str) -> str:
+    import re
+
+    match = re.match(r"^(.+?)\s*\((-?\d+)°\s*(\d+)'\s*([\d.]+)\"\)$", position.strip())
+    if not match:
+        return position
+
+    sign, d, m, s = match.group(1), int(match.group(2)), int(match.group(3)), float(match.group(4))
+    abs_deg = d + m / 60 + s / 3600
+    if abs_deg >= 30:
+        return f"{sign} ({format_dms(grado_en_signo(abs_deg))})"
+    return position
+
+
 def _row(name: str, position: str, velocity: str = "N/A",
          altitude: str = "N/A", azimuth: str = "N/A",
          ecliptic_latitude: str = "N/A", declination: str = "N/A") -> Dict[str, str]:
@@ -89,9 +107,10 @@ def _row(name: str, position: str, velocity: str = "N/A",
 def _body_from_pos(name: str, data: Dict[str, Any]) -> Optional[Dict[str, str]]:
     if "web" in data and isinstance(data["web"], dict):
         w = data["web"]
+        position = _normalizar_posicion_zodiacal(w.get("position", "N/A"))
         return _row(
             name,
-            w.get("position", "N/A"),
+            position,
             w.get("velocity", "N/A"),
             w.get("altitude", "N/A"),
             w.get("azimuth", "N/A"),
@@ -104,7 +123,7 @@ def _body_from_pos(name: str, data: Dict[str, Any]) -> Optional[Dict[str, str]]:
 
     lon = float(data["lon"])
     vel = data.get("vel", 0)
-    position = f"{obtener_signo_zodiacal(lon)} ({format_dms(lon)})"
+    position = f"{obtener_signo_zodiacal(lon)} ({format_dms(grado_en_signo(lon))})"
     velocity = "Fija" if name in STAR_IDS else f"{float(vel):+.2f}°/día"
     dec = data.get("dec")
     declination = format_dms_signed(float(dec)) if dec is not None else "N/A"
@@ -131,7 +150,7 @@ def _calcular_estrellas(t_now) -> List[Dict[str, str]]:
             stars.append({
                 "id": STAR_IDS[display_name],
                 "name": display_name,
-                "position": f"{obtener_signo_zodiacal(lon_ecl)} ({format_dms(lon_ecl)})",
+                "position": f"{obtener_signo_zodiacal(lon_ecl)} ({format_dms(grado_en_signo(lon_ecl))})",
                 "eclipticLatitude": format_dms_signed(lat_ecl),
                 "magnitude": f"{mag_data:.2f}" if mag_data != 99 else "N/A",
             })
@@ -150,7 +169,7 @@ def _build_lotes(lotes: Dict[str, float], casas: Dict, determinar_casa_fn) -> Li
         result.append({
             "id": LOT_IDS[nombre],
             "name": nombre,
-            "position": format_dms(grado),
+            "position": format_dms(grado_en_signo(grado)),
             "sign": obtener_signo_zodiacal(grado),
             "house": casa if casa is not None else "N/A",
         })
