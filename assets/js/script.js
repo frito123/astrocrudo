@@ -86,18 +86,18 @@ const HOROSCOPES = {
  * El tono debe ser directo pero respetuoso de la inteligencia del lector.
  */
 const SHADOW_MIRROR = {
-  "Escorpio": "Tu capacidad de ver la oscuridad en los demás es impresionante. Lo que es menos impresionante es tu negativa sistemática a ver la misma oscuridad operando en ti con la misma claridad.",
-  "Capricornio": "Has construido una vida tan sólida que ya no hay grietas por donde pueda entrar nada vivo. La seguridad que tanto valoras se ha convertido en tu forma más sofisticada de muerte en vida.",
-  "Piscis": "Tu capacidad de disolverte en los demás es tan grande que ya casi no existe un 'tú' que pueda ser herido. El problema es que tampoco existe un 'tú' que pueda ser amado de verdad.",
-  "Leo": "Tu necesidad de brillar es tan intensa que has confundido ser visto con ser conocido. Hay mucha gente que puede describir tu luz. Muy poca que pueda describir tu sombra.",
-  "Tauro": "Tu apego a lo tangible es tan fuerte que has hecho del confort una religión. El problema con las religiones es que siempre terminan exigiendo sacrificios que uno no está dispuesto a hacer conscientemente.",
-  "Géminis": "Tu capacidad de ser varias personas al mismo tiempo es admirable hasta que te das cuenta de que ninguna de esas versiones se siente completamente real. La multiplicidad puede ser una forma muy elegante de no comprometerte con nada.",
-  "Cáncer": "Cuidas tanto a los demás que ya no sabes cómo pedir que te cuiden. Has convertido la autosuficiencia emocional en una virtud, cuando en realidad es una forma muy antigua de protegerte del abandono que temes.",
-  "Libra": "Tu necesidad de que todo quede bien ha hecho que te conviertas en un experto en no decir lo que realmente piensas. La armonía que tanto defiendes a veces es solo el precio que pagas por no tener que enfrentar el conflicto que tanto temes.",
-  "Sagitario": "Tu búsqueda constante de significado te ha llevado a muchos lugares. El único lugar al que te niegas a ir es hacia adentro, donde está la única verdad que realmente te puede liberar de la necesidad de seguir buscando.",
-  "Acuario": "Tu visión del futuro es tan clara que ya no ves el presente. Has sacrificado tu capacidad de estar aquí por la posibilidad de estar en un mañana que nunca llega del todo.",
-  "Virgo": "Tu atención al detalle es tan precisa que has hecho del perfeccionismo una forma de no tener que aceptar que las cosas —y tú— son inherentemente imperfectas. La imperfección no es un error que hay que corregir. Es una condición que hay que habitar.",
-  "Aries": "Tu capacidad de actuar sin miedo es envidiable hasta que te das cuenta de que muchas de tus acciones son formas de no tener que sentir lo que realmente estás sintiendo. La velocidad puede ser una forma muy efectiva de no estar presente."
+  "Escorpio": "Tu mirada reconoce con facilidad lo venenoso, lo oculto y lo corrompido en los demás. Lo que te cuesta admitir es que esa misma fuerza marcial también opera dentro de ti: en tus sospechas, en tus silencios, en tus deseos de control y en aquello que prefieres mantener bajo tierra.",
+  "Capricornio": "Has aprendido a resistir, a sostener, a soportar el peso del tiempo. Pero la virtud saturnina de la firmeza puede convertirse en sequedad del alma. Has construido tanta defensa contra la caída que a veces ya no sabes distinguir entre estabilidad y encierro.",
+  "Piscis": "Tu naturaleza húmeda y mutable te permite adaptarte, ceder y recibir lo que otros no pueden contener. Pero tanta apertura puede volverse dispersión. Cuando todo te atraviesa, corres el riesgo de no conservar forma propia, de vivir en una entrega que confunde compasión con pérdida de límite.",
+  "Leo": "Tu fuego solar busca dignidad, presencia y reconocimiento. Pero la nobleza se corrompe cuando necesita testigos para sentirse real. Puedes iluminar una sala entera y, aun así, impedir que alguien vea aquello que no brilla: tu orgullo, tu miedo a no ser elegido, tu necesidad de ser centro.",
+  "Tauro": "Tu naturaleza fija y terrestre sabe conservar, cuidar y dar forma a lo que permanece. Pero el amor por lo estable puede volverse apego. Has hecho del placer, la seguridad y la posesión una muralla tan cómoda que a veces prefieres permanecer inmóvil antes que perder aquello que ya dejó de darte vida.",
+  "Géminis": "Tu ingenio mercurial puede moverse entre ideas, voces y caminos diversos. Pero la multiplicidad también puede ser una evasión. Cambias de forma con tanta rapidez que a veces nadie sabe dónde encontrarte, ni siquiera tú. Saber hablar de todo no siempre significa haber habitado algo de verdad.",
+  "Cáncer": "Tu naturaleza lunar sabe proteger, nutrir y recordar. Pero el cuidado puede convertirse en prisión cuando nace del miedo. Das refugio a otros, pero a menudo escondes tu propia necesidad bajo una coraza antigua. Temes pedir amparo porque eso revelaría la herida que todavía espera ser cuidada.",
+  "Libra": "Tu naturaleza venusina busca proporción, acuerdo y belleza en el trato humano. Pero la armonía se corrompe cuando exige silencio. Puedes convertirte en experto en suavizar, complacer y equilibrar, no por justicia verdadera, sino para no enfrentar el conflicto que amenaza tu imagen de paz.",
+  "Sagitario": "Tu fuego jupiteriano busca sentido, doctrina, camino y amplitud. Pero la búsqueda de la verdad puede convertirse en huida cuando siempre está lejos. Predicas horizontes, viajes y grandes principios, pero a veces evitas la verdad más cercana: aquella que exige ordenar tu propia vida antes de enseñar el camino a otros.",
+  "Acuario": "Tu naturaleza saturnina y aérea puede pensar con distancia, estructura y claridad. Pero la razón se vuelve fría cuando se separa demasiado del cuerpo y de los afectos. Puedes amar más una idea de humanidad que a las personas concretas que tienes delante. Tu sombra no es mirar al futuro, sino habitar principios tan altos que ya no tocan la tierra.",
+  "Virgo": "Tu naturaleza mercurial y terrestre sabe distinguir, ordenar y corregir. Pero el juicio puede volverse condena cuando olvida la medida humana. Ves el error, la falta y la imperfección con demasiada precisión. El peligro es convertir la corrección en refugio, como si todo pudiera repararse antes de tener que ser aceptado.",
+  "Aries": "Tu fuego marcial sabe iniciar, cortar y avanzar sin pedir permiso. Pero la valentía se corrompe cuando se vuelve puro impulso. Muchas veces actúas antes de sentir, atacas antes de comprender y avanzas antes de mirar la herida que te empuja. La velocidad puede ser una forma eficaz de no permanecer contigo mismo."
 };
 
 // ============================================
@@ -128,6 +128,7 @@ function init() {
   initHoroscopes();
   initShadowMirror();
   initMobileMenu();
+  initNavDropdowns();
 
   // NOTA: Se removió el gate de edad obligatorio al entrar al sitio principal.
   // Ya no hay material gráfico explícito. Se mantiene showAgeGate() solo para
@@ -576,6 +577,53 @@ function initMobileMenu() {
     link.addEventListener('click', () => {
       menu.classList.add('hidden');
       btn.textContent = '☰';
+    });
+  });
+}
+
+function initNavDropdowns() {
+  document.querySelectorAll('[data-mobile-nav-toggle]').forEach(toggle => {
+    const listId = toggle.dataset.mobileNavToggle;
+    const list = document.getElementById(listId);
+    const chevron = toggle.querySelector('.mobile-nav-chevron');
+
+    if (!list) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = !list.classList.contains('hidden');
+      list.classList.toggle('hidden', isOpen);
+      if (chevron) {
+        chevron.classList.toggle('open', !isOpen);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-nav-dropdown]').forEach(dropdown => {
+    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+    if (!trigger) return;
+
+    let closeTimer = null;
+
+    const openDropdown = () => {
+      clearTimeout(closeTimer);
+      dropdown.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+    };
+
+    const closeDropdown = () => {
+      closeTimer = setTimeout(() => {
+        dropdown.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }, 120);
+    };
+
+    dropdown.addEventListener('mouseenter', openDropdown);
+    dropdown.addEventListener('mouseleave', closeDropdown);
+    dropdown.addEventListener('focusin', openDropdown);
+    dropdown.addEventListener('focusout', (event) => {
+      if (!dropdown.contains(event.relatedTarget)) {
+        closeDropdown();
+      }
     });
   });
 }

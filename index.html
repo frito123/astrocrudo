@@ -78,7 +78,25 @@
             <div class="hidden md:flex items-center gap-x-8 text-sm tracking-wider">
                 <a href="/" class="hover:text-[#8B0000] transition-colors">Inicio</a>
                 <a href="#horoscopos" class="hover:text-[#8B0000] transition-colors">Signos</a>
-                <a href="#transitos" class="hover:text-[#8B0000] transition-colors">Aspectos del Día</a>
+
+                <div class="relative group nav-dropdown" data-nav-dropdown id="analisis-nav-dropdown">
+                    <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
+                        Análisis Astrológico
+                        <span class="text-[9px] opacity-50 group-hover:opacity-100 transition-opacity">▼</span>
+                    </button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible transition-all duration-200 pointer-events-none">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-3 shadow-2xl min-w-[240px]">
+                            <a href="#analisis-astrologico" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-2 pb-2 border-b border-white/10 hover:text-white transition-colors px-2">VER ANÁLISIS ASTROLÓGICO →</a>
+                            <div class="grid grid-cols-1 gap-1">
+                                <a href="#aspectos-del-dia" class="nav-dropdown-link">Aspectos del Día</a>
+                                <a href="#transitos-criticos" class="nav-dropdown-link">Tránsitos Críticos</a>
+                                <a href="#sintesis-astrologica" class="nav-dropdown-link">Síntesis Astrológica</a>
+                                <a href="#espejo" class="nav-dropdown-link">Espejo de la Sombra</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <a href="/planetas" class="hover:text-[#8B0000] transition-colors">Planetas</a>
                 <a href="/lecturas" class="hover:text-[#8B0000] transition-colors">Lecturas</a>
                 <a href="#estrellas-fijas" class="hover:text-[#8B0000] transition-colors">Estrellas Fijas</a>
@@ -97,7 +115,23 @@
             <div class="px-6 py-6 flex flex-col gap-y-4 text-base">
                 <a href="/" class="mobile-link">Inicio</a>
                 <a href="#horoscopos" class="mobile-link">Signos</a>
-                <a href="#transitos" class="mobile-link">Aspectos del Día</a>
+
+                <div>
+                    <button data-mobile-nav-toggle="mobile-analisis-list" type="button" class="mobile-link w-full flex items-center justify-between text-left">
+                        <span>Análisis Astrológico</span>
+                        <span class="mobile-nav-chevron text-xs opacity-50 transition-transform">▼</span>
+                    </button>
+                    <div id="mobile-analisis-list" class="hidden mt-3 pl-1 border-l border-white/10 ml-1">
+                        <a href="#analisis-astrologico" class="block py-2 pl-3 text-xs tracking-[2px] text-[#8B0000] mobile-link">ANÁLISIS ASTROLÓGICO →</a>
+                        <div class="pl-3 pb-2">
+                            <a href="#aspectos-del-dia" class="mobile-nav-sublink block">Aspectos del Día</a>
+                            <a href="#transitos-criticos" class="mobile-nav-sublink block">Tránsitos Críticos</a>
+                            <a href="#sintesis-astrologica" class="mobile-nav-sublink block">Síntesis Astrológica</a>
+                            <a href="#espejo" class="mobile-nav-sublink block">Espejo de la Sombra</a>
+                        </div>
+                    </div>
+                </div>
+
                 <a href="/planetas" class="mobile-link">Planetas</a>
                 <a href="/lecturas" class="mobile-link">Lecturas</a>
                 <a href="#estrellas-fijas" class="mobile-link">Estrellas Fijas</a>
@@ -132,9 +166,9 @@
             </p>
 
             <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#horoscopos" 
+                <a href="#analisis-astrologico" 
                    class="inline-flex items-center justify-center px-9 h-14 border border-[#8B0000] hover:bg-[#8B0000] hover:text-white transition-colors text-sm tracking-[1.5px] rounded-full">
-                    VER ANÁLISIS DEL DÍA
+                    VER ANÁLISIS ASTROLÓGICO
                 </a>
                 <a href="/planetas" 
                    class="inline-flex items-center justify-center px-9 h-14 border border-white/30 hover:border-white/60 transition-colors text-sm tracking-[1.5px] rounded-full">
@@ -254,27 +288,60 @@
         </div>
     </section>
 
-    <!-- TRÁNSITOS CRÍTICOS -->
-    <section id="transitos" class="max-w-6xl mx-auto px-6 py-20">
-        <div class="mb-12">
-            <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">LO QUE NO SE PUEDE IGNORAR</div>
-            <h2 class="font-serif text-[52px] tracking-[-2px]">Tránsitos Críticos</h2>
-            <p class="max-w-xl mt-4 text-[#c5b8a0]">Momentos en los que los planetas exigen que miremos.</p>
+    <!-- ANÁLISIS ASTROLÓGICO -->
+    <section id="analisis-astrologico" class="border-t border-white/10 py-20 bg-[#0f0c0c]">
+        <div class="max-w-6xl mx-auto px-6 mb-16">
+            <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">LECTURA DEL CIELO ACTUAL</div>
+            <h2 class="font-serif text-[52px] tracking-[-2px]">Análisis Astrológico</h2>
+            <p class="max-w-2xl mt-4 text-[#c5b8a0] text-lg leading-relaxed">Interpretación técnica del momento presente: los aspectos que activan el día y la síntesis que integra posiciones, dignidades y tensiones del cielo.</p>
         </div>
 
-        <!-- Critical transits -->
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="border border-white/10 p-8 rounded-2xl">
-                <div class="text-sm text-[#8B0000]">ACTUAL</div>
-                <div class="font-serif text-3xl mt-2 tracking-tight">Plutón en Acuario</div>
-                <p class="mt-4 text-sm leading-relaxed text-[#c5b8a0]">El poder colectivo se está redefiniendo. Lo que antes se consideraba "normal" en estructuras de poder está siendo desmantelado. Pregúntate: ¿dónde estás sosteniendo un sistema que ya no te sostiene a ti?</p>
+        <section id="aspectos-del-dia" class="max-w-6xl mx-auto px-6 pb-20 scroll-mt-28">
+            <div class="mb-10">
+                <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">CONFIGURACIÓN DEL MOMENTO</div>
+                <h3 class="font-serif text-[42px] tracking-[-1.5px]">Aspectos del Día</h3>
+                <p class="max-w-xl mt-4 text-[#c5b8a0]">Los aspectos exactos y aplicativos que activan el cielo en la fecha del análisis. Lectura técnica de las tensiones y armonías del día.</p>
             </div>
-            <div class="border border-white/10 p-8 rounded-2xl">
-                <div class="text-sm text-[#8B0000]">ACTUAL</div>
-                <div class="font-serif text-3xl mt-2 tracking-tight">Saturno en Piscis</div>
-                <p class="mt-4 text-sm leading-relaxed text-[#c5b8a0]">Los límites espirituales y emocionales se están volviendo concretos. La disolución que tanto buscaste tiene ahora un costo. ¿Estás dispuesto a pagarlo?</p>
+
+            <div class="border border-white/10 rounded-2xl p-8 md:p-10 bg-[#0a0808]">
+                <p class="text-[#c5b8a0] leading-relaxed">Aquí se registran los aspectos planetarios más relevantes del momento: conjunciones, oposiciones, cuadraturas, trígonos y sextiles que estructuran el clima astrológico del día.</p>
+                <p class="mt-4 text-[#c5b8a0] leading-relaxed">Se actualiza cada vez que se ejecuta un análisis astronómico.</p>
             </div>
-        </div>
+        </section>
+
+        <section id="transitos-criticos" class="max-w-6xl mx-auto px-6 pb-20 pt-16 border-t border-white/10 scroll-mt-28">
+            <div class="mb-12">
+                <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">LO QUE NO SE PUEDE IGNORAR</div>
+                <h3 class="font-serif text-[42px] tracking-[-1.5px]">Tránsitos Críticos</h3>
+                <p class="max-w-xl mt-4 text-[#c5b8a0]">Momentos en los que los planetas exigen que miremos. Posiciones de largo ciclo que marcan el fondo del tiempo.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border border-white/10 p-8 rounded-2xl bg-[#0a0808]">
+                    <div class="text-sm text-[#8B0000]">ACTUAL</div>
+                    <div class="font-serif text-3xl mt-2 tracking-tight">Plutón en Acuario</div>
+                    <p class="mt-4 text-sm leading-relaxed text-[#c5b8a0]">El poder colectivo se está redefiniendo. Lo que antes se consideraba "normal" en estructuras de poder está siendo desmantelado. Pregúntate: ¿dónde estás sosteniendo un sistema que ya no te sostiene a ti?</p>
+                </div>
+                <div class="border border-white/10 p-8 rounded-2xl bg-[#0a0808]">
+                    <div class="text-sm text-[#8B0000]">ACTUAL</div>
+                    <div class="font-serif text-3xl mt-2 tracking-tight">Saturno en Piscis</div>
+                    <p class="mt-4 text-sm leading-relaxed text-[#c5b8a0]">Los límites espirituales y emocionales se están volviendo concretos. La disolución que tanto buscaste tiene ahora un costo. ¿Estás dispuesto a pagarlo?</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sintesis-astrologica" class="max-w-6xl mx-auto px-6 pt-16 border-t border-white/10 scroll-mt-28">
+            <div class="mb-10">
+                <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">LECTURA INTEGRADA</div>
+                <h3 class="font-serif text-[42px] tracking-[-1.5px]">Síntesis Astrológica</h3>
+                <p class="max-w-2xl mt-4 text-[#c5b8a0] text-lg leading-relaxed">El juicio conjunto del cielo actual: cómo se articulan las posiciones planetarias, los aspectos del día y el temperamento general que define este momento.</p>
+            </div>
+
+            <div class="border border-white/10 rounded-2xl p-8 md:p-10 bg-[#0a0808]">
+                <p class="text-[#c5b8a0] leading-relaxed">La síntesis astrológica no repite datos sueltos. Reúne el mapa del momento — signos, casas activas, dignidades y tensiones — en una lectura coherente según la tradición clásica.</p>
+                <p class="mt-4 text-[#c5b8a0] leading-relaxed">Aquí se integra lo que el cielo muestra hoy: qué fuerzas dominan, qué se tensa, qué pide orden o cierre, y qué tipo de clima simbólico atraviesa el período. Se actualiza cada vez que se ejecuta un análisis astronómico.</p>
+            </div>
+        </section>
     </section>
 
     <!-- ESPEJO DE LA SOMBRA (Roasts) -->
@@ -283,7 +350,7 @@
             <div class="max-w-2xl mb-12">
                 <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">SIN PIADOSA INDULGENCIA</div>
                 <h2 class="font-serif text-[52px] tracking-[-1.5px]">Espejo de la Sombra</h2>
-                <p class="text-[#c5b8a0] mt-3">Lo que el signo se niega a ver de sí mismo. No es burla. Es confrontación necesaria.</p>
+                <p class="text-[#c5b8a0] mt-3">El exceso oculto de cada signo cuando su naturaleza se desequilibra. No es burla. Es confrontación necesaria.</p>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="shadow-mirror-grid">

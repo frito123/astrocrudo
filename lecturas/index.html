@@ -7,6 +7,7 @@
     <meta name="description" content="Lecturas de carta astral según las reglas de la astrología clásica medieval y renacentista. Sin filtros modernos. Se dice lo que la carta indica según los principios tradicionales.">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85'>🜁</text></svg>">
     
     <style>
@@ -23,6 +24,67 @@
             margin: 0 auto;
             padding: 0 24px;
         }
+        .service-item {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            background: #111;
+            overflow: hidden;
+            transition: border-color 0.25s ease;
+        }
+        .service-item:hover {
+            border-color: rgba(139, 0, 0, 0.35);
+        }
+        .service-item.is-open {
+            border-color: rgba(139, 0, 0, 0.5);
+        }
+        .service-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.35rem 1.5rem;
+            text-align: left;
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .service-trigger:hover {
+            background: rgba(139, 0, 0, 0.08);
+        }
+        .service-chevron {
+            flex-shrink: 0;
+            width: 1.75rem;
+            height: 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            color: #8B0000;
+            transition: transform 0.3s ease, border-color 0.2s ease;
+        }
+        .service-item.is-open .service-chevron {
+            transform: rotate(180deg);
+            border-color: rgba(139, 0, 0, 0.5);
+        }
+        .service-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .service-item.is-open .service-panel {
+            max-height: 1200px;
+        }
+        .service-content {
+            padding: 0 1.5rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .service-content p + p {
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body class="bg-[#0a0808] text-[#e5e0d8]">
@@ -33,11 +95,28 @@
             <a href="/" class="font-serif text-2xl tracking-tight">AstroCrudo</a>
             <div class="hidden md:flex items-center gap-x-8 text-sm tracking-wider">
                 <a href="/#horoscopos" class="hover:text-[#8B0000]">Signos</a>
-                <a href="/#transitos" class="hover:text-[#8B0000]">Aspectos del Día</a>
+
+                <div class="relative group nav-dropdown" data-nav-dropdown>
+                    <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
+                        Análisis Astrológico
+                        <span class="text-[9px] opacity-50 group-hover:opacity-100 transition-opacity">▼</span>
+                    </button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible transition-all duration-200 pointer-events-none">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-3 shadow-2xl min-w-[240px]">
+                            <a href="/#analisis-astrologico" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-2 pb-2 border-b border-white/10 hover:text-white transition-colors px-2">VER ANÁLISIS ASTROLÓGICO →</a>
+                            <div class="grid grid-cols-1 gap-1">
+                                <a href="/#aspectos-del-dia" class="nav-dropdown-link">Aspectos del Día</a>
+                                <a href="/#transitos-criticos" class="nav-dropdown-link">Tránsitos Críticos</a>
+                                <a href="/#sintesis-astrologica" class="nav-dropdown-link">Síntesis Astrológica</a>
+                                <a href="/#espejo" class="nav-dropdown-link">Espejo de la Sombra</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <a href="/naturaleza" class="hover:text-[#8B0000]">Naturaleza</a>
                 <a href="/planetas" class="hover:text-[#8B0000]">Planetas</a>
                 <a href="/lecturas" class="hover:text-[#8B0000] text-[#c5b8a0]">Lecturas</a>
-                <a href="/#espejo" class="hover:text-[#8B0000]">Espejo de la Sombra</a>
             </div>
             <a href="/" class="text-sm text-white/50 hover:text-[#8B0000]">← Volver al sitio</a>
         </div>
@@ -74,8 +153,76 @@
         </div>
     </section>
 
+    <!-- SERVICIOS -->
+    <section id="servicios" class="py-20 border-t border-white/10 bg-[#0f0c0c]">
+        <div class="section max-w-3xl">
+            <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">CONSULTAS DISPONIBLES</div>
+            <h2 class="font-serif text-4xl md:text-5xl tracking-tight mb-4">Servicios de Astrología Tradicional</h2>
+            <p class="text-[#c5b8a0] text-lg leading-relaxed mb-10">
+                Tres modalidades de lectura según el método clásico. Despliega cada servicio para conocer su alcance.
+            </p>
+
+            <div class="space-y-4" id="services-accordion">
+
+                <article class="service-item" data-service>
+                    <button type="button" class="service-trigger" aria-expanded="false">
+                        <span>
+                            <span class="block font-serif text-2xl tracking-tight text-white">Carta Natal Tradicional</span>
+                            <span class="block mt-1 text-sm text-white/45 tracking-wide">La base: estructura completa del cielo natal</span>
+                        </span>
+                        <span class="service-chevron" aria-hidden="true">▼</span>
+                    </button>
+                    <div class="service-panel" role="region">
+                        <div class="service-content text-[#c5b8a0] leading-relaxed">
+                            <p>La carta natal tradicional es el estudio principal de la vida del consultante. A partir de la fecha, hora y lugar de nacimiento, se analiza la estructura completa del cielo natal: Ascendente, regente de la carta, Luna, Sol, planetas, casas, aspectos, dignidades esenciales y accidentales.</p>
+                            <p>Esta lectura no se limita al signo solar ni a una descripción general de personalidad. Su objetivo es comprender el temperamento, las fortalezas, los desafíos, la vocación, los vínculos, los recursos, la salud simbólica y las áreas de vida que tienen mayor peso en el destino personal.</p>
+                            <p>La carta natal muestra la base: aquello con lo que se nace, las inclinaciones principales y las condiciones simbólicas que acompañan el desarrollo de la vida.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="service-item" data-service>
+                    <button type="button" class="service-trigger" aria-expanded="false">
+                        <span>
+                            <span class="block font-serif text-2xl tracking-tight text-white">Revolución Solar</span>
+                            <span class="block mt-1 text-sm text-white/45 tracking-wide">El clima del año personal</span>
+                        </span>
+                        <span class="service-chevron" aria-hidden="true">▼</span>
+                    </button>
+                    <div class="service-panel" role="region">
+                        <div class="service-content text-[#c5b8a0] leading-relaxed">
+                            <p>La revolución solar es una técnica tradicional utilizada para estudiar el año personal. Se calcula para el momento exacto en que el Sol vuelve al mismo grado que ocupaba en la carta natal.</p>
+                            <p>Esta consulta permite observar qué temas estarán más activos durante el año: trabajo, dinero, relaciones, familia, salud simbólica, estudios, viajes, cambios importantes, oportunidades y períodos de mayor exigencia.</p>
+                            <p>La revolución solar no se interpreta de forma aislada. Se compara siempre con la carta natal para comprender qué casas, planetas y asuntos adquieren mayor importancia durante ese ciclo.</p>
+                            <p>Es una lectura ideal para conocer el clima general del año y prepararse mejor para sus momentos principales.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="service-item" data-service>
+                    <button type="button" class="service-trigger" aria-expanded="false">
+                        <span>
+                            <span class="block font-serif text-2xl tracking-tight text-white">Astrología Predictiva</span>
+                            <span class="block mt-1 text-sm text-white/45 tracking-wide">Ciclos de activación a lo largo del tiempo</span>
+                        </span>
+                        <span class="service-chevron" aria-hidden="true">▼</span>
+                    </button>
+                    <div class="service-panel" role="region">
+                        <div class="service-content text-[#c5b8a0] leading-relaxed">
+                            <p>La astrología predictiva tradicional estudia los ciclos de activación de la carta natal a lo largo del tiempo. Su objetivo no es adivinar de manera superficial, sino comprender qué temas se despiertan, cuándo toman fuerza y qué tipo de período está viviendo el consultante.</p>
+                            <p>En esta consulta se pueden utilizar técnicas clásicas como profecciones anuales, tránsitos tradicionales, direcciones primarias y otros métodos de análisis temporal según el caso.</p>
+                            <p>La astrología predictiva permite observar períodos de avance, cierre, presión, maduración, cambio o apertura. También ayuda a identificar qué planetas y casas están más activos en una etapa determinada de la vida.</p>
+                            <p>Es una consulta recomendada para quienes están atravesando un momento importante, tomando decisiones o buscando comprender el sentido astrológico de un período específico.</p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
     <!-- DIFERENCIA -->
-    <section class="py-16 border-t border-white/10 bg-[#0f0c0c]">
+    <section class="py-16 border-t border-white/10">
         <div class="section max-w-4xl">
             <div class="grid md:grid-cols-2 gap-10">
                 <div>
@@ -104,14 +251,64 @@
     <section class="py-20 section border-t border-white/10 text-center">
         <div class="max-w-xl mx-auto">
             <h3 class="font-serif text-4xl tracking-tight mb-6">Lecturas tradicionales</h3>
-            <p class="text-[#c5b8a0] mb-8">Las consultas de carta astral según el método clásico estarán disponibles próximamente.</p>
+            <p class="text-[#c5b8a0] mb-8">Elige el servicio que necesitas en el menú superior y reserva tu consulta según el método clásico.</p>
             
-            <a href="#" class="inline-flex items-center justify-center px-12 h-14 bg-[#8B0000] hover:bg-[#5c1a1a] text-white text-sm tracking-[1.5px] rounded-full transition-colors">
-                RESERVAR LECTURA TRADICIONAL (PRÓXIMAMENTE)
+            <a href="#servicios" class="inline-flex items-center justify-center px-12 h-14 bg-[#8B0000] hover:bg-[#5c1a1a] text-white text-sm tracking-[1.5px] rounded-full transition-colors">
+                VER SERVICIOS DISPONIBLES
             </a>
             <p class="text-xs text-white/40 mt-4 tracking-widest">Pago mediante PayPal • Duración y precio por anunciar</p>
         </div>
     </section>
+
+    <script>
+        (function () {
+            document.querySelectorAll('[data-nav-dropdown]').forEach(function (dropdown) {
+                const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+                if (!trigger) return;
+                let closeTimer = null;
+                const openDropdown = function () {
+                    clearTimeout(closeTimer);
+                    dropdown.classList.add('is-open');
+                    trigger.setAttribute('aria-expanded', 'true');
+                };
+                const closeDropdown = function () {
+                    closeTimer = setTimeout(function () {
+                        dropdown.classList.remove('is-open');
+                        trigger.setAttribute('aria-expanded', 'false');
+                    }, 120);
+                };
+                dropdown.addEventListener('mouseenter', openDropdown);
+                dropdown.addEventListener('mouseleave', closeDropdown);
+                dropdown.addEventListener('focusin', openDropdown);
+                dropdown.addEventListener('focusout', function (event) {
+                    if (!dropdown.contains(event.relatedTarget)) closeDropdown();
+                });
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            const items = document.querySelectorAll('[data-service]');
+
+            items.forEach(function (item) {
+                const trigger = item.querySelector('.service-trigger');
+
+                trigger.addEventListener('click', function () {
+                    const isOpen = item.classList.contains('is-open');
+
+                    items.forEach(function (other) {
+                        other.classList.remove('is-open');
+                        other.querySelector('.service-trigger').setAttribute('aria-expanded', 'false');
+                    });
+
+                    if (!isOpen) {
+                        item.classList.add('is-open');
+                        trigger.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+        })();
+    </script>
 
     <footer class="border-t border-white/10 py-8 text-center text-xs text-white/40">
         ASTROCRUDO — ASTROLOGÍA DE LA SOMBRA<br>
