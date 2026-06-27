@@ -17,17 +17,15 @@ Este archivo lista los videos que **faltan** para completar todas las secciones 
 
 Ubicación: `assets/videos/clasica/`
 
-Faltan (5):
+Faltan (2):
 
-- `jupiter-mal.mp4`
-- `marte-mal.mp4`
 - `neptuno-mal.mp4`
 - `pluton-mal.mp4`
-- `urano-mal.mp4`
 
 **Estado actual de planetas (data.js ya actualizado):**
-- Sol, Luna, Mercurio, Saturno, Venus: bien + mal listos (archivos en disco + rutas en data.js)
-- Júpiter, Marte, Neptuno, Plutón, Urano: solo "bien" (falta el mal)
+- Sol, Luna, Mercurio, Venus, Saturno, Júpiter, Marte, Urano: bien + mal listos (archivos en disco + rutas en data.js)
+- Neptuno: bien listo (placeholder), falta mal
+- Plutón: bien listo (placeholder), falta mal
 
 Una vez subidos los 5 mal, las páginas individuales de planetas mostrarán automáticamente las dos tarjetas (Bien Dignificado / Mal Dignificado).
 
