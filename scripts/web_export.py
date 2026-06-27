@@ -276,9 +276,8 @@ def resolver_raiz_proyecto(project_root: Optional[Path] = None) -> Path:
     return encontrar_raiz_proyecto()
 
 
-def resolver_raiz_exportacion(project_root: Optional[Path] = None) -> Path:
-    if project_root is not None:
-        return Path(project_root)
+def resolver_raiz_exportacion() -> Path:
+    """Siempre exporta al repo web (WEB_EXPORT_ROOT), no a la carpeta del notebook."""
     if (WEB_EXPORT_ROOT / "assets").exists():
         return WEB_EXPORT_ROOT
     return encontrar_raiz_proyecto()
@@ -296,7 +295,7 @@ def exportar_posiciones_web(
     if determinar_casa_fn is None:
         raise ValueError("Se requiere determinar_casa_con_regla del notebook.")
 
-    root = resolver_raiz_exportacion(project_root)
+    root = resolver_raiz_exportacion()
     out_path = root / "assets" / "data" / "positions.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
 

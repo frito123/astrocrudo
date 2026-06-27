@@ -1,115 +1,115 @@
 {
   "meta": {
-    "utc": "2026-06-26 04:05 UTC",
-    "local": "2026-06-26 00:05 -04",
+    "utc": "2026-06-27 03:38 UTC",
+    "local": "2026-06-26 23:38 -04",
     "label": "POSICIONES Y VELOCIDADES ASTRONÓMICAS",
-    "generatedAt": "2026-06-26T04:05:04Z"
+    "generatedAt": "2026-06-27T03:38:23Z"
   },
   "bodies": [
     {
       "id": "sol",
       "name": "Sol",
-      "position": "Cáncer (4° 36' 13.00\")",
+      "position": "Cáncer (5° 32' 22.00\")",
       "velocity": "+0.95°/día",
-      "altitude": "-76° 36' 14\"",
-      "azimuth": "223° 50' 06\"",
+      "altitude": "-72° 08' 22\"",
+      "azimuth": "239° 52' 12\"",
       "eclipticLatitude": "-0° 00' 01\"",
-      "declination": "23° 22' 05\""
+      "declination": "23° 20' 05\""
     },
     {
       "id": "luna",
       "name": "Luna",
-      "position": "Escorpio (22° 44' 53.00\")",
-      "velocity": "+11.91°/día",
-      "altitude": "56° 27' 15\"",
-      "azimuth": "278° 21' 29\"",
-      "eclipticLatitude": "-5° 00' 53\"",
-      "declination": "-23° 12' 13\""
+      "position": "Sagitario (4° 26' 01.00\")",
+      "velocity": "+11.87°/día",
+      "altitude": "72° 36' 39\"",
+      "azimuth": "290° 59' 35\"",
+      "eclipticLatitude": "-5° 04' 04\"",
+      "declination": "-25° 55' 55\""
     },
     {
       "id": "mercurio",
       "name": "Mercurio",
-      "position": "Cáncer (25° 46' 29.00\")",
-      "velocity": "+0.23°/día",
-      "altitude": "-58° 01' 29\"",
-      "azimuth": "253° 01' 53\"",
-      "eclipticLatitude": "-1° 14' 03\"",
-      "declination": "19° 50' 31\""
+      "position": "Cáncer (26° 00' 22.00\")",
+      "velocity": "+0.16°/día",
+      "altitude": "-53° 06' 47\"",
+      "azimuth": "257° 39' 24\"",
+      "eclipticLatitude": "-1° 29' 17\"",
+      "declination": "19° 33' 00\""
     },
     {
       "id": "venus",
       "name": "Venus",
-      "position": "Leo (14° 41' 48.00\")",
+      "position": "Leo (15° 49' 06.00\")",
       "velocity": "+1.14°/día",
-      "altitude": "-40° 40' 17\"",
-      "azimuth": "265° 50' 00\"",
-      "eclipticLatitude": "1° 54' 06\"",
-      "declination": "18° 21' 00\""
+      "altitude": "-34° 48' 42\"",
+      "azimuth": "269° 23' 16\"",
+      "eclipticLatitude": "1° 52' 48\"",
+      "declination": "17° 59' 53\""
     },
     {
       "id": "marte",
       "name": "Marte",
-      "position": "Tauro (28° 06' 58.00\")",
-      "velocity": "+0.72°/día",
-      "altitude": "-60° 37' 29\"",
-      "azimuth": "111° 12' 28\"",
-      "eclipticLatitude": "-0° 21' 24\"",
-      "declination": "19° 18' 23\""
+      "position": "Tauro (28° 49' 07.00\")",
+      "velocity": "+0.71°/día",
+      "altitude": "-65° 35' 14\"",
+      "azimuth": "118° 56' 44\"",
+      "eclipticLatitude": "-0° 20' 43\"",
+      "declination": "19° 28' 27\""
     },
     {
       "id": "jupiter",
       "name": "Júpiter",
-      "position": "Cáncer (29° 08' 19.00\")",
+      "position": "Cáncer (29° 20' 48.00\")",
       "velocity": "+0.21°/día",
-      "altitude": "-55° 23' 54\"",
-      "azimuth": "257° 55' 42\"",
-      "eclipticLatitude": "0° 26' 03\"",
-      "declination": "20° 49' 45\""
+      "altitude": "-50° 30' 33\"",
+      "azimuth": "262° 15' 33\"",
+      "eclipticLatitude": "0° 26' 06\"",
+      "declination": "20° 47' 14\""
     },
     {
       "id": "saturno",
       "name": "Saturno",
-      "position": "Aries (13° 57' 43\")",
+      "position": "Aries (14° 00' 38\")",
       "velocity": "+0.05°/día",
-      "altitude": "-17° 30' 22\"",
-      "azimuth": "97° 46' 23\"",
-      "eclipticLatitude": "-2° 21' 41\"",
-      "declination": "3° 11' 07\""
+      "altitude": "-22° 14' 56\"",
+      "azimuth": "101° 13' 03\"",
+      "eclipticLatitude": "-2° 21' 57\"",
+      "declination": "3° 12' 00\""
     },
     {
       "id": "urano",
       "name": "Urano",
-      "position": "Géminis (3° 27' 58.00\")",
+      "position": "Géminis (3° 30' 60.00\")",
       "velocity": "+0.05°/día",
-      "altitude": "-65° 36' 47\"",
-      "azimuth": "115° 31' 08\"",
+      "altitude": "-69° 47' 08\"",
+      "azimuth": "124° 32' 38\"",
       "eclipticLatitude": "-0° 09' 24\"",
-      "declination": "20° 37' 09\""
+      "declination": "20° 37' 44\""
     },
     {
       "id": "neptuno",
       "name": "Neptuno",
-      "position": "Aries (4° 22' 59\")",
+      "position": "Aries (4° 23' 20\")",
       "velocity": "+0.01°/día",
-      "altitude": "-8° 17' 25\"",
-      "azimuth": "94° 55' 20\"",
-      "eclipticLatitude": "-1° 21' 44\"",
-      "declination": "0° 20' 37\""
+      "altitude": "-13° 01' 33\"",
+      "azimuth": "98° 10' 18\"",
+      "eclipticLatitude": "-1° 21' 47\"",
+      "declination": "0° 20' 42\""
     },
     {
       "id": "pluton",
       "name": "Plutón",
-      "position": "Acuario (4° 58' 03.00\")",
+      "position": "Acuario (4° 56' 54.00\")",
       "velocity": "-0.02°/día",
-      "altitude": "50° 38' 22\"",
-      "azimuth": "86° 22' 07\"",
-      "eclipticLatitude": "-4° 12' 46\"",
-      "declination": "-23° 11' 54\""
+      "altitude": "45° 54' 01\"",
+      "azimuth": "89° 41' 43\"",
+      "eclipticLatitude": "-4° 12' 54\"",
+      "declination": "-23° 12' 19\""
     },
     {
       "id": "nodo-norte",
       "name": "Nodo Norte (M)",
-      "position": "Piscis (2° 50' 33.00\")",
+      "position": "Piscis (2° 47' 26.00\")",
       "velocity": "-0.05°/día",
       "altitude": "N/A",
       "azimuth": "N/A",
@@ -119,7 +119,7 @@
     {
       "id": "nodo-sur",
       "name": "Nodo Sur (M)",
-      "position": "Virgo (2° 50' 33.00\")",
+      "position": "Virgo (2° 47' 26.00\")",
       "velocity": "-0.05°/día",
       "altitude": "N/A",
       "azimuth": "N/A",
@@ -131,64 +131,64 @@
     {
       "id": "algol",
       "name": "Algol",
-      "position": "Tauro (26° 32' 03.26\")",
-      "eclipticLatitude": "22° 25' 48.84\"",
+      "position": "Tauro (26° 32' 03.71\")",
+      "eclipticLatitude": "22° 25' 48.74\"",
       "magnitude": "2.12"
     },
     {
       "id": "regulus",
       "name": "Regulus",
-      "position": "Virgo (0° 11' 46.93\")",
+      "position": "Virgo (0° 11' 46.88\")",
       "eclipticLatitude": "0° 27' 56.67\"",
       "magnitude": "1.40"
     },
     {
       "id": "antares",
       "name": "Antares",
-      "position": "Sagitario (10° 08' 21.75\")",
-      "eclipticLatitude": "-4° 34' 25.17\"",
+      "position": "Sagitario (10° 08' 21.83\")",
+      "eclipticLatitude": "-4° 34' 25.19\"",
       "magnitude": "0.91"
     },
     {
       "id": "spica",
       "name": "Spica",
-      "position": "Libra (24° 12' 54.11\")",
-      "eclipticLatitude": "-2° 03' 24.04\"",
+      "position": "Libra (24° 12' 54.02\")",
+      "eclipticLatitude": "-2° 03' 24.05\"",
       "magnitude": "0.97"
     },
     {
       "id": "fomalhaut",
       "name": "Fomalhaut",
-      "position": "Piscis (4° 14' 18.57\")",
-      "eclipticLatitude": "-21° 08' 13.99\"",
+      "position": "Piscis (4° 14' 19.10\")",
+      "eclipticLatitude": "-21° 08' 14.06\"",
       "magnitude": "1.16"
     },
     {
       "id": "sirius",
       "name": "Sirius",
-      "position": "Cáncer (14° 26' 29.88\")",
-      "eclipticLatitude": "-39° 36' 42.79\"",
+      "position": "Cáncer (14° 26' 30.03\")",
+      "eclipticLatitude": "-39° 36' 42.58\"",
       "magnitude": "-1.46"
     },
     {
       "id": "canopus",
       "name": "Canopus",
-      "position": "Cáncer (15° 18' 21.40\")",
-      "eclipticLatitude": "-75° 49' 17.23\"",
+      "position": "Cáncer (15° 18' 21.39\")",
+      "eclipticLatitude": "-75° 49' 16.91\"",
       "magnitude": "-0.74"
     },
     {
       "id": "rigel-kentaurus",
       "name": "Rigel Kentaurus",
-      "position": "Escorpio (29° 49' 14.39\")",
-      "eclipticLatitude": "-42° 36' 28.34\"",
+      "position": "Escorpio (29° 49' 14.32\")",
+      "eclipticLatitude": "-42° 36' 28.52\"",
       "magnitude": "-0.10"
     },
     {
       "id": "arcturus",
       "name": "Arcturus",
-      "position": "Libra (24° 36' 27.57\")",
-      "eclipticLatitude": "30° 43' 13.99\"",
+      "position": "Libra (24° 36' 27.43\")",
+      "eclipticLatitude": "30° 43' 14.04\"",
       "magnitude": "-0.05"
     }
   ],
@@ -196,49 +196,49 @@
     {
       "id": "fortuna",
       "name": "Fortuna (Tychê)",
-      "position": "7° 34' 16.90\"",
-      "sign": "Escorpio",
+      "position": "21° 59' 24.24\"",
+      "sign": "Libra",
       "house": 8
     },
     {
       "id": "espiritu",
       "name": "Espíritu (Daimon)",
-      "position": "13° 51' 36.43\"",
+      "position": "19° 46' 40.71\"",
       "sign": "Leo",
       "house": 5
     },
     {
       "id": "eros",
       "name": "Eros",
-      "position": "24° 52' 45.00\"",
+      "position": "24° 50' 37.45\"",
       "sign": "Piscis",
-      "house": 12
+      "house": 1
     },
     {
       "id": "necesidad",
       "name": "Necesidad (Anankê)",
-      "position": "13° 55' 08.68\"",
+      "position": "24° 53' 59.91\"",
       "sign": "Sagitario",
-      "house": 9
+      "house": 10
     },
     {
       "id": "coraje",
       "name": "Coraje (Thrasos)",
-      "position": "16° 15' 37.67\"",
+      "position": "27° 42' 44.84\"",
       "sign": "Libra",
-      "house": 7
+      "house": 8
     },
     {
       "id": "victoria",
       "name": "Victoria (Nikê)",
-      "position": "10° 26' 13.75\"",
+      "position": "11° 18' 55.68\"",
       "sign": "Aries",
       "house": 1
     },
     {
       "id": "nemesis",
       "name": "Némesis",
-      "position": "2° 06' 22.47\"",
+      "position": "12° 54' 16.21\"",
       "sign": "Virgo",
       "house": 6
     }
