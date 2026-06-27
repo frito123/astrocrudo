@@ -191,28 +191,42 @@
                     </div>
                 </div>
 
-                <div class="relative group nav-dropdown" data-nav-dropdown id="indice-nav-dropdown">
+                <div class="relative group nav-dropdown" data-nav-dropdown id="puntos-nav-dropdown">
                     <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
-                        Índice
+                        Puntos Astrológicos
                         <span class="text-[9px] opacity-50 group-hover:opacity-100 transition-opacity">▼</span>
                     </button>
                     <div class="nav-dropdown-panel absolute top-full right-0 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
-                        <div class="bg-[#111] border border-white/10 rounded-2xl p-4 shadow-2xl min-w-[300px]">
-                            <a href="#indice-astrologico" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">VER ÍNDICE COMPLETO →</a>
-                            <div class="text-[9px] tracking-[2px] text-white/40 mb-2">PUNTOS MATEMÁTICOS</div>
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-4 shadow-2xl min-w-[320px]">
+                            <a href="/puntos-astrologicos" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">VER GUÍA COMPLETA →</a>
+                            <div class="text-[9px] tracking-[2px] text-white/40 mb-2">ÁNGULOS DE LA CARTA</div>
                             <div class="grid grid-cols-1 gap-1 mb-3">
-                                <a href="#nodo-norte" class="nav-dropdown-link">☊ Nodo Norte</a>
-                                <a href="#nodo-sur" class="nav-dropdown-link">☋ Nodo Sur</a>
+                                <a href="/puntos-astrologicos#ascendente" class="nav-dropdown-link">Ascendente</a>
+                                <a href="/puntos-astrologicos#descendente" class="nav-dropdown-link">Descendente</a>
+                                <a href="/puntos-astrologicos#medio-cielo" class="nav-dropdown-link">Medio Cielo</a>
+                                <a href="/puntos-astrologicos#fondo-del-cielo" class="nav-dropdown-link">Fondo del Cielo</a>
                             </div>
-                            <div class="text-[9px] tracking-[2px] text-white/40 mb-2 pt-2 border-t border-white/10">LOTES (PARTES ÁRABES)</div>
+                            <div class="text-[9px] tracking-[2px] text-white/40 mb-2 pt-2 border-t border-white/10">NODOS LUNARES</div>
+                            <div class="grid grid-cols-1 gap-1 mb-3">
+                                <a href="/puntos-astrologicos#nodo-norte" class="nav-dropdown-link">☊ Nodo Norte</a>
+                                <a href="/puntos-astrologicos#nodo-sur" class="nav-dropdown-link">☋ Nodo Sur</a>
+                            </div>
+                            <div class="text-[9px] tracking-[2px] text-white/40 mb-2 pt-2 border-t border-white/10">LOTES / PARTES ÁRABES</div>
+                            <div class="grid grid-cols-1 gap-1 mb-3">
+                                <a href="/puntos-astrologicos#lote-fortuna" class="nav-dropdown-link">Fortuna / Tychê</a>
+                                <a href="/puntos-astrologicos#lote-espiritu" class="nav-dropdown-link">Espíritu / Daimon</a>
+                                <a href="/puntos-astrologicos#lote-eros" class="nav-dropdown-link">Eros</a>
+                                <a href="/puntos-astrologicos#lote-necesidad" class="nav-dropdown-link">Necesidad / Anankê</a>
+                                <a href="/puntos-astrologicos#lote-coraje" class="nav-dropdown-link">Coraje / Thrasos</a>
+                                <a href="/puntos-astrologicos#lote-victoria" class="nav-dropdown-link">Victoria / Nikê</a>
+                                <a href="/puntos-astrologicos#lote-nemesis" class="nav-dropdown-link">Némesis</a>
+                            </div>
+                            <div class="text-[9px] tracking-[2px] text-white/40 mb-2 pt-2 border-t border-white/10">OTROS PUNTOS SENSIBLES</div>
                             <div class="grid grid-cols-1 gap-1">
-                                <a href="#lote-fortuna" class="nav-dropdown-link">Fortuna (Tychê)</a>
-                                <a href="#lote-espiritu" class="nav-dropdown-link">Espíritu (Daimon)</a>
-                                <a href="#lote-eros" class="nav-dropdown-link">Eros</a>
-                                <a href="#lote-necesidad" class="nav-dropdown-link">Necesidad (Anankê)</a>
-                                <a href="#lote-coraje" class="nav-dropdown-link">Coraje (Thrasos)</a>
-                                <a href="#lote-victoria" class="nav-dropdown-link">Victoria (Nikê)</a>
-                                <a href="#lote-nemesis" class="nav-dropdown-link">Némesis</a>
+                                <a href="/puntos-astrologicos#sizigia-prenatal" class="nav-dropdown-link">Sizigia prenatal</a>
+                                <a href="/puntos-astrologicos#antiscios" class="nav-dropdown-link">Antiscios</a>
+                                <a href="/puntos-astrologicos#contra-antiscios" class="nav-dropdown-link">Contra-antiscios</a>
+                                <a href="/puntos-astrologicos#estrellas-fijas" class="nav-dropdown-link">Estrellas fijas</a>
                             </div>
                         </div>
                     </div>
@@ -337,24 +351,34 @@
                 </div>
 
                 <div>
-                    <button data-mobile-nav-toggle="mobile-indice-list" type="button" class="mobile-link w-full flex items-center justify-between text-left">
-                        <span>Índice</span>
+                    <button data-mobile-nav-toggle="mobile-puntos-list" type="button" class="mobile-link w-full flex items-center justify-between text-left">
+                        <span>Puntos Astrológicos</span>
                         <span class="mobile-nav-chevron text-xs opacity-50 transition-transform">▼</span>
                     </button>
-                    <div id="mobile-indice-list" class="hidden mt-3 pl-1 border-l border-white/10 ml-1">
-                        <a href="#indice-astrologico" class="block py-2 pl-3 text-xs tracking-[2px] text-[#8B0000] mobile-link">ÍNDICE COMPLETO →</a>
+                    <div id="mobile-puntos-list" class="hidden mt-3 pl-1 border-l border-white/10 ml-1">
+                        <a href="/puntos-astrologicos" class="block py-2 pl-3 text-xs tracking-[2px] text-[#8B0000] mobile-link">GUÍA COMPLETA →</a>
                         <div class="pl-3 pb-2 space-y-1">
-                            <div class="text-[10px] tracking-[2px] text-white/40 pt-1">PUNTOS MATEMÁTICOS</div>
-                            <a href="#nodo-norte" class="mobile-nav-sublink block">☊ Nodo Norte</a>
-                            <a href="#nodo-sur" class="mobile-nav-sublink block">☋ Nodo Sur</a>
-                            <div class="text-[10px] tracking-[2px] text-white/40 pt-2">LOTES ÁRABES</div>
-                            <a href="#lote-fortuna" class="mobile-nav-sublink block">Fortuna (Tychê)</a>
-                            <a href="#lote-espiritu" class="mobile-nav-sublink block">Espíritu (Daimon)</a>
-                            <a href="#lote-eros" class="mobile-nav-sublink block">Eros</a>
-                            <a href="#lote-necesidad" class="mobile-nav-sublink block">Necesidad (Anankê)</a>
-                            <a href="#lote-coraje" class="mobile-nav-sublink block">Coraje (Thrasos)</a>
-                            <a href="#lote-victoria" class="mobile-nav-sublink block">Victoria (Nikê)</a>
-                            <a href="#lote-nemesis" class="mobile-nav-sublink block">Némesis</a>
+                            <div class="text-[10px] tracking-[2px] text-white/40 pt-1">ÁNGULOS DE LA CARTA</div>
+                            <a href="/puntos-astrologicos#ascendente" class="mobile-nav-sublink block">Ascendente</a>
+                            <a href="/puntos-astrologicos#descendente" class="mobile-nav-sublink block">Descendente</a>
+                            <a href="/puntos-astrologicos#medio-cielo" class="mobile-nav-sublink block">Medio Cielo</a>
+                            <a href="/puntos-astrologicos#fondo-del-cielo" class="mobile-nav-sublink block">Fondo del Cielo</a>
+                            <div class="text-[10px] tracking-[2px] text-white/40 pt-2">NODOS LUNARES</div>
+                            <a href="/puntos-astrologicos#nodo-norte" class="mobile-nav-sublink block">☊ Nodo Norte</a>
+                            <a href="/puntos-astrologicos#nodo-sur" class="mobile-nav-sublink block">☋ Nodo Sur</a>
+                            <div class="text-[10px] tracking-[2px] text-white/40 pt-2">LOTES / PARTES ÁRABES</div>
+                            <a href="/puntos-astrologicos#lote-fortuna" class="mobile-nav-sublink block">Fortuna / Tychê</a>
+                            <a href="/puntos-astrologicos#lote-espiritu" class="mobile-nav-sublink block">Espíritu / Daimon</a>
+                            <a href="/puntos-astrologicos#lote-eros" class="mobile-nav-sublink block">Eros</a>
+                            <a href="/puntos-astrologicos#lote-necesidad" class="mobile-nav-sublink block">Necesidad / Anankê</a>
+                            <a href="/puntos-astrologicos#lote-coraje" class="mobile-nav-sublink block">Coraje / Thrasos</a>
+                            <a href="/puntos-astrologicos#lote-victoria" class="mobile-nav-sublink block">Victoria / Nikê</a>
+                            <a href="/puntos-astrologicos#lote-nemesis" class="mobile-nav-sublink block">Némesis</a>
+                            <div class="text-[10px] tracking-[2px] text-white/40 pt-2">OTROS PUNTOS SENSIBLES</div>
+                            <a href="/puntos-astrologicos#sizigia-prenatal" class="mobile-nav-sublink block">Sizigia prenatal</a>
+                            <a href="/puntos-astrologicos#antiscios" class="mobile-nav-sublink block">Antiscios</a>
+                            <a href="/puntos-astrologicos#contra-antiscios" class="mobile-nav-sublink block">Contra-antiscios</a>
+                            <a href="/puntos-astrologicos#estrellas-fijas" class="mobile-nav-sublink block">Estrellas fijas</a>
                         </div>
                     </div>
                 </div>
@@ -649,7 +673,7 @@
             <div class="max-w-3xl mb-8">
                 <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">ANÁLISIS DEL CIELO</div>
                 <h2 class="font-serif text-[52px] tracking-[-2px]">Posiciones Actuales</h2>
-                <p class="text-[#c5b8a0] mt-4 text-lg leading-relaxed">Planetas, nodos, estrellas fijas y lotes. Se actualiza cada vez que se ejecuta un análisis astronómico.</p>
+                <p class="text-[#c5b8a0] mt-4 text-lg leading-relaxed">Planetas, nodos lunares, ángulos, lotes, sizigia prenatal, antiscios y fases lunares del mes. Se actualiza cada vez que se ejecuta un análisis astronómico.</p>
             </div>
 
             <p id="astro-analysis-timestamp" class="text-xs tracking-[1.5px] text-white/40 font-mono mb-8 border border-white/10 rounded-xl px-4 py-3 bg-[#111]">
@@ -673,7 +697,47 @@
                     <tbody id="astro-bodies-tbody"></tbody>
                 </table>
             </div>
-            <p class="text-[10px] text-white/30 tracking-wider mb-12">Incluye planetas y nodos lunares (M = media).</p>
+            <p class="text-[10px] text-white/30 tracking-wider mb-10">Incluye planetas, nodos lunares (M = media), ángulos, lotes herméticos y sizigia prenatal. La columna Velocidad muestra la casa para los lotes y el tipo de sizigia.</p>
+
+            <h3 id="astro-lunar-phases-title" class="font-serif text-2xl tracking-tight mb-4">Fases lunares del mes</h3>
+            <div class="overflow-x-auto mb-4 border border-white/10 rounded-2xl">
+                <table class="astro-index-table w-full text-sm min-w-[560px]">
+                    <thead>
+                        <tr>
+                            <th>Fase</th>
+                            <th>Fecha y hora</th>
+                            <th>Signo</th>
+                            <th>Posición</th>
+                        </tr>
+                    </thead>
+                    <tbody id="astro-lunar-phases-tbody">
+                        <tr>
+                            <td colspan="4" class="text-center text-white/40 py-6 text-xs tracking-wider">Cargando fases lunares…</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-[10px] text-white/30 tracking-wider mb-10">Cuatro fases del mes en curso según el análisis. Posición lunar eclíptica en el instante exacto de cada fase.</p>
+
+            <h3 class="font-serif text-2xl tracking-tight mb-4">Antiscios y contra-antiscios</h3>
+            <div class="overflow-x-auto mb-4 border border-white/10 rounded-2xl">
+                <table class="astro-index-table w-full text-sm min-w-[720px]">
+                    <thead>
+                        <tr>
+                            <th>Astro</th>
+                            <th>Posición original</th>
+                            <th>Antiscio (♋/♑)</th>
+                            <th>Contra-antiscio (♈/♎)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="astro-antiscia-tbody">
+                        <tr>
+                            <td colspan="4" class="text-center text-white/40 py-6 text-xs tracking-wider">Cargando antiscios…</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-[10px] text-white/30 tracking-wider mb-12">Reflejos zodiacales según la tradición: antiscio sobre el eje Cáncer–Capricornio; contra-antiscio sobre Aries–Libra. Incluye planetas, Ascendente y Medio Cielo.</p>
         </div>
     </section>
 

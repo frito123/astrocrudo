@@ -8,10 +8,13 @@ Uso desde el notebook (al final del cálculo de lotes):
 
 from __future__ import annotations
 
+import calendar
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
+
+import pytz
 
 WEB_EXPORT_ROOT = Path(r"C:\Users\jorge\AstroCrudo")
 
@@ -50,10 +53,53 @@ ESTRELLAS_SWE = {
     "Canopus": "Canopus", "Rigel Kentaurus": "Rigil Kentaurus", "Arcturus": "Arcturus",
 }
 
-BODY_ORDER = [
+PLANETS_ORDER = [
     "Sol", "Luna", "Mercurio", "Venus", "Marte", "Júpiter", "Saturno",
-    "Urano", "Neptuno", "Plutón", "Nodo Norte (M)", "Nodo Sur (M)",
+    "Urano", "Neptuno", "Plutón",
 ]
+
+NODES_ORDER = ["Nodo Norte (M)", "Nodo Sur (M)"]
+
+ANGLE_NAMES = [
+    "Ascendente",
+    "Descendente",
+    "Medio Cielo (MC)",
+    "Fondo del Cielo (IC)",
+]
+
+ANGLE_IDS = {
+    "Ascendente": "ascendente",
+    "Descendente": "descendente",
+    "Medio Cielo (MC)": "medio-cielo",
+    "Fondo del Cielo (IC)": "fondo-del-cielo",
+}
+
+# Compatibilidad con código que aún use BODY_ORDER
+BODY_ORDER = PLANETS_ORDER + NODES_ORDER
+
+MES_ES = {
+    1: "enero", 2: "febrero", 3: "marzo", 4: "abril",
+    5: "mayo", 6: "junio", 7: "julio", 8: "agosto",
+    9: "septiembre", 10: "octubre", 11: "noviembre", 12: "diciembre",
+}
+
+MES_ABBR_ES = {
+    1: "ene", 2: "feb", 3: "mar", 4: "abr",
+    5: "may", 6: "jun", 7: "jul", 8: "ago",
+    9: "sep", 10: "oct", 11: "nov", 12: "dic",
+}
+
+FASES_LUNARES = {
+    0: ("luna-nueva", "Luna Nueva"),
+    1: ("luna-creciente", "Luna Creciente"),
+    2: ("luna-llena", "Luna Llena"),
+    3: ("luna-menguante", "Luna Menguante"),
+}
+
+SIZIGIA_TIPOS = {0: "Luna Nueva", 2: "Luna Llena"}
+
+_EPH_CACHE = None
+_TS_CACHE = None
 
 
 def format_dms(degrees: float) -> str:
@@ -133,12 +179,29 @@ def _body_from_pos(name: str, data: Dict[str, Any]) -> Optional[Dict[str, str]]:
     return _row(name, position, velocity, declination=declination)
 
 
-def _calcular_estrellas(t_now) -> List[Dict[str, str]]:
-    stars: List[Dict[str, str]] = []
+def _init_swisseph() -> bool:
     try:
         import swisseph as swe
     except ImportError:
+        return False
+
+    ephe_candidates = [
+        Path.home() / "Documents" / "swiss_ephe",
+        Path(r"C:/Users/jorge/Documents/swiss_ephe"),
+    ]
+    for ephe_path in ephe_candidates:
+        if ephe_path.exists():
+            swe.set_ephe_path(str(ephe_path))
+            break
+    return True
+
+
+def _calcular_estrellas(t_now) -> List[Dict[str, str]]:
+    stars: List[Dict[str, str]] = []
+    if not _init_swisseph():
         return stars
+
+    import swisseph as swe
 
     jd_ut = t_now.ut1
     for display_name, swe_id in ESTRELLAS_SWE.items():
@@ -159,6 +222,199 @@ def _calcular_estrellas(t_now) -> List[Dict[str, str]]:
         except Exception:
             continue
     return stars
+
+
+def _position_from_lon(lon: float) -> str:
+    return f"{obtener_signo_zodiacal(lon)} ({format_dms(grado_en_signo(lon))})"
+
+
+def _get_skyfield() -> Optional[Tuple[Any, Any, Any, Any]]:
+    global _EPH_CACHE, _TS_CACHE
+    try:
+        from skyfield import almanac
+        from skyfield.api import load
+    except ImportError:
+        return None
+
+    if _TS_CACHE is None:
+        _TS_CACHE = load.timescale()
+    if _EPH_CACHE is None:
+        _EPH_CACHE = load("de421.bsp")
+
+    earth = _EPH_CACHE["earth"]
+    moon = _EPH_CACHE["moon"]
+    sun = _EPH_CACHE["sun"]
+    return _TS_CACHE, _EPH_CACHE, earth, moon, sun, almanac
+
+
+def _moon_lon_at(t_sky) -> float:
+    sf = _get_skyfield()
+    if not sf:
+        return 0.0
+    _, _, earth, moon, _, _ = sf
+    _, lon_ecl, _ = earth.at(t_sky).observe(moon).ecliptic_latlon(epoch="date")
+    return float(lon_ecl.degrees) % 360
+
+
+def _calcular_sizigia_prenatal(t_now, t_manual: datetime) -> Optional[Dict[str, Any]]:
+    sf = _get_skyfield()
+    if not sf:
+        return None
+
+    ts, _, _, _, _, almanac = sf
+    t_birth = t_now if hasattr(t_now, "tt") else ts.from_datetime(t_manual)
+    t_start = ts.tt_jd(t_birth.tt - 45.0)
+
+    try:
+        times, phases = almanac.find_discrete(t_start, t_birth, almanac.moon_phases(sf[1]))
+    except Exception:
+        return None
+
+    syzygies = [(t, int(p)) for t, p in zip(times, phases) if int(p) in SIZIGIA_TIPOS]
+    if not syzygies:
+        return None
+
+    t_syzygy, phase_code = syzygies[-1]
+    lon = _moon_lon_at(t_syzygy)
+    dt_local = t_syzygy.astimezone(t_manual.tzinfo or pytz.utc)
+
+    return {
+        "id": "sizigia-prenatal",
+        "name": "Sizigia prenatal",
+        "category": "punto",
+        "type": SIZIGIA_TIPOS[phase_code],
+        "position": _position_from_lon(lon),
+        "sign": obtener_signo_zodiacal(lon),
+        "velocity": SIZIGIA_TIPOS[phase_code],
+        "datetime": dt_local.strftime("%Y-%m-%d %H:%M %Z"),
+        "altitude": "N/A",
+        "azimuth": "N/A",
+        "eclipticLatitude": "N/A",
+        "declination": "N/A",
+    }
+
+
+def _calcular_fases_lunares_mes(t_manual: datetime) -> Dict[str, Any]:
+    sf = _get_skyfield()
+    year, month = t_manual.year, t_manual.month
+    month_label = f"{MES_ES[month].capitalize()} de {year}"
+
+    if not sf:
+        return {"month": f"{year}-{month:02d}", "monthLabel": month_label, "phases": []}
+
+    ts, eph, _, _, _, almanac = sf
+    _, last_day = calendar.monthrange(year, month)
+
+    try:
+        t_inicio = ts.utc(year, month, 1)
+        t_fin = ts.utc(year, month, last_day, 23, 59, 59)
+        times, phase_codes = almanac.find_discrete(t_inicio, t_fin, almanac.moon_phases(eph))
+    except Exception:
+        return {"month": f"{year}-{month:02d}", "monthLabel": month_label, "phases": []}
+
+    phases_out: List[Dict[str, str]] = []
+    tz = t_manual.tzinfo or pytz.utc
+
+    for code, (phase_id, phase_name) in FASES_LUNARES.items():
+        matches = [t for t, p in zip(times, phase_codes) if int(p) == code]
+        if not matches:
+            continue
+        t_phase = matches[0]
+        lon = _moon_lon_at(t_phase)
+        dt_local = t_phase.astimezone(tz)
+        phases_out.append({
+            "id": phase_id,
+            "name": phase_name,
+            "datetime": (
+                f"{dt_local.day:02d} {MES_ABBR_ES[dt_local.month]} {dt_local.year}"
+                f" · {dt_local.strftime('%H:%M %Z')}"
+            ),
+            "sign": obtener_signo_zodiacal(lon),
+            "position": format_dms(grado_en_signo(lon)),
+            "positionFull": _position_from_lon(lon),
+        })
+
+    return {
+        "month": f"{year}-{month:02d}",
+        "monthLabel": month_label,
+        "phases": phases_out,
+    }
+
+
+def _build_antiscia(pos: Dict) -> List[Dict[str, str]]:
+    antiscia: List[Dict[str, str]] = []
+    sources = list(PLANETS_ORDER)
+
+    if "Ascendente" in pos and "lon" in pos["Ascendente"]:
+        sources.append("Ascendente")
+    if "Medio Cielo (MC)" in pos and "lon" in pos["Medio Cielo (MC)"]:
+        sources.append("Medio Cielo (MC)")
+
+    for source in sources:
+        if source not in pos or "lon" not in pos[source]:
+            continue
+        lon_original = float(pos[source]["lon"]) % 360
+        lon_antiscio = (180.0 - lon_original) % 360
+        lon_contra = (360.0 - lon_original) % 360
+        source_id = BODY_IDS.get(source) or ANGLE_IDS.get(source) or source.lower().replace(" ", "-")
+        antiscia.append({
+            "id": f"{source_id}-antiscia",
+            "source": source,
+            "original": _position_from_lon(lon_original),
+            "antiscio": _position_from_lon(lon_antiscio),
+            "contraAntiscio": _position_from_lon(lon_contra),
+        })
+    return antiscia
+
+
+def _build_angles(casas: Dict) -> List[Dict[str, Any]]:
+    if not casas or "asc" not in casas or "mc" not in casas:
+        return []
+
+    angle_lons = {
+        "Ascendente": float(casas["asc"]) % 360,
+        "Descendente": (float(casas["asc"]) + 180) % 360,
+        "Medio Cielo (MC)": float(casas["mc"]) % 360,
+        "Fondo del Cielo (IC)": (float(casas["mc"]) + 180) % 360,
+    }
+
+    bodies = []
+    for name in ANGLE_NAMES:
+        lon = angle_lons[name]
+        bodies.append({
+            "id": ANGLE_IDS[name],
+            "name": name,
+            "category": "angulo",
+            "position": _position_from_lon(lon),
+            "velocity": "—",
+            "altitude": "N/A",
+            "azimuth": "N/A",
+            "eclipticLatitude": "N/A",
+            "declination": "N/A",
+        })
+    return bodies
+
+
+def _build_lot_bodies(lotes: Dict[str, float], casas: Dict, determinar_casa_fn) -> List[Dict[str, Any]]:
+    bodies = []
+    for nombre in WEB_LOTES:
+        if nombre not in lotes:
+            continue
+        grado = float(lotes[nombre]) % 360
+        casa = determinar_casa_fn(grado, nombre, casas)
+        casa_str = f"Casa {casa}" if casa is not None else "N/A"
+        bodies.append({
+            "id": LOT_IDS[nombre],
+            "name": nombre,
+            "category": "lote",
+            "position": _position_from_lon(grado),
+            "velocity": casa_str,
+            "altitude": "N/A",
+            "azimuth": "N/A",
+            "eclipticLatitude": "N/A",
+            "declination": "N/A",
+        })
+    return bodies
 
 
 def _build_lotes(lotes: Dict[str, float], casas: Dict, determinar_casa_fn) -> List[Dict[str, Any]]:
@@ -189,16 +445,33 @@ def build_payload(
     utc_str = t_now.utc_strftime("%Y-%m-%d %H:%M UTC")
     local_str = t_manual.strftime("%Y-%m-%d %H:%M %Z")
 
-    bodies = []
-    for name in BODY_ORDER:
+    bodies: List[Dict[str, Any]] = []
+
+    for name in PLANETS_ORDER:
         if name not in pos:
             continue
         row = _body_from_pos(name, pos[name])
         if row:
-            bodies.append({
-                "id": BODY_IDS[name],
-                **row,
-            })
+            bodies.append({"id": BODY_IDS[name], "category": "planeta", **row})
+
+    for name in NODES_ORDER:
+        if name not in pos:
+            continue
+        row = _body_from_pos(name, pos[name])
+        if row:
+            bodies.append({"id": BODY_IDS[name], "category": "nodo", **row})
+
+    bodies.extend(_build_angles(casas))
+    bodies.extend(_build_lot_bodies(lotes, casas, determinar_casa_fn))
+
+    pos_antiscia = dict(pos)
+    if casas and "asc" in casas:
+        pos_antiscia["Ascendente"] = {"lon": float(casas["asc"]) % 360}
+        pos_antiscia["Medio Cielo (MC)"] = {"lon": float(casas["mc"]) % 360}
+
+    sizigia = _calcular_sizigia_prenatal(t_now, t_manual)
+    if sizigia:
+        bodies.append(sizigia)
 
     return {
         "meta": {
@@ -210,6 +483,8 @@ def build_payload(
         "bodies": bodies,
         "stars": _calcular_estrellas(t_now),
         "lots": _build_lotes(lotes, casas, determinar_casa_fn),
+        "lunarPhases": _calcular_fases_lunares_mes(t_manual),
+        "antiscia": _build_antiscia(pos_antiscia),
     }
 
 
@@ -322,7 +597,9 @@ def exportar_posiciones_web(
         "  if (newData.meta) Object.assign(ASTRONOMICAL_POSITIONS.meta, newData.meta);\n"
         "  if (Array.isArray(newData.bodies)) ASTRONOMICAL_POSITIONS.bodies = newData.bodies;\n"
         "  if (Array.isArray(newData.stars)) ASTRONOMICAL_POSITIONS.stars = newData.stars;\n"
-        "  if (Array.isArray(newData.lots)) ASTRONOMICAL_POSITIONS.lots = newData.lots;\n\n"
+        "  if (Array.isArray(newData.lots)) ASTRONOMICAL_POSITIONS.lots = newData.lots;\n"
+        "  if (newData.lunarPhases) ASTRONOMICAL_POSITIONS.lunarPhases = newData.lunarPhases;\n"
+        "  if (Array.isArray(newData.antiscia)) ASTRONOMICAL_POSITIONS.antiscia = newData.antiscia;\n\n"
         "  if (typeof renderAstronomicalTables === \"function\") {\n"
         "    renderAstronomicalTables();\n"
         "  }\n\n"
@@ -333,6 +610,15 @@ def exportar_posiciones_web(
 
     print(f"[Web] OK — JSON guardado en: {out_path}")
     print(f"[Web] OK — Respaldo JS guardado en: {js_path}")
-    print(f"[Web] {len(payload['bodies'])} cuerpos | {len(payload['stars'])} estrellas | {len(payload['lots'])} lotes")
+    n_angulos = sum(1 for b in payload["bodies"] if b.get("category") == "angulo")
+    n_lotes_tabla = sum(1 for b in payload["bodies"] if b.get("category") == "lote")
+    n_puntos = sum(1 for b in payload["bodies"] if b.get("category") == "punto")
+    n_fases = len(payload.get("lunarPhases", {}).get("phases", []))
+    print(
+        f"[Web] {len(payload['bodies'])} filas en tabla "
+        f"({n_angulos} ángulos, {n_lotes_tabla} lotes, {n_puntos} puntos) | "
+        f"{n_fases} fases lunares | {len(payload.get('antiscia', []))} antiscia | "
+        f"{len(payload['stars'])} estrellas | {len(payload['lots'])} lotes (índice)"
+    )
     print(f"[Web] Hora análisis: {utc} | {local}")
     return out_path

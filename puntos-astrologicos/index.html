@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puntos Astrológicos | AstroCrudo</title>
+    <meta name="description" content="Guía tradicional de puntos astrológicos: ángulos, nodos lunares, lotes árabes, sizigia, antiscios y estrellas fijas. Astrología helenística, medieval y renacentista.">
+    <link rel="canonical" href="https://astrocrudo.netlify.app/puntos-astrologicos/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85'>🜁</text></svg>">
+</head>
+<body class="bg-[#0a0808] text-[#e5e0d8] overflow-x-hidden">
+
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0808]/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+            <a href="/" class="font-serif text-2xl tracking-tight">AstroCrudo</a>
+            <div class="hidden md:flex items-center gap-x-8 text-sm tracking-wider">
+                <a href="/" class="hover:text-[#8B0000] transition-colors">Inicio</a>
+                <div class="relative group nav-dropdown" data-nav-dropdown id="signos-nav-dropdown">
+                    <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
+                        Signos
+                        <span class="text-[9px] opacity-50 group-hover:opacity-100 transition-opacity">▼</span>
+                    </button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-4 shadow-2xl min-w-[300px]">
+                            <a href="/naturaleza" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">VER TODOS LOS SIGNOS →</a>
+                            <div class="grid grid-cols-2 gap-1">
+                                <a href="/naturaleza/aries/" class="nav-dropdown-link"><span>♈</span> Aries</a>
+                                <a href="/naturaleza/tauro/" class="nav-dropdown-link"><span>♉</span> Tauro</a>
+                                <a href="/naturaleza/geminis/" class="nav-dropdown-link"><span>♊</span> Géminis</a>
+                                <a href="/naturaleza/cancer/" class="nav-dropdown-link"><span>♋</span> Cáncer</a>
+                                <a href="/naturaleza/leo/" class="nav-dropdown-link"><span>♌</span> Leo</a>
+                                <a href="/naturaleza/virgo/" class="nav-dropdown-link"><span>♍</span> Virgo</a>
+                                <a href="/naturaleza/libra/" class="nav-dropdown-link"><span>♎</span> Libra</a>
+                                <a href="/naturaleza/escorpio/" class="nav-dropdown-link"><span>♏</span> Escorpio</a>
+                                <a href="/naturaleza/sagitario/" class="nav-dropdown-link"><span>♐</span> Sagitario</a>
+                                <a href="/naturaleza/capricornio/" class="nav-dropdown-link"><span>♑</span> Capricornio</a>
+                                <a href="/naturaleza/acuario/" class="nav-dropdown-link"><span>♒</span> Acuario</a>
+                                <a href="/naturaleza/piscis/" class="nav-dropdown-link"><span>♓</span> Piscis</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group nav-dropdown" data-nav-dropdown id="analisis-nav-dropdown">
+                    <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
+                        Análisis Astrológico
+                        <span class="text-[9px] opacity-50 group-hover:opacity-100 transition-opacity">▼</span>
+                    </button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-3 shadow-2xl min-w-[240px]">
+                            <a href="/#analisis-astrologico" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-2 pb-2 border-b border-white/10 hover:text-white transition-colors px-2">VER ANÁLISIS ASTROLÓGICO →</a>
+                            <div class="grid grid-cols-1 gap-1">
+                                <a href="/#aspectos-del-dia" class="nav-dropdown-link">Aspectos del Día</a>
+                                <a href="/#transitos-criticos" class="nav-dropdown-link">Tránsitos Críticos</a>
+                                <a href="/#sintesis-astrologica" class="nav-dropdown-link">Síntesis Astrológica</a>
+                                <a href="/#espejo-luz" class="nav-dropdown-link">Espejo de la Luz</a>
+                                <a href="/#espejo" class="nav-dropdown-link">Espejo de la Sombra</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group nav-dropdown" data-nav-dropdown id="planetas-nav-dropdown">
+                    <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
+                        Planetas
+                        <span class="text-[9px] opacity-50 group-hover:opacity-100 transition-opacity">▼</span>
+                    </button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-4 shadow-2xl min-w-[300px]">
+                            <a href="/planetas" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">VER ÍNDICE DE PLANETAS →</a>
+                            <a href="/planetas#tradicional" class="block text-[9px] tracking-[2px] text-white/40 mb-2 hover:text-[#c5b8a0] transition-colors">TRADICIONAL</a>
+                            <div class="grid grid-cols-2 gap-1 mb-3">
+                                <a href="/planetas/sol/" class="nav-dropdown-link"><span>☉</span> Sol</a>
+                                <a href="/planetas/luna/" class="nav-dropdown-link"><span>☽</span> Luna</a>
+                                <a href="/planetas/mercurio/" class="nav-dropdown-link"><span>☿</span> Mercurio</a>
+                                <a href="/planetas/venus/" class="nav-dropdown-link"><span>♀</span> Venus</a>
+                                <a href="/planetas/marte/" class="nav-dropdown-link"><span>♂</span> Marte</a>
+                                <a href="/planetas/jupiter/" class="nav-dropdown-link"><span>♃</span> Júpiter</a>
+                                <a href="/planetas/saturno/" class="nav-dropdown-link"><span>♄</span> Saturno</a>
+                            </div>
+                            <a href="/planetas#moderno" class="block text-[9px] tracking-[2px] text-white/40 mb-2 pt-2 border-t border-white/10 hover:text-[#c5b8a0] transition-colors">MODERNO</a>
+                            <div class="grid grid-cols-2 gap-1">
+                                <a href="/planetas/urano/" class="nav-dropdown-link"><span>♅</span> Urano</a>
+                                <a href="/planetas/neptuno/" class="nav-dropdown-link"><span>♆</span> Neptuno</a>
+                                <a href="/planetas/pluton/" class="nav-dropdown-link"><span>♇</span> Plutón</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group nav-dropdown" data-nav-dropdown id="lecturas-nav-dropdown">
+                    <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
+                        Lecturas
+                        <span class="text-[9px] opacity-50 group-hover:opacity-100 transition-opacity">▼</span>
+                    </button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-3 shadow-2xl min-w-[260px]">
+                            <a href="/lecturas#servicios" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-2 pb-2 border-b border-white/10 hover:text-white transition-colors px-2">VER SERVICIOS →</a>
+                            <div class="grid grid-cols-1 gap-1">
+                                <a href="/lecturas#carta-natal-tradicional" class="nav-dropdown-link">Carta Natal Tradicional</a>
+                                <a href="/lecturas#revolucion-solar" class="nav-dropdown-link">Revolución Solar</a>
+                                <a href="/lecturas#astrologia-predictiva" class="nav-dropdown-link">Astrología Predictiva</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group nav-dropdown" data-nav-dropdown id="estrellas-nav-dropdown">
+                    <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
+                        Estrellas Fijas
+                        <span class="text-[9px] opacity-50 group-hover:opacity-100 transition-opacity">▼</span>
+                    </button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-4 shadow-2xl min-w-[320px]">
+                            <a href="/#estrellas-fijas" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">VER ÍNDICE DE ESTRELLAS →</a>
+                            <div class="grid grid-cols-2 gap-1">
+                                <a href="/#estrella-algol" class="nav-dropdown-link">Algol</a>
+                                <a href="/#estrella-regulus" class="nav-dropdown-link">Regulus</a>
+                                <a href="/#estrella-antares" class="nav-dropdown-link">Antares</a>
+                                <a href="/#estrella-spica" class="nav-dropdown-link">Spica</a>
+                                <a href="/#estrella-fomalhaut" class="nav-dropdown-link">Fomalhaut</a>
+                                <a href="/#estrella-sirius" class="nav-dropdown-link">Sirius</a>
+                                <a href="/#estrella-canopus" class="nav-dropdown-link">Canopus</a>
+                                <a href="/#estrella-rigel-kentaurus" class="nav-dropdown-link">Rigel Kentaurus</a>
+                                <a href="/#estrella-arcturus" class="nav-dropdown-link col-span-2">Arcturus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group nav-dropdown" data-nav-dropdown id="puntos-nav-dropdown">
+                    <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 text-[#c5b8a0] hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
+                        Puntos Astrológicos
+                        <span class="text-[9px] opacity-50 group-hover:opacity-100 transition-opacity">▼</span>
+                    </button>
+                    <div class="nav-dropdown-panel absolute top-full right-0 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-4 shadow-2xl min-w-[320px]">
+                            <a href="/puntos-astrologicos" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">VER GUÍA COMPLETA →</a>
+                            <div class="text-[9px] tracking-[2px] text-white/40 mb-2">ÁNGULOS DE LA CARTA</div>
+                            <div class="grid grid-cols-1 gap-1 mb-3">
+                                <a href="/puntos-astrologicos#ascendente" class="nav-dropdown-link">Ascendente</a>
+                                <a href="/puntos-astrologicos#descendente" class="nav-dropdown-link">Descendente</a>
+                                <a href="/puntos-astrologicos#medio-cielo" class="nav-dropdown-link">Medio Cielo</a>
+                                <a href="/puntos-astrologicos#fondo-del-cielo" class="nav-dropdown-link">Fondo del Cielo</a>
+                            </div>
+                            <div class="text-[9px] tracking-[2px] text-white/40 mb-2 pt-2 border-t border-white/10">NODOS LUNARES</div>
+                            <div class="grid grid-cols-1 gap-1 mb-3">
+                                <a href="/puntos-astrologicos#nodo-norte" class="nav-dropdown-link">☊ Nodo Norte</a>
+                                <a href="/puntos-astrologicos#nodo-sur" class="nav-dropdown-link">☋ Nodo Sur</a>
+                            </div>
+                            <div class="text-[9px] tracking-[2px] text-white/40 mb-2 pt-2 border-t border-white/10">LOTES / PARTES ÁRABES</div>
+                            <div class="grid grid-cols-1 gap-1 mb-3">
+                                <a href="/puntos-astrologicos#lote-fortuna" class="nav-dropdown-link">Fortuna / Tychê</a>
+                                <a href="/puntos-astrologicos#lote-espiritu" class="nav-dropdown-link">Espíritu / Daimon</a>
+                                <a href="/puntos-astrologicos#lote-eros" class="nav-dropdown-link">Eros</a>
+                                <a href="/puntos-astrologicos#lote-necesidad" class="nav-dropdown-link">Necesidad / Anankê</a>
+                                <a href="/puntos-astrologicos#lote-coraje" class="nav-dropdown-link">Coraje / Thrasos</a>
+                                <a href="/puntos-astrologicos#lote-victoria" class="nav-dropdown-link">Victoria / Nikê</a>
+                                <a href="/puntos-astrologicos#lote-nemesis" class="nav-dropdown-link">Némesis</a>
+                            </div>
+                            <div class="text-[9px] tracking-[2px] text-white/40 mb-2 pt-2 border-t border-white/10">OTROS PUNTOS SENSIBLES</div>
+                            <div class="grid grid-cols-1 gap-1">
+                                <a href="/puntos-astrologicos#sizigia-prenatal" class="nav-dropdown-link">Sizigia prenatal</a>
+                                <a href="/puntos-astrologicos#antiscios" class="nav-dropdown-link">Antiscios</a>
+                                <a href="/puntos-astrologicos#contra-antiscios" class="nav-dropdown-link">Contra-antiscios</a>
+                                <a href="/puntos-astrologicos#estrellas-fijas" class="nav-dropdown-link">Estrellas fijas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/#contacto" class="hover:text-[#8B0000] transition-colors">Contacto</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-2xl px-3 py-1 hover:text-[#8B0000]">☰</button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-[#0a0808]">
+            <div class="px-6 py-6 flex flex-col gap-y-4 text-base">
+                <a href="/" class="mobile-link">Inicio</a>
+                <div>
+                    <button data-mobile-nav-toggle="mobile-signos-list" type="button" class="mobile-link w-full flex items-center justify-between text-left">
+                        <span>Signos</span><span class="mobile-nav-chevron text-xs opacity-50 transition-transform">▼</span>
+                    </button>
+                    <div id="mobile-signos-list" class="hidden mt-3 pl-1 border-l border-white/10 ml-1">
+                        <a href="/naturaleza" class="block py-2 pl-3 text-xs tracking-[2px] text-[#8B0000] mobile-link">TODOS LOS SIGNOS →</a>
+                        <div class="grid grid-cols-2 gap-x-4 gap-y-1 pl-3 pb-2">
+                            <a href="/naturaleza/aries/" class="mobile-nav-sublink">♈ Aries</a>
+                            <a href="/naturaleza/tauro/" class="mobile-nav-sublink">♉ Tauro</a>
+                            <a href="/naturaleza/geminis/" class="mobile-nav-sublink">♊ Géminis</a>
+                            <a href="/naturaleza/cancer/" class="mobile-nav-sublink">♋ Cáncer</a>
+                            <a href="/naturaleza/leo/" class="mobile-nav-sublink">♌ Leo</a>
+                            <a href="/naturaleza/virgo/" class="mobile-nav-sublink">♍ Virgo</a>
+                            <a href="/naturaleza/libra/" class="mobile-nav-sublink">♎ Libra</a>
+                            <a href="/naturaleza/escorpio/" class="mobile-nav-sublink">♏ Escorpio</a>
+                            <a href="/naturaleza/sagitario/" class="mobile-nav-sublink">♐ Sagitario</a>
+                            <a href="/naturaleza/capricornio/" class="mobile-nav-sublink">♑ Capricornio</a>
+                            <a href="/naturaleza/acuario/" class="mobile-nav-sublink">♒ Acuario</a>
+                            <a href="/naturaleza/piscis/" class="mobile-nav-sublink">♓ Piscis</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button data-mobile-nav-toggle="mobile-analisis-list" type="button" class="mobile-link w-full flex items-center justify-between text-left">
+                        <span>Análisis Astrológico</span><span class="mobile-nav-chevron text-xs opacity-50 transition-transform">▼</span>
+                    </button>
+                    <div id="mobile-analisis-list" class="hidden mt-3 pl-1 border-l border-white/10 ml-1">
+                        <a href="/#analisis-astrologico" class="block py-2 pl-3 text-xs tracking-[2px] text-[#8B0000] mobile-link">ANÁLISIS ASTROLÓGICO →</a>
+                        <div class="pl-3 pb-2">
+                            <a href="/#aspectos-del-dia" class="mobile-nav-sublink block">Aspectos del Día</a>
+                            <a href="/#transitos-criticos" class="mobile-nav-sublink block">Tránsitos Críticos</a>
+                            <a href="/#sintesis-astrologica" class="mobile-nav-sublink block">Síntesis Astrológica</a>
+                            <a href="/#espejo-luz" class="mobile-nav-sublink block">Espejo de la Luz</a>
+                            <a href="/#espejo" class="mobile-nav-sublink block">Espejo de la Sombra</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button data-mobile-nav-toggle="mobile-planetas-list" type="button" class="mobile-link w-full flex items-center justify-between text-left">
+                        <span>Planetas</span><span class="mobile-nav-chevron text-xs opacity-50 transition-transform">▼</span>
+                    </button>
+                    <div id="mobile-planetas-list" class="hidden mt-3 pl-1 border-l border-white/10 ml-1">
+                        <a href="/planetas" class="block py-2 pl-3 text-xs tracking-[2px] text-[#8B0000] mobile-link">ÍNDICE DE PLANETAS →</a>
+                        <div class="grid grid-cols-2 gap-x-4 gap-y-1 pl-3 pb-2">
+                            <a href="/planetas/sol/" class="mobile-nav-sublink">☉ Sol</a>
+                            <a href="/planetas/luna/" class="mobile-nav-sublink">☽ Luna</a>
+                            <a href="/planetas/mercurio/" class="mobile-nav-sublink">☿ Mercurio</a>
+                            <a href="/planetas/venus/" class="mobile-nav-sublink">♀ Venus</a>
+                            <a href="/planetas/marte/" class="mobile-nav-sublink">♂ Marte</a>
+                            <a href="/planetas/jupiter/" class="mobile-nav-sublink">♃ Júpiter</a>
+                            <a href="/planetas/saturno/" class="mobile-nav-sublink">♄ Saturno</a>
+                            <a href="/planetas/urano/" class="mobile-nav-sublink">♅ Urano</a>
+                            <a href="/planetas/neptuno/" class="mobile-nav-sublink">♆ Neptuno</a>
+                            <a href="/planetas/pluton/" class="mobile-nav-sublink">♇ Plutón</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button data-mobile-nav-toggle="mobile-lecturas-list" type="button" class="mobile-link w-full flex items-center justify-between text-left">
+                        <span>Lecturas</span><span class="mobile-nav-chevron text-xs opacity-50 transition-transform">▼</span>
+                    </button>
+                    <div id="mobile-lecturas-list" class="hidden mt-3 pl-1 border-l border-white/10 ml-1">
+                        <a href="/lecturas#servicios" class="block py-2 pl-3 text-xs tracking-[2px] text-[#8B0000] mobile-link">VER SERVICIOS →</a>
+                        <div class="pl-3 pb-2">
+                            <a href="/lecturas#carta-natal-tradicional" class="mobile-nav-sublink block">Carta Natal Tradicional</a>
+                            <a href="/lecturas#revolucion-solar" class="mobile-nav-sublink block">Revolución Solar</a>
+                            <a href="/lecturas#astrologia-predictiva" class="mobile-nav-sublink block">Astrología Predictiva</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button data-mobile-nav-toggle="mobile-estrellas-list" type="button" class="mobile-link w-full flex items-center justify-between text-left">
+                        <span>Estrellas Fijas</span><span class="mobile-nav-chevron text-xs opacity-50 transition-transform">▼</span>
+                    </button>
+                    <div id="mobile-estrellas-list" class="hidden mt-3 pl-1 border-l border-white/10 ml-1">
+                        <a href="/#estrellas-fijas" class="block py-2 pl-3 text-xs tracking-[2px] text-[#8B0000] mobile-link">ÍNDICE DE ESTRELLAS →</a>
+                        <div class="grid grid-cols-2 gap-x-4 gap-y-1 pl-3 pb-2">
+                            <a href="/#estrella-algol" class="mobile-nav-sublink">Algol</a>
+                            <a href="/#estrella-regulus" class="mobile-nav-sublink">Regulus</a>
+                            <a href="/#estrella-antares" class="mobile-nav-sublink">Antares</a>
+                            <a href="/#estrella-spica" class="mobile-nav-sublink">Spica</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button data-mobile-nav-toggle="mobile-puntos-list" type="button" class="mobile-link w-full flex items-center justify-between text-left text-[#c5b8a0]">
+                        <span>Puntos Astrológicos</span><span class="mobile-nav-chevron text-xs opacity-50 transition-transform">▼</span>
+                    </button>
+                    <div id="mobile-puntos-list" class="hidden mt-3 pl-1 border-l border-white/10 ml-1">
+                        <a href="/puntos-astrologicos" class="block py-2 pl-3 text-xs tracking-[2px] text-[#8B0000] mobile-link">GUÍA COMPLETA →</a>
+                        <div class="pl-3 pb-2 space-y-1">
+                            <div class="text-[10px] tracking-[2px] text-white/40 pt-1">ÁNGULOS DE LA CARTA</div>
+                            <a href="#ascendente" class="mobile-nav-sublink block">Ascendente</a>
+                            <a href="#descendente" class="mobile-nav-sublink block">Descendente</a>
+                            <a href="#medio-cielo" class="mobile-nav-sublink block">Medio Cielo</a>
+                            <a href="#fondo-del-cielo" class="mobile-nav-sublink block">Fondo del Cielo</a>
+                            <div class="text-[10px] tracking-[2px] text-white/40 pt-2">NODOS LUNARES</div>
+                            <a href="#nodo-norte" class="mobile-nav-sublink block">☊ Nodo Norte</a>
+                            <a href="#nodo-sur" class="mobile-nav-sublink block">☋ Nodo Sur</a>
+                            <div class="text-[10px] tracking-[2px] text-white/40 pt-2">LOTES / PARTES ÁRABES</div>
+                            <a href="#lote-fortuna" class="mobile-nav-sublink block">Fortuna / Tychê</a>
+                            <a href="#lote-espiritu" class="mobile-nav-sublink block">Espíritu / Daimon</a>
+                            <a href="#lote-eros" class="mobile-nav-sublink block">Eros</a>
+                            <a href="#lote-necesidad" class="mobile-nav-sublink block">Necesidad / Anankê</a>
+                            <a href="#lote-coraje" class="mobile-nav-sublink block">Coraje / Thrasos</a>
+                            <a href="#lote-victoria" class="mobile-nav-sublink block">Victoria / Nikê</a>
+                            <a href="#lote-nemesis" class="mobile-nav-sublink block">Némesis</a>
+                            <div class="text-[10px] tracking-[2px] text-white/40 pt-2">OTROS PUNTOS SENSIBLES</div>
+                            <a href="#sizigia-prenatal" class="mobile-nav-sublink block">Sizigia prenatal</a>
+                            <a href="#antiscios" class="mobile-nav-sublink block">Antiscios</a>
+                            <a href="#contra-antiscios" class="mobile-nav-sublink block">Contra-antiscios</a>
+                            <a href="#estrellas-fijas" class="mobile-nav-sublink block">Estrellas fijas</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="/#contacto" class="mobile-link">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-24 pb-14 border-b border-white/10 bg-[#0f0c0c]">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="inline-block px-4 py-1 mb-4 border border-[#8B0000]/40 text-[#8B0000] text-xs tracking-[3.5px]">
+                TRADICIÓN HELENÍSTICA • MEDIEVAL • RENACENTISTA
+            </div>
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-[52px] tracking-[-2px] leading-tight mb-6">
+                Puntos Astrológicos en la Tradición Helenística, Medieval y Renacentista
+            </h1>
+            <div class="space-y-4 text-lg text-[#c5b8a0] leading-relaxed">
+                <p>Además de los planetas, signos, casas y aspectos, la astrología tradicional utiliza diversos puntos sensibles de la carta natal. Algunos son puntos astronómicos, como los nodos lunares; otros son puntos matemáticos, como los lotes o partes; y otros nacen de la estructura local del cielo, como el Ascendente, el Medio Cielo y los demás ángulos.</p>
+                <p>En la tradición helenística, medieval y renacentista, estos puntos permiten precisar temas como la vida, el cuerpo, la fortuna material, la voluntad, la reputación, las relaciones, la herencia, la enfermedad, el destino, las crisis y las condiciones concretas de la existencia.</p>
+                <p>Estos puntos no deben entenderse como planetas físicos. Son lugares significativos del cielo calculados a partir del nacimiento y adquieren importancia cuando reciben planetas, aspectos, dignidades, regencias o contactos con estrellas fijas.</p>
+            </div>
+        </div>
+    </header>
+
+    <main id="puntos-astrologicos" class="max-w-4xl mx-auto px-6 py-16">
+
+        <section id="angulos-carta" class="mb-20 scroll-mt-28">
+            <div class="mb-10">
+                <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">SECCIÓN</div>
+                <h2 class="font-serif text-4xl md:text-5xl tracking-tight">Ángulos de la carta</h2>
+            </div>
+            <div class="space-y-6">
+            <article id="ascendente" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Ascendente</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Ascendente es el punto del zodiaco que se eleva por el horizonte oriental en el momento exacto del nacimiento. Es uno de los lugares más importantes de toda la carta, porque marca el inicio de la Casa I y establece la relación entre el cielo y el lugar terrestre del nacimiento.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, el Ascendente se relaciona con la vida, el cuerpo, la constitución física, la apariencia, el temperamento y la condición general del nativo. Desde este punto se organiza gran parte de la carta, especialmente cuando se utilizan casas por signo completo.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, el Ascendente conserva su importancia como significador de la vida y del cuerpo. Su regente, llamado señor del Ascendente, se analiza cuidadosamente para juzgar la salud, la fuerza vital, la conducta, la fortuna general y la manera en que la persona se manifiesta en el mundo.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, el Ascendente continúa siendo fundamental para juzgar el carácter, la complexión, la salud, la forma corporal y la dirección general de la vida. También se emplea en técnicas de astrología horaria, elecciones, revoluciones solares y direcciones.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Ascendente debe interpretarse junto con su regente, los planetas presentes en la Casa I, los aspectos que recibe, las dignidades del signo ascendente y la condición general de la Luna.</p>
+                </div>
+                </div>
+            </article>
+            <article id="descendente" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Descendente</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Descendente es el punto opuesto al Ascendente. Se ubica en el horizonte occidental y marca el comienzo simbólico de la Casa VII. Mientras el Ascendente representa al nativo, el Descendente representa al otro.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la tradición helenística, el Descendente se relaciona con el matrimonio, las uniones, los pactos, los socios, los adversarios y las relaciones que enfrentan directamente al nativo con otras personas. Es el lugar donde la vida propia se encuentra con voluntades externas.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, la Casa VII y el Descendente se usan para juzgar matrimonio, contratos, asociaciones, litigios y enemigos declarados. El regente del Descendente y los planetas ubicados allí muestran la calidad de las alianzas y oposiciones.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, el Descendente es esencial en temas de matrimonio, acuerdos, juicio legal, competencia, trato con clientes y enfrentamientos abiertos. En astrología horaria, la Casa VII describe con frecuencia a la otra parte involucrada en la pregunta.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Descendente debe interpretarse observando su signo, su regente, los planetas presentes en la Casa VII, los aspectos recibidos y la relación entre el regente del Ascendente y el regente del Descendente.</p>
+                </div>
+                </div>
+            </article>
+            <article id="medio-cielo" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Medio Cielo</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Medio Cielo, también llamado MC o Medium Coeli, es uno de los puntos más elevados de la carta. Representa la culminación, la visibilidad, la acción pública y la posición social. En muchas técnicas se relaciona con la Casa X, aunque según el sistema de casas utilizado puede no coincidir exactamente con la cúspide de la décima casa.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, el Medio Cielo está asociado con la praxis, es decir, las acciones visibles del nativo, su actividad pública, sus logros y aquello que se manifiesta ante los demás. Es un punto de elevación y exposición.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, el Medio Cielo adquiere gran importancia para juzgar profesión, honores, cargo, autoridad, reputación, relación con superiores y dignidad social. El regente del Medio Cielo y los planetas vinculados a él muestran el tipo de actividad pública y el grado de reconocimiento.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, el MC se utiliza para analizar carrera, oficio, fama, autoridad, cargos públicos, ascenso social y el destino visible del nativo. También es clave en astrología mundial y en cartas de eventos.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Medio Cielo se interpreta considerando su signo, su regente, los planetas cercanos al MC, los aspectos que recibe y la condición del Sol, especialmente en cartas diurnas.</p>
+                </div>
+                </div>
+            </article>
+            <article id="fondo-del-cielo" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Fondo del Cielo</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Fondo del Cielo, también llamado IC o Imum Coeli, es el punto opuesto al Medio Cielo. Representa la raíz de la carta, lo oculto bajo la tierra, la vida privada, el hogar, la familia y el final de las cosas.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, este lugar se relaciona con los fundamentos de la vida, los padres, la casa, la tierra, las propiedades y aquello que sostiene al nativo desde la base. Es un punto menos visible que el Medio Cielo, pero profundamente estructural.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, el Fondo del Cielo se usa para juzgar herencias, tierras, bienes inmuebles, familia, linaje, ancestros, sepulturas y condiciones del final de la vida. También puede indicar asuntos escondidos o encerrados.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, el IC mantiene su relación con el hogar, la familia, las raíces, las posesiones fijas, la vida privada y el término de los asuntos. En astrología horaria puede señalar el desenlace de una situación.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Fondo del Cielo se interpreta observando su signo, su regente, los planetas presentes en la Casa IV, los aspectos que recibe y su relación con la Luna y Saturno, según el tema analizado.</p>
+                </div>
+                </div>
+            </article>
+            </div>
+        </section>
+
+        <section id="nodos-lunares" class="mb-20 scroll-mt-28">
+            <div class="mb-10">
+                <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">SECCIÓN</div>
+                <h2 class="font-serif text-4xl md:text-5xl tracking-tight">Nodos lunares</h2>
+            </div>
+            <div class="space-y-6">
+            <article id="nodo-norte" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Nodo Norte</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Nodo Norte, llamado tradicionalmente Cabeza del Dragón, es el punto donde la órbita de la Luna cruza la eclíptica en dirección ascendente. No es un cuerpo físico, sino un punto astronómico de intersección orbital.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, los nodos lunares fueron considerados puntos de gran fuerza, especialmente por su relación con los eclipses. El Nodo Norte se asoció con aumento, crecimiento, intensificación y acumulación.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, la Cabeza del Dragón suele interpretarse como un punto que incrementa aquello con lo que entra en contacto. Puede aumentar la fuerza de un planeta, una casa o un tema, aunque su efecto depende de la naturaleza del planeta involucrado y del contexto de la carta.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, el Nodo Norte conserva su valor como punto de incremento, elevación y amplificación. No debe reducirse a la idea moderna de «misión de vida»; en tradición funciona más bien como un punto que aumenta o intensifica significados.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Nodo Norte se interpreta según la casa, el signo, los planetas conjuntos y el regente del signo donde se ubica. Su acción puede ser favorable o problemática dependiendo de qué aumenta y en qué condiciones lo hace.</p>
+                </div>
+                </div>
+            </article>
+            <article id="nodo-sur" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Nodo Sur</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Nodo Sur, llamado tradicionalmente Cola del Dragón, es el punto opuesto al Nodo Norte. Es el lugar donde la órbita lunar cruza la eclíptica en dirección descendente. Al igual que el Nodo Norte, no es un planeta, sino un punto astronómico.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, el Nodo Sur se vincula con disminución, separación, pérdida, descarga o debilitamiento. Su importancia también procede de la relación de los nodos con los eclipses.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, la Cola del Dragón suele interpretarse como un punto que reduce, vacía o debilita aquello con lo que entra en contacto. Puede indicar pérdida de fuerza, separación, desgaste o disminución del tema afectado.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, el Nodo Sur sigue siendo considerado un punto de reducción o debilitamiento. No debe interpretarse únicamente como «karma pasado», sino como un factor técnico que puede disminuir o alterar la expresión de planetas y casas.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Nodo Sur se analiza según su casa, signo, regente y planetas conjuntos. Su efecto depende del estado general de la carta y del tipo de planeta o tema que toca.</p>
+                </div>
+                </div>
+            </article>
+            </div>
+        </section>
+
+        <section id="lotes-partes-arabes" class="mb-20 scroll-mt-28">
+            <div class="mb-10">
+                <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">SECCIÓN</div>
+                <h2 class="font-serif text-4xl md:text-5xl tracking-tight">Lotes / Partes Árabes</h2>
+            </div>
+            <div class="space-y-6">
+            <article id="lote-fortuna" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Lote de Fortuna / Tychê</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Lote de Fortuna, llamado Tychê en la tradición griega, es uno de los puntos matemáticos más importantes de la astrología antigua. Se calcula a partir del Ascendente, el Sol y la Luna, invirtiendo la fórmula según la carta sea diurna o nocturna.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, Fortuna representa el cuerpo, las circunstancias externas, los bienes materiales, la prosperidad visible, la salud, la condición física y aquello que le ocurre al nativo más allá de su voluntad consciente.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, la Parte de Fortuna fue usada ampliamente para juzgar riqueza, sustento, fortuna material, condiciones corporales y prosperidad. Su regente y los planetas que la aspectan indican la calidad de los bienes y oportunidades concretas.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, Fortuna continúa siendo esencial en cartas natales, revoluciones solares, astrología horaria y elecciones. Se analiza para conocer la fortuna material, los recursos, la estabilidad y las condiciones tangibles de la vida.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Lote de Fortuna se interpreta observando el signo donde cae, la casa, su regente, los aspectos que recibe, los planetas conjuntos y la relación con la Luna.</p>
+                </div>
+                </div>
+            </article>
+            <article id="lote-espiritu" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Lote del Espíritu / Daimon</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Lote del Espíritu, llamado Daimon en la tradición griega, es el complemento del Lote de Fortuna. También se calcula a partir del Ascendente, el Sol y la Luna, pero con una fórmula inversa a la de Fortuna.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, el Lote del Espíritu representa la voluntad, la intención, la mente directiva, la acción consciente, la vocación y el impulso interior del nativo. Mientras Fortuna muestra lo que le ocurre al cuerpo y a las circunstancias, Espíritu muestra aquello que el nativo busca realizar.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, el Lote del Espíritu fue usado para juzgar propósito, intención, pensamiento, acción voluntaria, dignidad moral y orientación interior. Su regente muestra cómo se expresa la voluntad del nativo.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, Daimon se interpreta como punto de dirección espiritual, mental y vocacional. Es útil para estudiar profesión, decisiones, actos deliberados y la manera en que el nativo participa activamente en su destino.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Lote del Espíritu se analiza por signo, casa, regente, aspectos y relación con el Sol, especialmente en asuntos de voluntad, profesión y dirección consciente.</p>
+                </div>
+                </div>
+            </article>
+            <article id="lote-eros" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Lote de Eros</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Lote de Eros pertenece al grupo de los siete lotes herméticos. Se relaciona con el deseo, la atracción, el amor, el placer, la unión y los vínculos que nacen del impulso de acercamiento.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, Eros no se limita al amor romántico. Representa toda forma de deseo que mueve al alma hacia algo: afectos, placer, vínculos, inclinaciones, seducción y búsqueda de unión.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, este lote fue utilizado para observar temas de amor, deseo, relaciones, placeres y atracciones. Su interpretación depende de su regente, la casa en que cae y los planetas que lo aspectan.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, Eros puede emplearse para estudiar inclinaciones afectivas, uniones, deseo, placeres y aquello que atrae al nativo. Su sentido debe combinarse con Venus, la Casa V y la Casa VII.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Lote de Eros se interpreta considerando su signo, casa, regente, aspectos, relación con Venus y condición general de los significadores de pareja y placer.</p>
+                </div>
+                </div>
+            </article>
+            <article id="lote-necesidad" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Lote de Necesidad / Anankê</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Lote de Necesidad, llamado Anankê, representa aquello que obliga, limita, presiona o se impone al nativo. Está relacionado con la fuerza del destino, las restricciones, la compulsión y las circunstancias que no dependen plenamente de la voluntad.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, Anankê expresa la idea de necesidad inevitable: aquello que debe ser enfrentado porque forma parte de la estructura del destino. No siempre indica desgracia, pero sí condiciones obligatorias.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, este lote se asocia con cargas, obligaciones, presiones, límites, deudas, dependencias y situaciones que fuerzan al nativo a actuar de cierta manera.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, Necesidad se usa para observar restricciones, deberes, imposiciones y temas donde la libertad del nativo se ve reducida. Su significado debe contrastarse con el Lote del Espíritu, que representa la voluntad.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Lote de Necesidad se interpreta por signo, casa, regente, aspectos y relación con Saturno, Mercurio y los planetas que indiquen cargas o vínculos obligatorios.</p>
+                </div>
+                </div>
+            </article>
+            <article id="lote-coraje" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Lote de Coraje / Thrasos</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Lote de Coraje, llamado Thrasos, pertenece a los siete lotes herméticos y se relaciona con la audacia, la valentía, el impulso, el riesgo y la capacidad de actuar frente al peligro.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, Thrasos muestra el principio de atrevimiento. Puede indicar fuerza para enfrentar obstáculos, pero también exceso de temeridad si está mal configurado.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, este lote puede vincularse con valentía, agresividad, iniciativa, combate, decisiones arriesgadas y capacidad de imponerse en situaciones difíciles.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, Coraje se interpreta en relación con la acción, el riesgo, los conflictos, la iniciativa personal y la capacidad de sostener una empresa bajo presión. Debe leerse junto con Marte.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Lote de Coraje se analiza por signo, casa, regente, aspectos y relación con Marte. Bien dispuesto puede indicar valor y determinación; mal dispuesto, imprudencia o violencia.</p>
+                </div>
+                </div>
+            </article>
+            <article id="lote-victoria" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Lote de Victoria / Nikê</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Lote de Victoria, llamado Nikê, representa el triunfo, la ventaja, el éxito, la conquista y la capacidad de superar obstáculos o adversarios.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, Nikê se relaciona con la victoria en sentido amplio: ganar, prevalecer, obtener reconocimiento, imponerse en una disputa o alcanzar un objetivo.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, este lote se utiliza para examinar éxito, fortuna en competencias, protección, honores y capacidad de superar dificultades. Su significado se fortalece cuando está bien dispuesto y conectado con planetas benéficos.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, Victoria se interpreta en asuntos de carrera, litigios, competencias, guerras simbólicas o reales, logros y ascenso social. Debe considerarse su relación con Júpiter y el Medio Cielo.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Lote de Victoria se analiza por signo, casa, regente, aspectos y relación con Júpiter, el Sol y la Casa X.</p>
+                </div>
+                </div>
+            </article>
+            <article id="lote-nemesis" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Lote de Némesis</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">El Lote de Némesis representa la consecuencia, la corrección, el castigo simbólico, la pérdida, el equilibrio frente al exceso y las fuerzas que devuelven proporción a la vida.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, Némesis no debe entenderse solo como desgracia. Representa una fuerza de compensación: aquello que limita, corrige o devuelve equilibrio cuando hay exceso, orgullo o desmesura.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, este lote puede relacionarse con caída, pérdida, corrección, enemigos, castigos, obstáculos y consecuencias de actos anteriores. Su interpretación depende mucho de la condición de su regente.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, Némesis se usa para observar advertencias, pérdidas necesarias, correcciones del destino y situaciones donde el nativo debe enfrentar el resultado de sus acciones o excesos.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el Lote de Némesis se interpreta por signo, casa, regente, aspectos y relación con Saturno, Marte y los planetas que indiquen juicio, pérdida o corrección.</p>
+                </div>
+                </div>
+            </article>
+            </div>
+        </section>
+
+        <section id="otros-puntos-sensibles" class="mb-20 scroll-mt-28">
+            <div class="mb-10">
+                <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">SECCIÓN</div>
+                <h2 class="font-serif text-4xl md:text-5xl tracking-tight">Otros puntos sensibles</h2>
+            </div>
+            <div class="space-y-6">
+            <article id="sizigia-prenatal" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Sizigia prenatal</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">La sizigia prenatal es la Luna Nueva o Luna Llena inmediatamente anterior al nacimiento. Es un punto fundamental de la tradición astrológica porque vincula la carta natal con el ciclo soli-lunar previo a la encarnación.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, la sizigia prenatal se usaba para evaluar condiciones generales del nacimiento, vitalidad, fortuna y ciertos procedimientos técnicos relacionados con la vida del nativo.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, la sizigia fue importante en métodos de determinación del hyleg, en estudios de duración de la vida, salud, fortuna y condiciones generales del nacimiento. También servía para reforzar o corregir juicios natales.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, la sizigia prenatal siguió usándose en astrología natal, médica y predictiva. Su grado, su regente y los planetas que la aspectan pueden aportar información sobre la raíz previa del nacimiento.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, la sizigia prenatal se interpreta observando si fue Luna Nueva o Luna Llena, el grado zodiacal donde ocurrió, su regente, los aspectos recibidos y su relación con el Ascendente, el Sol y la Luna natal.</p>
+                </div>
+                </div>
+            </article>
+            <article id="antiscios" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Antiscios</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">Los antiscios son puntos reflejados del zodiaco respecto al eje solsticial Cáncer-Capricornio. Se basan en la equivalencia de luz solar entre signos que comparten una misma distancia respecto a los solsticios.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, la idea de signos de igual poder o igual luz ya estaba presente en la forma de relacionar signos que comparten condiciones solares semejantes.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, los antiscios se desarrollaron como relaciones ocultas entre planetas o puntos. Dos planetas en antiscio pueden actuar como si existiera una conexión secreta o indirecta entre ellos.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, los antiscios fueron usados en cartas natales, horarias y electivas. Autores tradicionales los consideraron importantes para descubrir vínculos no evidentes por aspecto zodiacal normal.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, un antiscio se interpreta observando qué planeta o punto se refleja, qué otro planeta recibe ese reflejo, qué casas gobiernan ambos y si la relación fortalece o perturba el juicio general.</p>
+                </div>
+                </div>
+            </article>
+            <article id="contra-antiscios" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Contra-antiscios</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">Los contra-antiscios son puntos opuestos a los antiscios. Mientras el antiscio puede indicar una conexión oculta por igualdad de luz, el contra-antiscio suele interpretarse como una relación indirecta de tensión, oposición o interferencia.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, su fundamento procede de las simetrías zodiacales y de las relaciones entre signos según luz, ascensión y posición respecto a los ejes solares.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, los contra-antiscios se usaron para detectar contactos conflictivos que no aparecían mediante los aspectos mayores tradicionales. Funcionan como una oposición simbólica indirecta.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, los contra-antiscios se aplicaron especialmente en astrología horaria y natal para observar obstáculos, contradicciones, interferencias o vínculos problemáticos entre significadores.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, el contra-antiscio se interpreta observando qué planeta o punto produce el reflejo, qué planeta o cúspide lo recibe, qué casas están implicadas y si el contacto confirma otros testimonios de tensión.</p>
+                </div>
+                </div>
+            </article>
+            <article id="estrellas-fijas" class="point-card scroll-mt-28">
+                <h3 class="font-serif text-3xl tracking-tight mb-6 text-white">Estrellas fijas</h3>
+                <div class="space-y-5">
+                <div class="point-field">
+                    <h4 class="point-label">Qué es</h4>
+                    <p class="point-text">Las estrellas fijas no son puntos matemáticos, sino estrellas reales del cielo que la astrología tradicional considera significativas cuando se encuentran en conjunción estrecha con planetas, ángulos o puntos importantes de la carta.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Importancia helenística</h4>
+                    <p class="point-text">En la astrología helenística, las estrellas fijas ya eran utilizadas para añadir cualidades específicas a planetas y lugares de la carta. Su naturaleza podía relacionarse simbólicamente con planetas como Marte, Júpiter, Venus, Saturno o Mercurio.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Desarrollo medieval</h4>
+                    <p class="point-text">En la astrología medieval, las estrellas fijas tuvieron gran importancia en astrología natal, mundial, mágica y médica. Se les atribuyeron naturalezas planetarias y efectos particulares, especialmente cuando tocaban el Ascendente, Medio Cielo, Sol, Luna o planetas personales.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Uso renacentista</h4>
+                    <p class="point-text">En la astrología renacentista, autores como William Lilly y otros astrólogos tradicionales continuaron usando estrellas fijas para reforzar juicios sobre honores, peligros, talento, caída, protección, violencia, fama o elevación social.</p>
+                </div>
+                <div class="point-field">
+                    <h4 class="point-label">Cómo se interpreta en una carta natal</h4>
+                    <p class="point-text">En una carta natal, las estrellas fijas deben interpretarse con prudencia. Son más relevantes cuando están en conjunción estrecha con planetas o ángulos. Ejemplos importantes son Regulus, Spica, Aldebarán, Antares y Algol. No deben interpretarse de manera aislada ni exagerada: siempre deben confirmarse con el resto de la carta.</p>
+                </div>
+                </div>
+            </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-white/10 py-12 text-center bg-[#0f0c0c]">
+        <div class="max-w-2xl mx-auto px-6">
+            <div class="font-serif text-2xl tracking-tight text-white mb-3">AstroCrudo</div>
+            <p class="text-sm text-[#c5b8a0] leading-relaxed">Sitio oficial de AstroCrudo, proyecto de astrología tradicional.</p>
+            <div class="mt-6 text-sm tracking-wider">
+                <a href="mailto:astrocrudo@gmail.com" class="text-[#c5b8a0] hover:text-[#8B0000] transition-colors">astrocrudo@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="hidden fixed bottom-6 right-6 w-12 h-12 bg-[#8B0000] hover:bg-[#5c1a1a] text-white rounded-full items-center justify-center shadow-lg z-40 transition-all text-xl">↑</button>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

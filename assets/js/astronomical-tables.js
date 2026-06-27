@@ -10,8 +10,19 @@ const HERO_PLANET_IDS = [
 ];
 
 const HERO_NODE_IDS = ['nodo-norte', 'nodo-sur'];
+const HERO_ANGLE_IDS = ['ascendente', 'descendente', 'medio-cielo', 'fondo-del-cielo'];
 const HERO_STAR_IDS = ['algol', 'regulus', 'spica'];
-const HERO_LOT_IDS = ['fortuna'];
+const HERO_LOT_IDS = [
+  'fortuna', 'espiritu', 'eros', 'necesidad', 'coraje', 'victoria', 'nemesis'
+];
+
+const BODY_SECTIONS = [
+  { key: 'planeta', label: 'PLANETAS' },
+  { key: 'nodo', label: 'NODOS LUNARES' },
+  { key: 'angulo', label: 'ÁNGULOS DE LA CARTA' },
+  { key: 'lote', label: 'LOTES / PARTES ÁRABES' },
+  { key: 'punto', label: 'OTROS PUNTOS SENSIBLES' },
+];
 
 const PLANET_SYMBOLS = {
   'Sol': '☉', 'Luna': '☽', 'Mercurio': '☿', 'Venus': '♀', 'Marte': '♂',
@@ -22,7 +33,17 @@ const HERO_SYMBOLS = {
   ...PLANET_SYMBOLS,
   'nodo-norte': '☊',
   'nodo-sur': '☋',
+  'ascendente': 'ASC',
+  'descendente': 'DSC',
+  'medio-cielo': 'MC',
+  'fondo-del-cielo': 'IC',
   'fortuna': '⊗',
+  'espiritu': '◇',
+  'eros': '♡',
+  'necesidad': '⚓',
+  'coraje': '⚔',
+  'victoria': '✦',
+  'nemesis': '⚖',
   'algol': '★',
   'regulus': '★',
   'spica': '★'
@@ -31,8 +52,28 @@ const HERO_SYMBOLS = {
 const HERO_LABELS = {
   'nodo-norte': 'Nodo Norte',
   'nodo-sur': 'Nodo Sur',
-  'fortuna': 'Fortuna (Tychê)'
+  'ascendente': 'Ascendente',
+  'descendente': 'Descendente',
+  'medio-cielo': 'Medio Cielo',
+  'fondo-del-cielo': 'Fondo del Cielo',
+  'fortuna': 'Fortuna (Tychê)',
+  'espiritu': 'Espíritu (Daimon)',
+  'eros': 'Eros',
+  'necesidad': 'Necesidad (Anankê)',
+  'coraje': 'Coraje (Thrasos)',
+  'victoria': 'Victoria (Nikê)',
+  'nemesis': 'Némesis'
 };
+
+function inferBodyCategory(body) {
+  if (body.category) return body.category;
+  if (HERO_PLANET_IDS.includes(body.id)) return 'planeta';
+  if (HERO_NODE_IDS.includes(body.id)) return 'nodo';
+  if (HERO_ANGLE_IDS.includes(body.id)) return 'angulo';
+  if (HERO_LOT_IDS.includes(body.id)) return 'lote';
+  if (body.id === 'sizigia-prenatal') return 'punto';
+  return 'planeta';
+}
 
 function parseDms(str) {
   const match = String(str).trim().match(/(-?\d+)°\s*(\d+)'\s*([\d.]+)"/);
@@ -103,6 +144,14 @@ function heroSectionRow(label) {
   `;
 }
 
+function bodiesSectionRow(label) {
+  return `
+    <tr class="astro-table-section">
+      <td colspan="7">${label}</td>
+    </tr>
+  `;
+}
+
 function heroBodyRow(id, name, position, velocity, sign = null) {
   const symbol = HERO_SYMBOLS[id] || HERO_SYMBOLS[name] || '';
   const label = HERO_LABELS[id] || name;
@@ -131,7 +180,7 @@ function renderHeroCelestialTable(meta, bodies, stars, lots) {
   const rows = [];
 
   if (bodies) {
-    const planets = bodies.filter(body => HERO_PLANET_IDS.includes(body.id));
+    const planets = bodies.filter(body => inferBodyCategory(body) === 'planeta');
     if (planets.length) {
       rows.push(heroSectionRow('Planetas'));
       planets.forEach(body => {
@@ -139,19 +188,35 @@ function renderHeroCelestialTable(meta, bodies, stars, lots) {
       });
     }
 
-    const nodes = bodies.filter(body => HERO_NODE_IDS.includes(body.id));
+    const nodes = bodies.filter(body => inferBodyCategory(body) === 'nodo');
     if (nodes.length) {
-      rows.push(heroSectionRow('Nodos'));
+      rows.push(heroSectionRow('Nodos lunares'));
       nodes.forEach(body => {
+        rows.push(heroBodyRow(body.id, body.name, body.position, body.velocity));
+      });
+    }
+
+    const angles = bodies.filter(body => inferBodyCategory(body) === 'angulo');
+    if (angles.length) {
+      rows.push(heroSectionRow('Ángulos'));
+      angles.forEach(body => {
+        rows.push(heroBodyRow(body.id, body.name, body.position, body.velocity));
+      });
+    }
+
+    const lotBodies = bodies.filter(body => inferBodyCategory(body) === 'lote');
+    if (lotBodies.length) {
+      rows.push(heroSectionRow('Lotes árabes'));
+      lotBodies.forEach(body => {
         rows.push(heroBodyRow(body.id, body.name, body.position, body.velocity));
       });
     }
   }
 
-  if (lots) {
+  if (lots && !bodies?.some(body => inferBodyCategory(body) === 'lote')) {
     const heroLots = lots.filter(lote => HERO_LOT_IDS.includes(lote.id));
     if (heroLots.length) {
-      rows.push(heroSectionRow('Lote árabe'));
+      rows.push(heroSectionRow('Lotes árabes'));
       heroLots.forEach(lote => {
         const house = lote.house != null ? `Casa ${lote.house}` : '—';
         rows.push(heroBodyRow(lote.id, lote.name, lote.position, house, lote.sign));
@@ -184,7 +249,7 @@ function renderHeroCelestialTable(meta, bodies, stars, lots) {
 function renderAstronomicalTables() {
   if (typeof ASTRONOMICAL_POSITIONS === "undefined") return;
 
-  const { meta, bodies, stars, lots } = ASTRONOMICAL_POSITIONS;
+  const { meta, bodies, stars, lots, lunarPhases, antiscia } = ASTRONOMICAL_POSITIONS;
 
   renderHeroCelestialTable(meta, bodies, stars, lots);
 
@@ -195,17 +260,53 @@ function renderAstronomicalTables() {
 
   const bodiesTable = document.getElementById("astro-bodies-tbody");
   if (bodiesTable && bodies) {
-    bodiesTable.innerHTML = bodies.map(body => `
-      <tr id="cuerpo-${body.id}">
-        <td class="font-medium text-white/90">${body.name}</td>
-        <td>${positionCell(body.position)}</td>
-        <td class="tabular-nums">${cell(body.velocity)}</td>
-        <td class="tabular-nums hidden lg:table-cell">${cell(body.altitude)}</td>
-        <td class="tabular-nums hidden lg:table-cell">${cell(body.azimuth)}</td>
-        <td class="tabular-nums hidden md:table-cell">${cell(body.eclipticLatitude)}</td>
-        <td class="tabular-nums hidden md:table-cell">${cell(body.declination)}</td>
-      </tr>
-    `).join("");
+    const rows = [];
+
+    BODY_SECTIONS.forEach(section => {
+      const sectionBodies = bodies.filter(body => inferBodyCategory(body) === section.key);
+      if (!sectionBodies.length) return;
+
+      rows.push(bodiesSectionRow(section.label));
+      sectionBodies.forEach(body => {
+        rows.push(`
+          <tr id="cuerpo-${body.id}">
+            <td class="font-medium text-white/90">${body.name}</td>
+            <td>${positionCell(body.position)}</td>
+            <td class="tabular-nums">${cell(body.velocity)}</td>
+            <td class="tabular-nums hidden lg:table-cell">${cell(body.altitude)}</td>
+            <td class="tabular-nums hidden lg:table-cell">${cell(body.azimuth)}</td>
+            <td class="tabular-nums hidden md:table-cell">${cell(body.eclipticLatitude)}</td>
+            <td class="tabular-nums hidden md:table-cell">${cell(body.declination)}</td>
+          </tr>
+        `);
+      });
+    });
+
+    const categorizedIds = new Set();
+    BODY_SECTIONS.forEach(section => {
+      bodies
+        .filter(body => inferBodyCategory(body) === section.key)
+        .forEach(body => categorizedIds.add(body.id));
+    });
+    const uncategorized = bodies.filter(body => !categorizedIds.has(body.id));
+    if (uncategorized.length) {
+      if (rows.length) rows.push(bodiesSectionRow('OTROS'));
+      uncategorized.forEach(body => {
+        rows.push(`
+          <tr id="cuerpo-${body.id}">
+            <td class="font-medium text-white/90">${body.name}</td>
+            <td>${positionCell(body.position)}</td>
+            <td class="tabular-nums">${cell(body.velocity)}</td>
+            <td class="tabular-nums hidden lg:table-cell">${cell(body.altitude)}</td>
+            <td class="tabular-nums hidden lg:table-cell">${cell(body.azimuth)}</td>
+            <td class="tabular-nums hidden md:table-cell">${cell(body.eclipticLatitude)}</td>
+            <td class="tabular-nums hidden md:table-cell">${cell(body.declination)}</td>
+          </tr>
+        `);
+      });
+    }
+
+    bodiesTable.innerHTML = rows.join('');
   }
 
   const starsTable = document.getElementById("astro-stars-tbody");
@@ -218,6 +319,48 @@ function renderAstronomicalTables() {
         <td class="tabular-nums">${cell(star.magnitude)}</td>
       </tr>
     `).join("");
+  }
+
+  const phasesTitle = document.getElementById("astro-lunar-phases-title");
+  const phasesTable = document.getElementById("astro-lunar-phases-tbody");
+  if (phasesTitle && lunarPhases) {
+    phasesTitle.textContent = lunarPhases.monthLabel
+      ? `Fases lunares — ${lunarPhases.monthLabel}`
+      : 'Fases lunares del mes';
+  }
+  if (phasesTable && lunarPhases?.phases?.length) {
+    phasesTable.innerHTML = lunarPhases.phases.map(phase => `
+      <tr id="${phase.id}">
+        <td class="font-medium text-white/90">${phase.name}</td>
+        <td class="tabular-nums text-[#c5b8a0] whitespace-nowrap">${cell(phase.datetime)}</td>
+        <td>${cell(phase.sign)}</td>
+        <td class="tabular-nums">${positionCell(phase.positionFull || phase.position, phase.sign)}</td>
+      </tr>
+    `).join('');
+  } else if (phasesTable) {
+    phasesTable.innerHTML = `
+      <tr>
+        <td colspan="4" class="text-center text-white/40 py-6 text-xs tracking-wider">Sin datos de fases lunares</td>
+      </tr>
+    `;
+  }
+
+  const antisciaTable = document.getElementById("astro-antiscia-tbody");
+  if (antisciaTable && antiscia?.length) {
+    antisciaTable.innerHTML = antiscia.map(row => `
+      <tr id="antiscia-${row.id}">
+        <td class="font-medium text-white/90">${row.source}</td>
+        <td>${positionCell(row.original)}</td>
+        <td>${positionCell(row.antiscio)}</td>
+        <td>${positionCell(row.contraAntiscio)}</td>
+      </tr>
+    `).join('');
+  } else if (antisciaTable) {
+    antisciaTable.innerHTML = `
+      <tr>
+        <td colspan="4" class="text-center text-white/40 py-6 text-xs tracking-wider">Sin datos de antiscios</td>
+      </tr>
+    `;
   }
 
   const lotsTable = document.getElementById("astro-lots-tbody");
