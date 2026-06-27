@@ -129,6 +129,7 @@ function init() {
   initShadowMirror();
   initMobileMenu();
   initNavDropdowns();
+  initAstronomicalTables();
 
   // NOTA: Se removió el gate de edad obligatorio al entrar al sitio principal.
   // Ya no hay material gráfico explícito. Se mantiene showAgeGate() solo para
