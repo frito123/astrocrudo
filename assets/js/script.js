@@ -100,6 +100,26 @@ const SHADOW_MIRROR = {
   "Aries": "Tu fuego marcial sabe iniciar, cortar y avanzar sin pedir permiso. Pero la valentía se corrompe cuando se vuelve puro impulso. Muchas veces actúas antes de sentir, atacas antes de comprender y avanzas antes de mirar la herida que te empuja. La velocidad puede ser una forma eficaz de no permanecer contigo mismo."
 };
 
+/**
+ * ESPEJO DE LA LUZ
+ *
+ * La virtud visible de cada signo cuando su naturaleza se ordena.
+ */
+const LIGHT_MIRROR = {
+  "Aries": "Tu luz aparece cuando el fuego marcial deja de ser simple impulso y se convierte en coraje verdadero. Sabes iniciar donde otros dudan, cortar lo que ya no sirve y abrir camino incluso cuando no hay garantías. Cuando tu fuerza está ordenada, no destruyes: despiertas.",
+  "Tauro": "Tu luz está en la fidelidad a lo real. Sabes cuidar lo que tiene cuerpo, tiempo y raíz. Donde otros se dispersan, tú permaneces. Donde otros prometen, tú sostienes. Cuando tu naturaleza venusina está en equilibrio, enseñas que la belleza también puede ser paciencia, presencia y cultivo.",
+  "Géminis": "Tu luz está en la inteligencia que conecta. Tu mente mercurial sabe traducir, comparar, preguntar y abrir caminos entre mundos distintos. Cuando no usas la palabra para escapar, la usas para revelar. En tu mejor forma, no confundes: haces circular el aire donde antes había rigidez.",
+  "Cáncer": "Tu luz está en la memoria que protege y en el cuidado que da forma a un hogar. Tu naturaleza lunar sabe recibir, nutrir y guardar lo vulnerable. Cuando tu sensibilidad está ordenada, no retienes por miedo: ofreces refugio. Enseñas que toda vida necesita un lugar donde poder descansar.",
+  "Leo": "Tu luz está en la nobleza del corazón solar. Sabes dar presencia, calor y dignidad. Cuando tu fuego está bien gobernado, no buscas brillar para dominar, sino para recordar a otros su propia fuerza. Tu verdadera grandeza no está en ser mirado, sino en hacer que la vida vuelva a sentirse digna.",
+  "Virgo": "Tu luz está en el discernimiento. Tu naturaleza mercurial y terrestre sabe ordenar, limpiar, estudiar y mejorar lo que está disperso. Cuando tu juicio está al servicio de la vida, no condenas la imperfección: ayudas a darle forma. Enseñas que lo pequeño también sostiene el mundo.",
+  "Libra": "Tu luz está en la medida justa. Tu naturaleza venusina sabe buscar proporción, belleza, acuerdo y trato honorable. Cuando no sacrificas tu verdad por agradar, te conviertes en puente verdadero. Enseñas que la armonía no es ausencia de conflicto, sino arte de dar a cada cosa su lugar.",
+  "Escorpio": "Tu luz está en la valentía de mirar lo oculto sin apartar la vista. Tu naturaleza marcial y acuática sabe penetrar donde otros solo ven superficie. Cuando tu intensidad está purificada, no controlas ni destruyes: transformas. Enseñas que incluso en lo oscuro puede encontrarse una verdad necesaria.",
+  "Sagitario": "Tu luz está en la búsqueda noble de sentido. Tu fuego jupiteriano mira más allá de lo inmediato y recuerza que la vida necesita dirección, fe y horizonte. Cuando tu entusiasmo está guiado por sabiduría, no huyes hacia lo lejano: inspiras a otros a caminar con propósito.",
+  "Capricornio": "Tu luz está en la fuerza que resiste sin rendirse. Tu naturaleza saturnina conoce el peso del tiempo, la disciplina y la responsabilidad. Cuando tu dureza se vuelve madurez, sostienes estructuras que permiten vivir a otros. Enseñas que la verdadera autoridad no oprime: da forma, límite y continuidad.",
+  "Acuario": "Tu luz está en la claridad de pensamiento y en la fidelidad a principios más altos que el deseo inmediato. Tu naturaleza saturnina y aérea sabe mirar con distancia, ordenar ideas y pensar en lo común. Cuando tu razón no se separa del corazón, puedes servir a la humanidad sin olvidar a las personas concretas.",
+  "Piscis": "Tu luz está en la compasión que no necesita imponerse. Tu naturaleza jupiteriana, húmeda y mutable sabe recibir el dolor ajeno, imaginar mundos más amplios y ablandar lo que se ha endurecido demasiado. Cuando conservas tu forma interior, tu entrega no te borra: bendice, consuela y reconcilia."
+};
+
 // ============================================
 // DATOS DE SIGNOS
 // ============================================
@@ -127,6 +147,7 @@ function init() {
   initTailwind();
   initHoroscopes();
   initShadowMirror();
+  initLightMirror();
   initMobileMenu();
   initNavDropdowns();
   initAstronomicalTables();
@@ -556,6 +577,74 @@ function showShadowReflection(sign) {
     </div>
   `;
   
+  document.body.appendChild(modal);
+}
+
+// ============================================
+// ESPEJO DE LA LUZ
+// ============================================
+
+function initLightMirror() {
+  const grid = document.getElementById('light-mirror-grid');
+  if (!grid) return;
+
+  ZODIAC.forEach(({ sign }) => {
+    if (!LIGHT_MIRROR[sign]) return;
+    const zodiacData = ZODIAC.find(z => z.sign === sign);
+
+    const card = document.createElement('div');
+    card.className = 'light-card p-6 rounded-2xl cursor-pointer';
+
+    card.innerHTML = `
+      <div class="flex items-center gap-x-3 mb-4">
+        <span class="text-3xl">${zodiacData.symbol}</span>
+        <span class="font-medium text-lg">${sign}</span>
+      </div>
+      <div class="text-sm leading-relaxed text-[#c5b8a0]">
+        ${LIGHT_MIRROR[sign]}
+      </div>
+    `;
+
+    card.onclick = () => showLightReflection(sign);
+    grid.appendChild(card);
+  });
+}
+
+function showLightReflection(sign) {
+  const text = LIGHT_MIRROR[sign];
+  const zodiacData = ZODIAC.find(z => z.sign === sign);
+
+  const modal = document.createElement('div');
+  modal.className = 'fixed inset-0 z-[120] bg-black/90 flex items-center justify-center p-6';
+
+  modal.innerHTML = `
+    <div onclick="event.target.remove()" class="absolute inset-0"></div>
+    <div onclick="event.stopImmediatePropagation()" class="relative bg-[#0a0808] border border-white/10 max-w-2xl w-full rounded-3xl p-10">
+      <div class="flex items-center gap-x-4">
+        <span class="text-5xl">${zodiacData.symbol}</span>
+        <div>
+          <div class="text-[#d4c4a0] text-xs tracking-[3px]">ESPEJO DE LA LUZ</div>
+          <div class="font-serif text-4xl tracking-tight mt-1">${sign}</div>
+        </div>
+      </div>
+
+      <div class="mt-8 text-[17px] leading-relaxed text-[#c5b8a0]">
+        ${text}
+      </div>
+
+      <div class="mt-9 flex gap-4">
+        <button onclick="this.closest('.fixed').remove()"
+                class="flex-1 h-12 border border-white/20 rounded-2xl text-sm tracking-wider hover:border-white/50 transition-colors">
+          CERRAR
+        </button>
+        <button onclick="showLightReflection('${sign}'); this.closest('.fixed').remove()"
+                class="flex-1 h-12 border border-[#d4c4a0]/50 bg-[#d4c4a0]/10 rounded-2xl text-sm tracking-wider hover:bg-[#d4c4a0]/20 transition-colors">
+          VER OTRO ESPEJO
+        </button>
+      </div>
+    </div>
+  `;
+
   document.body.appendChild(modal);
 }
 

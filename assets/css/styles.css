@@ -265,6 +265,18 @@ h1 {
   background: #151111;
 }
 
+/* Mirror / Espejo de la Luz */
+.light-card {
+  background: #0f0c0c;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.light-card:hover {
+  border-color: rgba(212, 196, 160, 0.45);
+  background: #151210;
+}
+
 /* Typography refinements */
 h2 {
   font-feature-settings: "kern";
