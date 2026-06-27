@@ -116,7 +116,23 @@
 
                 <a href="/naturaleza" class="hover:text-[#8B0000]">Naturaleza</a>
                 <a href="/planetas" class="hover:text-[#8B0000]">Planetas</a>
-                <a href="/lecturas" class="hover:text-[#8B0000] text-[#c5b8a0]">Lecturas</a>
+
+                <div class="relative group nav-dropdown" data-nav-dropdown id="lecturas-nav-dropdown">
+                    <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 text-[#c5b8a0] hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
+                        Lecturas
+                        <span class="text-[9px] opacity-50 group-hover:opacity-100 transition-opacity">▼</span>
+                    </button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible transition-all duration-200 pointer-events-none">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-3 shadow-2xl min-w-[260px]">
+                            <a href="#servicios" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-2 pb-2 border-b border-white/10 hover:text-white transition-colors px-2">VER SERVICIOS →</a>
+                            <div class="grid grid-cols-1 gap-1">
+                                <a href="#carta-natal-tradicional" class="nav-dropdown-link">Carta Natal Tradicional</a>
+                                <a href="#revolucion-solar" class="nav-dropdown-link">Revolución Solar</a>
+                                <a href="#astrologia-predictiva" class="nav-dropdown-link">Astrología Predictiva</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <a href="/" class="text-sm text-white/50 hover:text-[#8B0000]">← Volver al sitio</a>
         </div>
@@ -164,7 +180,7 @@
 
             <div class="space-y-4" id="services-accordion">
 
-                <article class="service-item" data-service>
+                <article id="carta-natal-tradicional" class="service-item scroll-mt-28" data-service>
                     <button type="button" class="service-trigger" aria-expanded="false">
                         <span>
                             <span class="block font-serif text-2xl tracking-tight text-white">Carta Natal Tradicional</span>
@@ -181,7 +197,7 @@
                     </div>
                 </article>
 
-                <article class="service-item" data-service>
+                <article id="revolucion-solar" class="service-item scroll-mt-28" data-service>
                     <button type="button" class="service-trigger" aria-expanded="false">
                         <span>
                             <span class="block font-serif text-2xl tracking-tight text-white">Revolución Solar</span>
@@ -199,7 +215,7 @@
                     </div>
                 </article>
 
-                <article class="service-item" data-service>
+                <article id="astrologia-predictiva" class="service-item scroll-mt-28" data-service>
                     <button type="button" class="service-trigger" aria-expanded="false">
                         <span>
                             <span class="block font-serif text-2xl tracking-tight text-white">Astrología Predictiva</span>
@@ -251,7 +267,7 @@
     <section class="py-20 section border-t border-white/10 text-center">
         <div class="max-w-xl mx-auto">
             <h3 class="font-serif text-4xl tracking-tight mb-6">Lecturas tradicionales</h3>
-            <p class="text-[#c5b8a0] mb-8">Elige el servicio que necesitas en el menú superior y reserva tu consulta según el método clásico.</p>
+            <p class="text-[#c5b8a0] mb-8">Elige el servicio que necesitas en el menú <strong class="text-white/80 font-normal">Lecturas</strong> y reserva tu consulta según el método clásico.</p>
             
             <a href="#servicios" class="inline-flex items-center justify-center px-12 h-14 bg-[#8B0000] hover:bg-[#5c1a1a] text-white text-sm tracking-[1.5px] rounded-full transition-colors">
                 VER SERVICIOS DISPONIBLES
@@ -290,23 +306,47 @@
         (function () {
             const items = document.querySelectorAll('[data-service]');
 
+            function openService(item, scroll) {
+                if (!item) return;
+                items.forEach(function (other) {
+                    other.classList.remove('is-open');
+                    other.querySelector('.service-trigger').setAttribute('aria-expanded', 'false');
+                });
+                item.classList.add('is-open');
+                item.querySelector('.service-trigger').setAttribute('aria-expanded', 'true');
+                if (scroll) {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+
             items.forEach(function (item) {
-                const trigger = item.querySelector('.service-trigger');
-
-                trigger.addEventListener('click', function () {
+                item.querySelector('.service-trigger').addEventListener('click', function () {
                     const isOpen = item.classList.contains('is-open');
+                    if (isOpen) {
+                        item.classList.remove('is-open');
+                        item.querySelector('.service-trigger').setAttribute('aria-expanded', 'false');
+                        return;
+                    }
+                    openService(item, false);
+                });
+            });
 
-                    items.forEach(function (other) {
-                        other.classList.remove('is-open');
-                        other.querySelector('.service-trigger').setAttribute('aria-expanded', 'false');
-                    });
-
-                    if (!isOpen) {
-                        item.classList.add('is-open');
-                        trigger.setAttribute('aria-expanded', 'true');
+            document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    const id = link.getAttribute('href').slice(1);
+                    const item = document.getElementById(id);
+                    if (item && item.matches('[data-service]')) {
+                        setTimeout(function () { openService(item, false); }, 50);
                     }
                 });
             });
+
+            if (window.location.hash) {
+                const target = document.querySelector(window.location.hash);
+                if (target && target.matches('[data-service]')) {
+                    openService(target, true);
+                }
+            }
         })();
     </script>
 

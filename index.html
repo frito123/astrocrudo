@@ -146,7 +146,22 @@
                     </div>
                 </div>
 
-                <a href="/lecturas" class="hover:text-[#8B0000] transition-colors">Lecturas</a>
+                <div class="relative group nav-dropdown" data-nav-dropdown id="lecturas-nav-dropdown">
+                    <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
+                        Lecturas
+                        <span class="text-[9px] opacity-50 group-hover:opacity-100 transition-opacity">▼</span>
+                    </button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-3 shadow-2xl min-w-[260px]">
+                            <a href="/lecturas#servicios" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-2 pb-2 border-b border-white/10 hover:text-white transition-colors px-2">VER SERVICIOS →</a>
+                            <div class="grid grid-cols-1 gap-1">
+                                <a href="/lecturas#carta-natal-tradicional" class="nav-dropdown-link">Carta Natal Tradicional</a>
+                                <a href="/lecturas#revolucion-solar" class="nav-dropdown-link">Revolución Solar</a>
+                                <a href="/lecturas#astrologia-predictiva" class="nav-dropdown-link">Astrología Predictiva</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="relative group nav-dropdown" data-nav-dropdown id="estrellas-nav-dropdown">
                     <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
@@ -275,7 +290,20 @@
                     </div>
                 </div>
 
-                <a href="/lecturas" class="mobile-link">Lecturas</a>
+                <div>
+                    <button data-mobile-nav-toggle="mobile-lecturas-list" type="button" class="mobile-link w-full flex items-center justify-between text-left">
+                        <span>Lecturas</span>
+                        <span class="mobile-nav-chevron text-xs opacity-50 transition-transform">▼</span>
+                    </button>
+                    <div id="mobile-lecturas-list" class="hidden mt-3 pl-1 border-l border-white/10 ml-1">
+                        <a href="/lecturas#servicios" class="block py-2 pl-3 text-xs tracking-[2px] text-[#8B0000] mobile-link">VER SERVICIOS →</a>
+                        <div class="pl-3 pb-2">
+                            <a href="/lecturas#carta-natal-tradicional" class="mobile-nav-sublink block">Carta Natal Tradicional</a>
+                            <a href="/lecturas#revolucion-solar" class="mobile-nav-sublink block">Revolución Solar</a>
+                            <a href="/lecturas#astrologia-predictiva" class="mobile-nav-sublink block">Astrología Predictiva</a>
+                        </div>
+                    </div>
+                </div>
 
                 <div>
                     <button data-mobile-nav-toggle="mobile-estrellas-list" type="button" class="mobile-link w-full flex items-center justify-between text-left">
@@ -698,9 +726,9 @@
             </div>
 
             <div class="mt-10 text-center">
-                <p class="text-[#c5b8a0] mb-6">Las lecturas tradicionales estarán disponibles próximamente.</p>
-                <a href="#" class="inline-flex items-center justify-center px-10 h-14 border border-[#8B0000] hover:bg-[#8B0000] hover:text-white transition-colors text-sm tracking-[1.5px] rounded-full">
-                    CONSULTAS TRADICIONALES (PRÓXIMAMENTE)
+                <p class="text-[#c5b8a0] mb-6">Tres modalidades de lectura según el método clásico: carta natal, revolución solar y astrología predictiva.</p>
+                <a href="/lecturas#servicios" class="inline-flex items-center justify-center px-10 h-14 border border-[#8B0000] hover:bg-[#8B0000] hover:text-white transition-colors text-sm tracking-[1.5px] rounded-full">
+                    VER SERVICIOS DE LECTURA
                 </a>
             </div>
         </div>
