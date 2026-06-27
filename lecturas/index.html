@@ -116,7 +116,34 @@
                 </div>
 
                 <a href="/naturaleza" class="hover:text-[#8B0000]">Naturaleza</a>
-                <a href="/planetas" class="hover:text-[#8B0000]">Planetas</a>
+
+                <div class="relative group nav-dropdown" data-nav-dropdown id="planetas-nav-dropdown">
+                    <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">
+                        Planetas
+                        <span class="text-[9px] opacity-50 group-hover:opacity-100 transition-opacity">▼</span>
+                    </button>
+                    <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible transition-all duration-200 pointer-events-none">
+                        <div class="bg-[#111] border border-white/10 rounded-2xl p-4 shadow-2xl min-w-[300px]">
+                            <a href="/planetas" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">VER ÍNDICE DE PLANETAS →</a>
+                            <a href="/planetas#tradicional" class="block text-[9px] tracking-[2px] text-white/40 mb-2 hover:text-[#c5b8a0] transition-colors">TRADICIONAL</a>
+                            <div class="grid grid-cols-2 gap-1 mb-3">
+                                <a href="/planetas/sol/" class="nav-dropdown-link"><span>☉</span> Sol</a>
+                                <a href="/planetas/luna/" class="nav-dropdown-link"><span>☽</span> Luna</a>
+                                <a href="/planetas/mercurio/" class="nav-dropdown-link"><span>☿</span> Mercurio</a>
+                                <a href="/planetas/venus/" class="nav-dropdown-link"><span>♀</span> Venus</a>
+                                <a href="/planetas/marte/" class="nav-dropdown-link"><span>♂</span> Marte</a>
+                                <a href="/planetas/jupiter/" class="nav-dropdown-link"><span>♃</span> Júpiter</a>
+                                <a href="/planetas/saturno/" class="nav-dropdown-link"><span>♄</span> Saturno</a>
+                            </div>
+                            <a href="/planetas#moderno" class="block text-[9px] tracking-[2px] text-white/40 mb-2 pt-2 border-t border-white/10 hover:text-[#c5b8a0] transition-colors">MODERNO</a>
+                            <div class="grid grid-cols-2 gap-1">
+                                <a href="/planetas/urano/" class="nav-dropdown-link"><span>♅</span> Urano</a>
+                                <a href="/planetas/neptuno/" class="nav-dropdown-link"><span>♆</span> Neptuno</a>
+                                <a href="/planetas/pluton/" class="nav-dropdown-link"><span>♇</span> Plutón</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="relative group nav-dropdown" data-nav-dropdown id="lecturas-nav-dropdown">
                     <button type="button" class="nav-dropdown-trigger flex items-center gap-1.5 text-[#c5b8a0] hover:text-[#8B0000] transition-colors" aria-expanded="false" aria-haspopup="true">

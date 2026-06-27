@@ -52,6 +52,65 @@
             font-size: 2.75rem;
             line-height: 1;
         }
+
+        .planet-index-item {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            background: #111;
+            overflow: hidden;
+            transition: border-color 0.25s ease;
+        }
+        .planet-index-item:hover {
+            border-color: rgba(139, 0, 0, 0.35);
+        }
+        .planet-index-item.is-open {
+            border-color: rgba(139, 0, 0, 0.5);
+        }
+        .planet-index-trigger {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.35rem 1.5rem;
+            text-align: left;
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .planet-index-trigger:hover {
+            background: rgba(139, 0, 0, 0.08);
+        }
+        .planet-index-chevron {
+            flex-shrink: 0;
+            width: 1.75rem;
+            height: 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            color: #8B0000;
+            transition: transform 0.3s ease, border-color 0.2s ease;
+        }
+        .planet-index-item.is-open .planet-index-chevron {
+            transform: rotate(180deg);
+            border-color: rgba(139, 0, 0, 0.5);
+        }
+        .planet-index-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .planet-index-item.is-open .planet-index-panel {
+            max-height: 4000px;
+        }
+        .planet-index-content {
+            padding: 0 1.5rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
     </style>
 </head>
 <body class="bg-[#0a0808] text-[#e5e0d8]">
@@ -83,7 +142,7 @@
             </h1>
             
             <p class="max-w-2xl mx-auto text-2xl text-[#c5b8a0] tracking-[-0.7px] font-light">
-                Del Sol a Plutón.<br>
+                Siete planetas clásicos y tres modernos.<br>
                 Expresión dignificada (bien) + Expresión en sombra (mal, disponible progresivamente).
             </p>
             
@@ -105,7 +164,7 @@
             <div class="text-[15px] text-[#c5b8a0] leading-relaxed space-y-4">
                 <p>
                     Cada descripción sigue el modelo de los tratados clásicos (Ptolomeo, Firmico Materno, Lilly y la tradición medieval).
-                    Incluimos las dos luminarias (Sol y Luna) y los planetas hasta Plutón, con sus dignidades tradicionales.
+                    Los siete planetas tradicionales conservan sus dignidades clásicas; Urano, Neptuno y Plutón se leen como capa moderna complementaria.
                 </p>
                 <p>
                     Al final de cada página encontrarás una breve nota de <strong>Trabajo con la Sombra</strong> en tono AstroCrudo,
@@ -114,8 +173,27 @@
             </div>
         </div>
 
-        <!-- GRID DE PLANETAS -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <!-- ÍNDICE DESPLEGABLE -->
+        <section id="indice-planetas" class="max-w-4xl mx-auto mb-16 scroll-mt-28">
+            <div class="text-[#8B0000] text-xs tracking-[3.5px] mb-2">ÍNDICE DE PLANETAS</div>
+            <h2 class="font-serif text-4xl md:text-5xl tracking-tight mb-4">Naturaleza por tradición</h2>
+            <p class="text-[#c5b8a0] text-lg leading-relaxed mb-10">
+                Dos familias de planetas según la astrología. Despliega cada sección para ver sus fichas.
+            </p>
+
+            <div class="space-y-4" id="planets-accordion">
+
+            <article id="tradicional" class="planet-index-item is-open scroll-mt-28" data-planet-index>
+                <button type="button" class="planet-index-trigger" aria-expanded="true">
+                    <span>
+                        <span class="block font-serif text-2xl tracking-tight text-white">Tradicional</span>
+                        <span class="block mt-1 text-sm text-white/45 tracking-wide">Sol, Luna, Mercurio, Venus, Marte, Júpiter y Saturno</span>
+                    </span>
+                    <span class="planet-index-chevron" aria-hidden="true">▼</span>
+                </button>
+                <div class="planet-index-panel" role="region">
+                    <div class="planet-index-content">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-5">
             
             <!-- Sol -->
             <a href="sol/" class="planet-card group block rounded-3xl p-7">
@@ -299,6 +377,23 @@
                 </div>
             </a>
 
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article id="moderno" class="planet-index-item scroll-mt-28" data-planet-index>
+                <button type="button" class="planet-index-trigger" aria-expanded="false">
+                    <span>
+                        <span class="block font-serif text-2xl tracking-tight text-white">Moderno</span>
+                        <span class="block mt-1 text-sm text-white/45 tracking-wide">Urano, Neptuno y Plutón — capa complementaria</span>
+                    </span>
+                    <span class="planet-index-chevron" aria-hidden="true">▼</span>
+                </button>
+                <div class="planet-index-panel" role="region">
+                    <div class="planet-index-content">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-5">
+
             <!-- Urano -->
             <a href="urano/" class="planet-card group block rounded-3xl p-7">
                 <div class="flex items-start justify-between mb-5">
@@ -377,7 +472,13 @@
                 </div>
             </a>
 
-        </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            </div>
+        </section>
 
         <!-- Nota final -->
         <div class="mt-16 max-w-2xl mx-auto text-center text-sm text-white/40 leading-relaxed">
@@ -393,6 +494,44 @@
             <span class="text-[10px]">Una naturaleza. Un cuerpo. Una tradición.</span>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            var items = document.querySelectorAll('[data-planet-index]');
+
+            function openIndex(item, scroll) {
+                if (!item) return;
+                items.forEach(function (other) {
+                    other.classList.remove('is-open');
+                    other.querySelector('.planet-index-trigger').setAttribute('aria-expanded', 'false');
+                });
+                item.classList.add('is-open');
+                item.querySelector('.planet-index-trigger').setAttribute('aria-expanded', 'true');
+                if (scroll) {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+
+            items.forEach(function (item) {
+                item.querySelector('.planet-index-trigger').addEventListener('click', function () {
+                    var isOpen = item.classList.contains('is-open');
+                    if (isOpen) {
+                        item.classList.remove('is-open');
+                        item.querySelector('.planet-index-trigger').setAttribute('aria-expanded', 'false');
+                        return;
+                    }
+                    openIndex(item, false);
+                });
+            });
+
+            if (window.location.hash) {
+                var target = document.querySelector(window.location.hash);
+                if (target && target.matches('[data-planet-index]')) {
+                    openIndex(target, true);
+                }
+            }
+        })();
+    </script>
 
 </body>
 </html>

@@ -130,8 +130,9 @@
                     </button>
                     <div class="nav-dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
                         <div class="bg-[#111] border border-white/10 rounded-2xl p-4 shadow-2xl min-w-[300px]">
-                            <a href="/planetas" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">VER TODOS LOS PLANETAS →</a>
-                            <div class="grid grid-cols-2 gap-1">
+                            <a href="/planetas" class="block text-[10px] tracking-[2.5px] text-[#8B0000] mb-3 pb-2 border-b border-white/10 hover:text-white transition-colors">VER ÍNDICE DE PLANETAS →</a>
+                            <a href="/planetas#tradicional" class="block text-[9px] tracking-[2px] text-white/40 mb-2 hover:text-[#c5b8a0] transition-colors">TRADICIONAL</a>
+                            <div class="grid grid-cols-2 gap-1 mb-3">
                                 <a href="/planetas/sol/" class="nav-dropdown-link"><span>☉</span> Sol</a>
                                 <a href="/planetas/luna/" class="nav-dropdown-link"><span>☽</span> Luna</a>
                                 <a href="/planetas/mercurio/" class="nav-dropdown-link"><span>☿</span> Mercurio</a>
@@ -139,6 +140,9 @@
                                 <a href="/planetas/marte/" class="nav-dropdown-link"><span>♂</span> Marte</a>
                                 <a href="/planetas/jupiter/" class="nav-dropdown-link"><span>♃</span> Júpiter</a>
                                 <a href="/planetas/saturno/" class="nav-dropdown-link"><span>♄</span> Saturno</a>
+                            </div>
+                            <a href="/planetas#moderno" class="block text-[9px] tracking-[2px] text-white/40 mb-2 pt-2 border-t border-white/10 hover:text-[#c5b8a0] transition-colors">MODERNO</a>
+                            <div class="grid grid-cols-2 gap-1">
                                 <a href="/planetas/urano/" class="nav-dropdown-link"><span>♅</span> Urano</a>
                                 <a href="/planetas/neptuno/" class="nav-dropdown-link"><span>♆</span> Neptuno</a>
                                 <a href="/planetas/pluton/" class="nav-dropdown-link"><span>♇</span> Plutón</a>
@@ -276,7 +280,8 @@
                         <span class="mobile-nav-chevron text-xs opacity-50 transition-transform">▼</span>
                     </button>
                     <div id="mobile-planetas-list" class="hidden mt-3 pl-1 border-l border-white/10 ml-1">
-                        <a href="/planetas" class="block py-2 pl-3 text-xs tracking-[2px] text-[#8B0000] mobile-link">TODOS LOS PLANETAS →</a>
+                        <a href="/planetas" class="block py-2 pl-3 text-xs tracking-[2px] text-[#8B0000] mobile-link">ÍNDICE DE PLANETAS →</a>
+                        <a href="/planetas#tradicional" class="block pl-3 pt-2 text-[10px] tracking-[2px] text-white/40 mobile-link">TRADICIONAL</a>
                         <div class="grid grid-cols-2 gap-x-4 gap-y-1 pl-3 pb-2">
                             <a href="/planetas/sol/" class="mobile-nav-sublink">☉ Sol</a>
                             <a href="/planetas/luna/" class="mobile-nav-sublink">☽ Luna</a>
@@ -285,6 +290,9 @@
                             <a href="/planetas/marte/" class="mobile-nav-sublink">♂ Marte</a>
                             <a href="/planetas/jupiter/" class="mobile-nav-sublink">♃ Júpiter</a>
                             <a href="/planetas/saturno/" class="mobile-nav-sublink">♄ Saturno</a>
+                        </div>
+                        <a href="/planetas#moderno" class="block pl-3 pt-1 text-[10px] tracking-[2px] text-white/40 border-t border-white/10 mt-1 mobile-link">MODERNO</a>
+                        <div class="grid grid-cols-2 gap-x-4 gap-y-1 pl-3 pb-2">
                             <a href="/planetas/urano/" class="mobile-nav-sublink">♅ Urano</a>
                             <a href="/planetas/neptuno/" class="mobile-nav-sublink">♆ Neptuno</a>
                             <a href="/planetas/pluton/" class="mobile-nav-sublink">♇ Plutón</a>
